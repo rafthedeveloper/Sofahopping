@@ -35,7 +35,8 @@ By the end of this phase, users will be able to create accounts, log in, log out
 view members index, member show page and dashboard. I will be adding a
 member route to serve as the api, it will serve json back to the backbone app.
 The most important part of this phase will be pushing the app to Heroku
-and ensuring that these pieces work well together.
+and ensuring that these pieces work well together. I plan to grab all trips,
+friends, references, requests of a user and store this in the user backbone model.
 
 [Details][phase-one]
 
@@ -51,8 +52,8 @@ as a parameter to the Api::MembersController#search function.
 ### Phase 3: Add friend and create references (~1 day)
 In this phase, I will be adding the ability for users to add friends
 and create references. At the end of this phase, users will have a friends show
-page on their profile. Also, users will be able to create references which will
-show up on a member's show page.
+page on their profile through the "has_many friends" association.
+Also, users will be able to create references which will show up on a member's show page through the "has_many references" association.
 
 [Details][phase-three]
 

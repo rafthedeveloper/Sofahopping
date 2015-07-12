@@ -58,7 +58,6 @@ column name    | data type | details
 id             | integer   | not null, primary key
 arrival_date   | datetime  | not null
 departure_date | datetime  | not null
-flexible       | boolean   | not null
 num_guests     | integer   | not null
 description    | text      | not null
 type           | string    | not null, foreign key (references trip or request)
