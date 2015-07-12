@@ -5,11 +5,20 @@
 [heroku]:
 
 ## Minimum Viable Product
-SofaHopping is a clone of Couchsrufing built on Rails and Backbone. Users can:
+SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 
 
 - [ ] Create accounts
 - [ ] Create sessions (log in)
+- [ ] Search for all members
+- [ ] Search for all hosts
+- [ ] Create trips
+- [ ] Search for all travellers
+- [ ] Add friends
+- [ ] Create references
+- [ ] Create events
+- [ ] Search for events
+- [ ] Create a post on an event
 
 ## Design Docs
 * [View Wireframes][views]
@@ -63,8 +72,10 @@ show the user the events that they are attending and organizing.
 
 
 ### Bonus Features (TBD)
-- [ ] "Like" button and counter for posts
-
+- [ ] Create Groups and Discussions
+- [ ] Pagination/infinite scroll
+- [ ] User avatars, group cover photos
+- [ ] Autocomplete search bar
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
