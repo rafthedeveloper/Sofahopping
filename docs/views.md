@@ -23,4 +23,4 @@
 [friends-index]: ./wireframes/friends_index.jpg
 [references-index]: ./wireframes/references_index.jpg
 [search-results]: ./wireframes/search_results.jpg
-[trips-index]: ./wireframes/trips_index.jng
+[trips-index]: ./wireframes/trips_index.jpg
