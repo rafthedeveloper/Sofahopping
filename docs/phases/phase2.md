@@ -3,6 +3,7 @@
 ## Rails
 ### Models
 * Trip
+* TravelDetail
 
 ### Controllers
 * Api::TripsController (create, destroy, index)
