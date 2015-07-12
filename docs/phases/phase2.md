@@ -1,4 +1,4 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Find hosts, create trips, find travelers (~2 days)
 
 ## Rails
 ### Models
