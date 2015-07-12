@@ -20,12 +20,13 @@ SofaHopping is a clone of Couchsrufing built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Dashboard Show and Member(s) view (~1 day)
+### Phase 1: User Authentication, DashboardShow, MemberShow, MemberIndex (~1 day)
 I will be creating the user authentication in rails as taught in App Academy.
 By the end of this phase, users will be able to create accounts, log in, log out,
-view members index, member show page and dashboard. The most important part of
-this phase will be pushing the app to Heroku and ensuring that these pieces
-work well together.
+view members index, member show page and dashboard. I will be adding a
+member route to serve as the api, it will serve json back to the backbone app.
+The most important part of this phase will be pushing the app to Heroku
+and ensuring that these pieces work well together.
 
 [Details][phase-one]
 
@@ -33,9 +34,8 @@ work well together.
 In this phase, I will add the ability to find hosts, find travelers
 and creating trips. To create a trip, a user will be on the 'find hosts' view
 page and a modal will pop up allowing them to create a trip. Hosts and travelers
-will be found by sending a 'hosting_status' parameter to #search in the
-members controller as well as the location.
-
+will be found through a member's attribute 'hosting_status' which will be passed
+as a parameter to the Api::MembersController#search function.
 
 [Details][phase-two]
 

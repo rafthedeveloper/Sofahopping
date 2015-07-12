@@ -2,28 +2,30 @@
 
 ## Rails
 ### Models
+* Trip
 
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+* Api::TripsController (create, destroy, index)
+* Api::MembersController (index, search)
 
 ### Views
-* blogs/show.json.jbuilder
+* trips/index.json.jbuilder
+* members/index.json.jbuilder (will serve both #index and #search)
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+* Trip
 
 ### Collections
-* Blogs
-* Posts
+* Trips
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
+* HostsIndex (composite view, contains hosts index item subview)
+* HostsIndexItem
+* TripsIndex (composite view, contains trips index item subview)
+* TripsIndexItem
+* TravelersIndex (composite view, contains travelers index item subview)
+* TravelersIndexItem
+
 
 ## Gems/Libraries
