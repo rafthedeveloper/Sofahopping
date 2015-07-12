@@ -1,24 +1,15 @@
-# Flux-capacitr
+# SofaHopping
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]:
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
+SofaHopping is a clone of Couchsrufing built on Rails and Backbone. Users can:
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [x] Create accounts
-- [x] Create sessions (log in)
-- [x] Create blogs
-- [x] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Create accounts
+- [ ] Create sessions (log in)
 
 ## Design Docs
 * [View Wireframes][views]
@@ -29,63 +20,54 @@ Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
-I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create blogs using
-a simple text form in a Rails view. The most important part of this phase will
-be pushing the app to Heroku and ensuring that everything works before moving on
-to phase 2.
+### Phase 1: User Authentication, Dashboard Show and Member(s) view (~1 day)
+I will be creating the user authentication in rails as taught in App Academy.
+By the end of this phase, users will be able to create accounts, log in, log out,
+view members index, member show page and dashboard. The most important part of
+this phase will be pushing the app to Heroku and ensuring that these pieces
+work well together.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Blogs and Posts (~2 days)
-I will add API routes to serve blog and post data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create blogs and view both blogs and posts, all
-inside a single Backbone app.
+### Phase 2: Find hosts, create trips, find travelers (~2 days)
+In this phase, I will add the ability to find hosts, find travelers
+and creating trips. To create a trip, a user will be on the 'find hosts' view
+page and a modal will pop up allowing them to create a trip. Hosts and travelers
+will be found by sending a 'hosting_status' parameter to #search in the
+members controller as well as the location.
+
 
 [Details][phase-two]
 
-### Phase 3: Editing and Displaying Posts (~2 days)
-I plan to use third-party libraries to add functionality to the `PostForm` and
-`PostShow` views in this phase. First I'll need to add a Markdown editor to the
-`PostForm`, and make sure that the Markdown is properly escaped and formatted in
-the `PostShow` view. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
+### Phase 3: Add friend and create references (~1 day)
+In this phase, I will be adding the ability for users to add friends
+and create references. At the end of this phase, users will have a friends show
+page on their profile. Also, users will be able to create references which will
+show up on a member's show page.
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 4: Messages and Requests (~1 day)
+In this phase, I will be focusing on sending users a request to host them,
+sending hosts a request to be hosted by them and also posting messages
+on said requests. A user can also approve, deny or cancel a request.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5: Events and Comments (~2 days)
+In this phase, I will be focusing on creating events, editing them and removing
+them. I will also be focusing on adding comments to these events. I will also
+show the user the events that they are attending and organizing.
 
 [Details][phase-five]
 
+
 ### Bonus Features (TBD)
 - [ ] "Like" button and counter for posts
-- [ ] Custom blog urls
-- [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
-- [ ] Post types (image posts, quote posts, etc)
-- [ ] Reblogging
-- [ ] Multiple sessions/session management
-- [ ] User avatars
-- [ ] Typeahead search bar
+
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-
