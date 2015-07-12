@@ -13,10 +13,12 @@
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-
+* members/index.json.jbuilder
+* members/show.json.jbuilder
 
 ## Backbone
 ### Models
+* User (to keep track of all collections under one logged in user model)
 * Member
 
 ### Collections

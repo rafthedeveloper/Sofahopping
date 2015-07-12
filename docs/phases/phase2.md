@@ -6,11 +6,10 @@
 * TravelDetail
 
 ### Controllers
-* Api::TripsController (create, destroy, index)
+* Api::TripsController (create, destroy, update)
 * Api::MembersController (index, search)
 
 ### Views
-* trips/index.json.jbuilder
 * members/index.json.jbuilder (will serve both #index and #search)
 
 ## Backbone
@@ -25,6 +24,8 @@
 * HostsIndexItem
 * TripsIndex (composite view, contains trips index item subview)
 * TripsIndexItem
+* TripsNewForm
+* TripEditForm
 * TravelersIndex (composite view, contains travelers index item subview)
 * TravelersIndexItem
 

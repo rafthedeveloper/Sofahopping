@@ -2,19 +2,28 @@
 
 ## Rails
 ### Models
+* Request
+* Comment
 
 ### Controllers
-Api::PostsController (feed)
+* Api::RequestsController (create, update)
+* Api::CommentsController (create, destroy)
 
 ### Views
-posts/feed.json.jbuilder
 
 ## Backbone
 ### Models
+* Request
+* Comment
 
 ### Collections
+* Requests
+* Comments
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* RequestsIndex (composite view, contains requests index item subviews)
+* RequestsIndexItem
+* CommentsIndex (composite view, contains comments index item subviews)
+* CommentsIndexItem
 
 ## Gems/Libraries
