@@ -6,10 +6,17 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
+<style>
+  #main{
+    background-color:red;
+  }
+  </style>
 <body>
 
-<header>
+<header class="main-header group">
 
+<h1>Sofahopping</h1>
   <% if !current_user %>
   <nav>
    <ul>
@@ -20,12 +27,13 @@
   <% else %>
 
 
-  <nav>
+
 
   <form>
     <select id="hosting_status" name="user[hosting_status]">
       <option value="1">Find Hosts</option>
       <option value="2">Find Members</option>
+      <!-- <option value="3">Find Travelers</option> -->
     </select>
       <button>Search</button>
   <form>
