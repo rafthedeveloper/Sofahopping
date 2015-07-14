@@ -13,7 +13,7 @@
 class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, :fname,
             :lname, :gender, :birthday, :location, presence: true
-  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, length: { minimum: 1, allow_nil: true }
 
   attr_reader :password
 
@@ -52,6 +52,6 @@ class User < ActiveRecord::Base
   end
 
   def generate_hosting_status
-    self.hosting_status ||= "Maybe Accepting Guests"
+    self.hosting_status ||= "Maybe"
   end
 end
