@@ -3,7 +3,8 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   routes: {
     "dashboard": "userDashboard",
     "people/:id": "userProfile",
-    "members/hosts": "findHosts"
+    "members/hosts": "findHosts",
+    "members/all": "findAllMembers"
   },
 
   initialize: function(options){
@@ -32,15 +33,20 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   findHosts: function(){
-
     var hosts = new SofaHopping.Collections.Users();
+    hosts.fetch({ data: { status: "accepting" }});
 
-    var membersView = new SofaHopping.Views.MembersView({
-    collection: hosts
-    })
-    
-    this._swapView(hosts);
+    var membersView = new SofaHopping.Views.MembersView({ collection: hosts })
+    this._swapView(membersView);
 
+  },
+
+  findAllMembers: function(){
+    var allMembers = new SofaHopping.Collections.Users();
+    allMembers.fetch();
+
+    var membersView = new SofaHopping.Views.MembersView({ collection: allMembers })
+    this._swapView(membersView);
   },
 
   _swapView: function(view){
