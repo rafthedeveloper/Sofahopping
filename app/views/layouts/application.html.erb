@@ -19,20 +19,27 @@
    </nav>
   <% else %>
 
-  <nav>
-   <ul>
 
+  <nav>
+
+  <form>
+    <select id="hosting_status" name="user[hosting_status]">
+      <option value="1">Find Hosts</option>
+      <option value="2">Find Members</option>
+    </select>
+      <button>Search</button>
+  <form>
+
+   <ul>
      <li><a href="#">Dashboard</a></li>
      <li><a href=" <%= "#people/" + current_user.id.to_s %>"> My Profile</a></li>
-     <li><a href="#members/all">All Members</a>
-     <li><a href="#members/hosts">Find Hosts</a>
    </ul>
    </nav>
 
   <form action="<%= session_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="delete">
-    <button>Sign Out</button>
+    <button>Log Out</button>
   </form>
   <% end %>
 

@@ -87,3 +87,4 @@ show the user the events that they are attending and organizing.
 
 
 #geocoder api for location based searching
+#rails enums for DB

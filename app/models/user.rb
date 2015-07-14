@@ -17,12 +17,6 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_one :member_info,
-    class_name: "MemberInfo",
-    foreign_key: :user_id,
-    primary_key: :id
-
-
   after_initialize :ensure_session_token, :generate_hosting_status
 
   def self.find_by_credentials(username, password)
@@ -52,6 +46,6 @@ class User < ActiveRecord::Base
   end
 
   def generate_hosting_status
-    self.hosting_status ||= "maybe"
+    self.hosting_status ||= "MAYBE ACCEPTING GUESTS"
   end
 end
