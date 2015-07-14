@@ -8,8 +8,8 @@
 SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
+- [x] Create accounts
+- [x] Create sessions (log in)
 - [ ] Search for all members
 - [ ] Search for all hosts
 - [ ] Create trips
