@@ -1,3 +1,12 @@
+<h2><%= members.length %> Members matching<h2>
+
 <% members.each(function(member) { %>
-<h1> <%= member.escape('fname') %> </h1>
+  <article>
+    <img class="user-avatar" src="#"/>
+    <a href="#people/<%= member.id %>">
+      <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
+    </a>
+    <small><%= member.escape('location') %> </small>
+    <span><%= member.escape('hosting_status') %></span>
+  </article>
 <% }) %>

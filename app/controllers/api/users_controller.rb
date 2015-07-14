@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
 
   def index
     if params[:status]
-       @users = User.all.where(hosting_status: params[:status])
+       @users = User.where(hosting_status: params[:status])
     else
       @users = User.all
     end

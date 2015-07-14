@@ -10,6 +10,19 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.current_user = options.user;
     this.$rootEl = options.$rootEl;
+    $("form").on("submit", this.memberSearchBar);
+  },
+
+  memberSearchBar: function(){
+    event.preventDefault();
+    var hosting_status = $(event.currentTarget).find("#hosting_status").val();
+
+    if (hosting_status === "1"){
+      Backbone.history.navigate("members/hosts", { trigger: true });
+    }
+    else if (hosting_status === "2"){
+      Backbone.history.navigate("members/all", { trigger: true });
+    }
   },
 
   userDashboard: function(){
@@ -34,7 +47,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   findHosts: function(){
     var hosts = new SofaHopping.Collections.Users();
-    hosts.fetch({ data: { status: "accepting" }});
+    hosts.fetch({ data: { status: "ACCEPTING GUESTS" }});
 
     var membersView = new SofaHopping.Views.MembersView({ collection: hosts })
     this._swapView(membersView);
