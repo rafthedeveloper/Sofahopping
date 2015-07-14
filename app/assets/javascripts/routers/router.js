@@ -1,7 +1,8 @@
 SofaHopping.Routers.Router = Backbone.Router.extend({
 
   routes: {
-    "dashboard": "renderDashboard"
+    "dashboard": "userDashboard",
+    "people/:id": "userProfile"
   },
 
   initialize: function(options){
@@ -9,12 +10,24 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
   },
 
-  renderDashboard: function(){
+  userDashboard: function(){
     var dashboardView = new SofaHopping.Views.DashboardView({
       model: this.current_user
     });
 
     this._swapView(dashboardView);
+  },
+
+  userProfile: function(id){
+    var visitedUser = new SofaHopping.Models.User({ id: id });
+    debugger
+    visitedUser.fetch();
+
+    var userProfileView = new SofaHopping.Views.ProfileView({
+      model: visitedUser
+    });
+
+    this._swapView(userProfileView);
   },
 
   _swapView: function(view){
