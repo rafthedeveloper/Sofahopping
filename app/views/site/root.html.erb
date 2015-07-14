@@ -14,11 +14,26 @@
   <input type="password" name="user[password]" placeholder="Password">
   <button>Log In</button>
 </form>
+
+<form action="<%= session_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="user[username]" placeholder="Email or Username">
+  <input type="password" name="user[password]" placeholder="Password">
+  <button>Sign Up</button>
+</form>
 <% else %>
+
+
   Welcome <%= current_user.username %>
   <form action="<%= session_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="delete">
     <button>Sign Out</button>
   </form>
+
+  <script>
+  $(document).ready(function(){
+    SofaHopping.initialize();
+  });
+  </script>
 <% end %>
