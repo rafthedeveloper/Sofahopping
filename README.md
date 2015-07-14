@@ -84,3 +84,6 @@ show the user the events that they are attending and organizing.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+
+
+#geocoder api for location based searching
