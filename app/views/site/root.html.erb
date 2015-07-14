@@ -1,4 +1,4 @@
-<header>
+ <header>
   <nav>
     <ul>
       <li><a href="#">Join</a></li>
@@ -6,3 +6,19 @@
     </ul>
   </nav>
 </header>
+
+<% if !current_user %>
+<form action="<%= session_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="user[username]" placeholder="Email or Username">
+  <input type="password" name="user[password]" placeholder="Password">
+  <button>Log In</button>
+</form>
+<% else %>
+  Welcome <%= current_user.username %>
+  <form action="<%= session_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <button>Sign Out</button>
+  </form>
+<% end %>
