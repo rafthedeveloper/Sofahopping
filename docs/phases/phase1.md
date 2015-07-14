@@ -3,26 +3,26 @@
 ## Rails
 ### Models
 * User
-* Member
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::MembersController (index, show)
+* Api::UsersController (index, show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* members/index.json.jbuilder
-* members/show.json.jbuilder
+* users/index.json.jbuilder
+* users/show.json.jbuilder
+* user.json.jbuilder (partial)
 
 ## Backbone
 ### Models
 * User (to keep track of all collections under one logged in user model)
-* Member
+
 
 ### Collections
-* Members
+* Users
 
 ### Views
 * DashboardShow (compositeView, contains trips subviews (PHASE 2))
