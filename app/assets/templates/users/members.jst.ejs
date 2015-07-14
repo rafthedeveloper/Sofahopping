@@ -1,6 +1,7 @@
-<h2><%= members.length %> Members matching<h2>
+<section class="search-results">
+<h2><%= members.length %> Members matching</h2>
 
-<ul class="user-search-results">
+<ul class="search-results-list">
 <% members.each(function(member) { %>
   <li>
     <article>
@@ -14,9 +15,29 @@
   </li>
 <% }) %>
 </ul>
+</section>
 
 <style>
-  .user-search-results li{
+ul li{
+  list-style:none;
+}
+.search-results h2{
+  width:600px;
+  margin:0 auto;
+
+  background-color:#FFF;
+  border-bottom: 3px solid #ecf0f1;
+
+}
+  .search-results-list{
+    width:600px;
+
+    margin:0 auto;
+  }
+  .search-results-list li{
     background-color:#fff;
+    padding:20px;
+    border-top: 1px solid #ecf0f1;
+
   }
 </style>
