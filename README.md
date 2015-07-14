@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]:
+[heroku]: http://sofahopping.herokuapp.com/
 
 ## Minimum Viable Product
 SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
@@ -10,8 +10,8 @@ SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 
 - [x] Create accounts
 - [x] Create sessions (log in)
-- [ ] Search for all members
-- [ ] Search for all hosts
+- [x] Search for all members
+- [x] Search for all hosts
 - [ ] Create trips
 - [ ] Search for all travelers
 - [ ] Add friends
