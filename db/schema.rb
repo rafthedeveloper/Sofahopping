@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20150714143853) do
     t.string   "username",        null: false
     t.string   "password_digest", null: false
     t.string   "session_token",   null: false
+    t.string   "fname",           null: false
+    t.string   "lname",           null: false
+    t.string   "gender",          null: false
+    t.date     "birthday",        null: false
+    t.string   "location",        null: false
+    t.string   "hosting_status",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
