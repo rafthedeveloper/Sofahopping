@@ -1,11 +1,4 @@
- <header>
-  <nav>
-    <ul>
-      <li><a href="#">Join</a></li>
-      <li><a href="#">Login</a></li>
-    </ul>
-  </nav>
-</header>
+
 
 <% if !current_user %>
 <form action="<%= session_url %>" method="post">
@@ -34,15 +27,6 @@
   <button>Create Account</button>
 </form>
 <% else %>
-
-
-  Welcome <%= current_user.username %>
-  <form action="<%= session_url %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="delete">
-    <button>Sign Out</button>
-  </form>
-
   <script>
   $(document).ready(function(){
     SofaHopping.initialize(<%= current_user.id %>);

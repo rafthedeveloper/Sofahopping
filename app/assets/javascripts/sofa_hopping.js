@@ -12,6 +12,6 @@ window.SofaHopping = {
       user: user, $rootEl: $rootEl
     });
     Backbone.history.start();
-    Backbone.history.navigate("dashboard", { trigger: true })
+    
   }
 };
