@@ -8,7 +8,39 @@
 </head>
 <body>
 
+<header>
+
+  <% if !current_user %>
+  <nav>
+   <ul>
+     <li><a href="#">Join</a></li>
+     <li><a href="#">Login</a></li>
+   </ul>
+   </nav>
+  <% else %>
+
+  <nav>
+   <ul>
+
+     <li><a href="#">Dashboard</a></li>
+     <li><a href=" <%= "#people/" + current_user.id.to_s %>"> My Profile</a></li>
+     <li><a href="#members/all">All Members</a>
+     <li><a href="#members/hosts">Find Hosts</a>
+   </ul>
+   </nav>
+
+  <form action="<%= session_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <button>Sign Out</button>
+  </form>
+  <% end %>
+
+  </header>
+
+
 <%= yield %>
+
 
 </body>
 </html>

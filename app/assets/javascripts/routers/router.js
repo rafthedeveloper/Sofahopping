@@ -1,7 +1,7 @@
 SofaHopping.Routers.Router = Backbone.Router.extend({
 
   routes: {
-    "dashboard": "userDashboard",
+    "": "userDashboard",
     "people/:id": "userProfile",
     "members/hosts": "findHosts",
     "members/all": "findAllMembers"
@@ -13,6 +13,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   userDashboard: function(){
+    Backbone.history.navigate("dashboard");
     var dashboardView = new SofaHopping.Views.DashboardView({
       model: this.current_user
     });
@@ -22,7 +23,6 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   userProfile: function(id){
     var visitedUser = new SofaHopping.Models.User({ id: id });
-    debugger
     visitedUser.fetch();
 
     var userProfileView = new SofaHopping.Views.ProfileView({
