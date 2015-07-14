@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: SofaHopping_production
-  username: SofaHopping
-  password: <%= ENV['SOFAHOPPING_DATABASE_PASSWORD'] %>
+  # username: SofaHopping
+  # password: <%= ENV['SOFAHOPPING_DATABASE_PASSWORD'] %>
