@@ -1,15 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
-  has_many(
-    :links,
-    class_name: "Link",
+  has_one :member_info,
+    class_name: "MemberInfo",
     foreign_key: :user_id,
     primary_key: :id
-  )
+
 
   after_initialize :ensure_session_token
 

@@ -7,8 +7,11 @@ class CreateMemberInfos < ActiveRecord::Migration
       t.date :birthday, null: false
       t.string :location, null: false
       t.string :hosting_status, null: false
+      t.integer :user_id, null: false
 
       t.timestamps
     end
+
+    add_index(:member_infos, :user_id)
   end
 end
