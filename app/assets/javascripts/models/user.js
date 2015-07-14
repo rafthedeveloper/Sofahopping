@@ -1,3 +1,3 @@
-SofaHopping.Models.User = new Backbone.Model.extend({
+SofaHopping.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users"
-})
+});

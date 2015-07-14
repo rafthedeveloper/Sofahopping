@@ -45,7 +45,7 @@
 
   <script>
   $(document).ready(function(){
-    SofaHopping.initialize();
+    SofaHopping.initialize(<%= current_user.id %>);
   });
   </script>
 <% end %>
