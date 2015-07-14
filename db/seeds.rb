@@ -1,9 +1,8 @@
 u1 = User.create!(
-     username: "raf",
+     username: "visualdelusions",
      password: "password",
      fname: "rafael",
-     lname: "maldonado"
-     gender: "male"
-     birthday: Date.new(2001,2,3),
-     location: "New York City"
+     lname: "maldonado",
+     gender: "male",
+     
 )
