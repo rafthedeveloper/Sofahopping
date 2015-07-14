@@ -7,7 +7,3 @@ window.SofaHopping = {
     alert('Hello from Backbone!');
   }
 };
-
-$(document).ready(function(){
-  SofaHopping.initialize();
-});
