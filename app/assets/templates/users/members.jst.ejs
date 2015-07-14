@@ -1,12 +1,22 @@
 <h2><%= members.length %> Members matching<h2>
 
+<ul class="user-search-results">
 <% members.each(function(member) { %>
-  <article>
-    <img class="user-avatar" src="#"/>
-    <a href="#people/<%= member.id %>">
-      <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
-    </a>
-    <small><%= member.escape('location') %> </small>
-    <span><%= member.escape('hosting_status') %></span>
-  </article>
+  <li>
+    <article>
+      <img class="user-avatar" src="#"/>
+      <a href="#people/<%= member.id %>">
+        <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
+      </a>
+      <small><%= member.escape('location') %> </small>
+      <span><%= member.escape('hosting_status') %></span>
+    </article>
+  </li>
 <% }) %>
+</ul>
+
+<style>
+  .user-search-results li{
+    background-color:#fff;
+  }
+</style>

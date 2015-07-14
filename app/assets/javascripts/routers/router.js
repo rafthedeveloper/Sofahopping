@@ -26,7 +26,8 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   userDashboard: function(){
-    Backbone.history.navigate("dashboard");
+
+
     var dashboardView = new SofaHopping.Views.DashboardView({
       model: this.current_user
     });

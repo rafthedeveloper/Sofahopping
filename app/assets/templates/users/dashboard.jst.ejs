@@ -1,4 +1,10 @@
-<%= user.escape('fname') %>
-<%= user.escape('lname') %>
-<%= user.escape('location') %>
-<%= user.escape('hosting_status') %>
+<section class="dashboard-sidebar">
+  <section class="dashboard-profile">
+  <figure class="profile">
+    <img src="">
+    <h2> <%= user.escape('fname') %><%= user.escape('lname') %> </h2>
+    <figcaption><%= user.escape('location') %></figcaption>
+  </figure>
+  <small><%= user.escape('hosting_status')%></small>
+  </section>
+</section>
