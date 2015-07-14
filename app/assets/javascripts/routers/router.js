@@ -10,10 +10,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.current_user = options.user;
     this.$rootEl = options.$rootEl;
-    $("form").on("submit", this.memberSearchBar);
+    $("#search").on("submit", this.memberSearchBar);
   },
 
-  memberSearchBar: function(){
+  memberSearchBar: function(event){
     event.preventDefault();
     var hosting_status = $(event.currentTarget).find("#hosting_status").val();
 
