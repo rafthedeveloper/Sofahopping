@@ -17,10 +17,21 @@
 
 <br><br><br>
 <form action="<%= users_url %>" method="post">
+
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="text" name="user[username]" placeholder="Email or Username">
+  <input type="text" name="member[fname]" placeholder="First name">
+  <input type="text" name="member[lname]" placeholder="lname">
+  <input type="text" name="user[username]" placeholder="Email">
   <input type="password" name="user[password]" placeholder="Password">
-  <button>Sign Up</button>
+  <select name="member[gender]">
+    <option>Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select>
+  <input type="date" name="member[birthday]" placeholder="Birthday">
+  <input type="text" name="member[location]" placeholder="Location - Use your address for best results">
+  <button>Create Account</button>
 </form>
 <% else %>
 
