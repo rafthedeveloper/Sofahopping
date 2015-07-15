@@ -16,7 +16,7 @@
 
  html, body, header, nav, h1, a,
  ul, li, strong, main, button, i,
- section, img, div, h2, p, form,
+ section, img, div, h2, h3, p, form,
  fieldset, label, input, textarea,
  span, article, footer, time, small {
    margin: 0;
@@ -76,17 +76,16 @@
 
 
  .main-header{
-   width:100%;
+   width:1120px;
    margin:0 auto;
    height:80px;
    line-height:80px;
-
-   padding: 10px 150px;
  }
  .header-nav img {
    width:200px;
    height:auto;
    float:left;
+   margin-top:10px;
 
  }
  .header-nav .nav-list{
@@ -126,6 +125,12 @@
   position: relative;
   z-index:999;
 
+}
+
+.modal h3{
+  margin-top:4px;
+  font-size:18px;
+  margin-bottom:20px;
 }
 
 .close_modal{
@@ -186,3 +191,79 @@ line-height:40px;
   background:url("https://placeimg.com/1980/600/nature");
   position:relative;
 }
+
+<style>
+.search-results{
+  width:700px;
+  margin:0 auto;
+}
+.search-results h2{
+
+  width:700px;
+  margin:0 auto;
+  background-color:#FFF;
+  border-bottom: 3px solid #ecf0f1;
+  padding:10px 20px;
+  color: #34495e;
+  font-size:20px;
+  font-weight:bold;
+
+}
+  .search-results-list{
+    width:700px;
+    margin:0 auto;
+  }
+  .search-results-list li{
+    background-color:#fff;
+    padding:20px;
+    border-top: 1px solid #ecf0f1;
+
+  }
+
+  .search-results img{
+    width:80px;
+    height:80px;
+    border-radius:4px;
+    float:left;
+  }
+
+  .search-results .user-name-loc{
+    float:left;
+    margin-left:20px;
+    width:440px;
+  }
+
+  .search-results a{
+    font-weight:bold;
+    font-size:20px;
+    color:#2f2f2f;
+  }
+
+  .search-results a:hover{
+    text-decoration:underline;
+  }
+  .search-results .user-host-logged{
+    float:left;
+
+  }
+  .user-host-logged{
+    word-wrap: break-word;
+   width:120px;
+   text-align:right;
+  }
+  .user-host-logged span{
+    display:block;
+
+      font-weight:bold;
+      font-size:20px;
+      line-height:20px;
+
+  }
+  .user-host-logged small{
+    display:block;
+       word-wrap: break-word;
+    color: #bdc3c7;
+    margin-top:10px;
+    font-size:12px;
+  }
+</style>
