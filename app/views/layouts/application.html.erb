@@ -52,13 +52,16 @@
       <option>Female</option>
       <option>Other</option>
     </select>
-    <input type="date" name="user[birthday]" placeholder="Birthday">
+    <input class="datepicker" type="input" name="user[birthday]" placeholder="Birthday">
+
     <input type="text" name="user[location]" placeholder="Location - Use your address for best results">
     <button>Create Account</button>
   </form>
 </section>
 
 <script>
+
+
 $("#login_link").click(function(){
 $("#login_modal").removeClass("no-display");
 });
@@ -70,13 +73,16 @@ $("#login_modal").addClass("no-display");
 
 
 $("#signup_link").click(function(){
+
 $("#signup_modal").removeClass("no-display");
 });
 
 $("#close_signup_modal").click(function(){
 $("#signup_modal").addClass("no-display");
 });
-
+$( ".datepicker" ).datepicker({
+maxDate: "-18y"
+});
 </script>
 
 

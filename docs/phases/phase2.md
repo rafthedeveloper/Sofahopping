@@ -7,7 +7,7 @@
 
 ### Controllers
 * Api::TripsController (create, destroy, update)
-* Api::MembersController (index, search)
+* Api::MembersController (index)
 
 ### Views
 * members/index.json.jbuilder (will serve both #index and #search)

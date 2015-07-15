@@ -21,11 +21,12 @@ birthday       | date      | not null
 location       | string    | not null
 
 ## trips
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key (references users)
-location       | string    | not null
+column name      | data type | details
+-----------------|-----------|-----------------------
+id               | integer   | not null, primary key
+user_id          | integer   | not null, foreign key (references users)
+location         | string    | not null
+trip_description | text      | not null
 
 ## friends
 column name | data type | details
@@ -50,6 +51,7 @@ column name    | data type | details
 id             | integer   | not null, primary key
 host_id        | integer   | not null, foreign key (references users)
 guest_id       | integer   | not null, foreign key (references users)
+message        | text      | not null
 status         | string    | not null
 
 ## travel_details
@@ -59,7 +61,6 @@ id             | integer   | not null, primary key
 arrival_date   | datetime  | not null
 departure_date | datetime  | not null
 num_guests     | integer   | not null
-description    | text      | not null
 type           | string    | not null, foreign key (references trip or request)
 type_id        | integer   | not null, foreign key (references trip id or request id)
 
