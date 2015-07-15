@@ -7,14 +7,17 @@ class Api::UsersController < ApplicationController
 
   def index
     if params[:status]
-       @users = User.where(hosting_status: params[:status])
+     @users = User.where(hosting_status: params[:status])
+     render :index
     elsif params[:trips]
-      @users = Trip.find_all_travelers
+      @travelers = Trip.find_all_travelers
+      render :travelers
     else
       @users = User.all
+      render :index
     end
 
-    render :index
+
   end
 
 end
