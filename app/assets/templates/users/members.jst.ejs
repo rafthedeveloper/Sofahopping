@@ -1,5 +1,12 @@
 <section class="search-results">
-<h2><%= members.length %> Members matching</h2>
+<% if (searchType === "all" || searchType === "hosts"){ %>
+
+
+<% if (searchType === "all") { %>
+  <h2><%= members.length %> Members matching</h2>
+<% } else if(searchType === "hosts") { %>
+  <h2><%= members.length %> Hosts matching</h2>
+<% } %>
 <section class="create-trip">
   <h2>Tell locals you need a place to stay.</h2>
   <button id="create_trip">Create a Public Trip</button>
@@ -26,4 +33,48 @@
   </li>
 <% }) %>
 </ul>
+
+<% } %>
+
+<% if (searchType === "travelers") { %>
+  <% if (members.length === 1) { %>
+    <h2>1 Traveler Found</h2>
+  <% } else if (members.length > 1){ %>
+    <%= members.length %> Travelers Found</h2>
+  <% } %>
+  <section class="create-trip">
+    <h2>Tell locals you need a place to stay.</h2>
+    <button id="create_trip">Create a Public Trip</button>
+  </section>
+
+  <ul class="search-results-list">
+  <% members.each(function(member) { %>
+    <li>
+      <article class="group">
+        <img class="user-avatar" src="https://placeimg.com/100/100/people/grayscale">
+
+        <section class="user-name-loc">
+        <a href="#people/<%= member.id %>">
+          <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
+        </a>
+        <strong>From:</strong> <%= member.escape('from') %>
+          <br>
+          <strong>Visiting:</strong> <%= member.escape('to') %>
+          <br><br>
+          <p> <%= member.escape('description') %> </p>
+        </section>
+        <section class="user-host-logged">
+          <small> <%= member.escape('arrival_date') %> to <%= member.escape('departure_date') %></small>
+          <small> <%= member.escape('num_guests') %> traveler(s) </small>
+        </section>
+
+
+      </article>
+    </li>
+  <% }) %>
+  </ul>
+
+
+
+<% } %>
 </section>
