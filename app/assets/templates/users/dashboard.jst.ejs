@@ -8,7 +8,11 @@
   <small><%= user.escape('hosting_status')%></small>
   </section>
 </section>
-
+<br>
 <% trips.each(function(trip) { %>
-  <h1> <%= trip.escape('location') %> </h1>
+   <%= trip.escape('location') %>
+  <%= trip.escape('arrival_date') %>
+<%= trip.escape('departure_date') %>
+<%= trip.escape('description') %>
+<br>
 <% })%>

@@ -7,7 +7,7 @@ class Api::TripsController < ApplicationController
     if @trip.save
       render json: @trip
     else
-      render json: @trip.errors.full_messages
+      render json: @trip.errors.full_messages, status: :unprocessable_entity
     end
   end
 

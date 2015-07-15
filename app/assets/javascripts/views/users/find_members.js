@@ -5,8 +5,9 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
     "click #create_trip": "addTripForm"
   },
 
-  initialize: function(){
+  initialize: function(options){
     this.listenTo(this.collection, "sync", this.render);
+    this.currentUser = options.currentUser;
   },
 
   render: function(){
@@ -17,8 +18,9 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
   },
 
   addTripForm: function(){
-    console.log("ADD TRIP");
-    var tripForm = new SofaHopping.Views.TripForm({});
+
+    var newTrip = new SofaHopping.Models.Trip({});
+    var tripForm = new SofaHopping.Views.TripForm({ model: newTrip, currentUser: this.currentUser });
     tripForm.render();
   }
 })
