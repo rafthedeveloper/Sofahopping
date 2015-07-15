@@ -61,7 +61,7 @@ t2 = Trip.create!(
 )
 
 t3 = Trip.create!(
-     user_id: u2.id,
+     user_id: u3.id,
      location: "Spain",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
      arrival_date: "15/07/2015",
@@ -70,7 +70,7 @@ t3 = Trip.create!(
 )
 
 t4 = Trip.create!(
-     user_id: u2.id,
+     user_id: u4.id,
      location: "Montreal",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
      arrival_date: "15/07/2015",

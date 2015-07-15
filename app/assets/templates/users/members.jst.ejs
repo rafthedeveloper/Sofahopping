@@ -40,7 +40,7 @@
   <% if (members.length === 1) { %>
     <h2>1 Traveler Found</h2>
   <% } else if (members.length > 1){ %>
-    <%= members.length %> Travelers Found</h2>
+    <h2><%= members.length %> Travelers Found</h2>
   <% } %>
   <section class="create-trip">
     <h2>Tell locals you need a place to stay.</h2>
@@ -54,7 +54,7 @@
         <img class="user-avatar" src="https://placeimg.com/100/100/people/grayscale">
 
         <section class="user-name-loc">
-        <a href="#people/<%= member.id %>">
+        <a href="#people/<%= member.escape('user_id') %>">
           <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
         </a>
         <strong>From:</strong> <%= member.escape('from') %>

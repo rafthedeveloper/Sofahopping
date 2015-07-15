@@ -86,5 +86,8 @@ show the user the events that they are attending and organizing.
 [phase-five]: ./docs/phases/phase5.md
 
 
-#geocoder api for location based searching
-#rails enums for DB
+### TO DO
+* geocoder api for location based searching
+* rails enums for DB
+* update trip.find_all_travelers to use user objects and send that up through json
+  tack on extra trip details onto the user object.
