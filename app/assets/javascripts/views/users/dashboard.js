@@ -34,3 +34,30 @@ SofaHopping.Views.DashboardView = Backbone.View.extend({
    });
   }
 });
+
+// SofaHopping.Views.DashboardView = Backbone.CompositeView.extend({
+//   tagName: "section",
+//   className: "dashboard",
+//
+//   template: JST["users/dashboard"],
+//
+//   addSideBarView: function(user){
+//     var subview = new SofaHopping.Views.DashboardSidebar({ model: user });
+//     this.addSubview('.sidebar', subview)
+//   },
+//
+//   initialize: function(){
+//
+//     this.listenTo(this.model, "sync", this.render)
+//     debugger
+//     this.addSideBarView(this.model);
+//   },
+//
+//   render: function(){
+//
+//     // var renderedContent = this.template({ user: this.model, trips: this.model.trips() });
+//     // this.$el.html(renderedContent);
+//     this.attachSubviews();
+//     return this;
+//   }
+// });
