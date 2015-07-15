@@ -3,14 +3,13 @@
 ## Rails
 ### Models
 * Trip
-* TravelDetail
 
 ### Controllers
 * Api::TripsController (create, destroy, update)
 * Api::MembersController (index)
 
 ### Views
-* members/index.json.jbuilder (will serve both #index and #search)
+* members/index.json.jbuilder
 
 ## Backbone
 ### Models
