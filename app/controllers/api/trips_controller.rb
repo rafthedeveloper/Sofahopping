@@ -1,21 +1,22 @@
-class TripsController < ApplicationController
+class Api::TripsController < ApplicationController
   def create
 
-    @trip = current_user.trips.new(trip_params);
+    @trip = Trip.new(trip_params)
+    @trip.user_id = current_user.id
 
     if @trip.save
-      redirect_to root_url
+      render json: @trip
     else
-
+      render json: @trip.errors.full_messages
     end
   end
 
   def update
-    @trip =  Trip.find(params[:id])
-
-    if @trip.update(trip_params)
-    else
-    end
+    # @trip =  Trip.find(params[:id])
+    #
+    # if @trip.update(trip_params)
+    # else
+    # end
   end
 
   def destroy
