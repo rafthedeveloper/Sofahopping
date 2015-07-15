@@ -93,27 +93,68 @@ $("#signup_modal").addClass("no-display");
   <nav class="header-nav group">
 
 
-<%= image_tag "logo.png" %>
-<form id="search">
-  <select id="hosting_status" name="user[hosting_status]">
-    <option value="1">Find Hosts</option>
-    <option value="2">Find Members</option>
-    <!-- <option value="3">Find Travelers</option> -->
-  </select>
-    <button>Search</button>
-</form>
+<a href="#"><%= image_tag "logo.png" %></a>
+
 
  <ul class="nav-list group">
+   <li>
+     <form id="search" class="search_form group">
+       <select id="hosting_status" name="user[hosting_status]">
+         <option value="1">Find Hosts</option>
+         <option value="2">Find Members</option>
+         <!-- <option value="3">Find Travelers</option> -->
+       </select>
+         <button>Search</button>
+     </form>
+   </li>
    <li><a href="#">Dashboard</a></li>
    <li><a href=" <%= "#people/" + current_user.id.to_s %>"> My Profile</a></li>
+   <li><form action="<%= session_url %>" method="post" >
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+     <input type="hidden" name="_method" value="delete">
+     <button>Log Out</button>
+   </form></li>
  </ul>
 
 
-<form action="<%= session_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="delete">
-  <button>Log Out</button>
-</form>
+ <style>
+   .search_form{
+
+     height:40px;
+     line-height:40px;
+     border: 1px #bdc3c7 solid;
+     border-radius:20px;
+     z-index:1;
+     padding:0px 20px;
+     margin-top:20px;
+   }
+
+   .search_form select, .search_form button{
+     float:left;
+     margin-top:-2px;
+   }
+
+   .search_form select{
+     background:none;
+     border:none;
+     height:40px;
+     outline:0;
+
+   }
+
+   .search_form select option{
+     padding:10px;
+   }
+
+   .search_form button{
+     margin-left:20px;
+   }
+
+ </style>
+
+
+
+
 
   </nav>
 </header>

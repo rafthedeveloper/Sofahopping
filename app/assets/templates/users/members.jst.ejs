@@ -4,40 +4,22 @@
 <ul class="search-results-list">
 <% members.each(function(member) { %>
   <li>
-    <article>
+    <article class="group">
       <img class="user-avatar" src="https://placeimg.com/100/100/people/grayscale">
+
+      <section class="user-name-loc">
       <a href="#people/<%= member.id %>">
         <h3><%= member.escape('fname') %> <%= member.escape('lname') %><h3>
       </a>
       <small><%= member.escape('location') %> </small>
+      </section>
+
+      <section class="user-host-logged">
       <span><%= member.escape('hosting_status') %></span>
+      <small>Last login</small>
+      </section>
     </article>
   </li>
 <% }) %>
 </ul>
 </section>
-
-<style>
-ul li{
-  list-style:none;
-}
-.search-results h2{
-  width:600px;
-  margin:0 auto;
-
-  background-color:#FFF;
-  border-bottom: 3px solid #ecf0f1;
-
-}
-  .search-results-list{
-    width:600px;
-
-    margin:0 auto;
-  }
-  .search-results-list li{
-    background-color:#fff;
-    padding:20px;
-    border-top: 1px solid #ecf0f1;
-
-  }
-</style>
