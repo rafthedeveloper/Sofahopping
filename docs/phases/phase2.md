@@ -6,7 +6,6 @@
 
 ### Controllers
 * Api::TripsController (create, destroy, update)
-* Api::MembersController (index)
 
 ### Views
 * members/index.json.jbuilder
@@ -19,8 +18,7 @@
 * Trips
 
 ### Views
-* HostsIndex (composite view, contains hosts index item subview)
-* HostsIndexItem
+
 * TripsIndex (composite view, contains trips index item subview)
 * TripsIndexItem
 * TripsNewForm
