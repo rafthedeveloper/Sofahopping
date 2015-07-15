@@ -37,7 +37,14 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     trip.set(attrs);
 
     trip.save({}, {
-      
+      error: function(trip, response){
+        var $errorEl = this.$(".errors");
+        var errors = JSON.parse(response.responseText)
+        var errorView = new SofaHopping.Views.ErrorDetails({ errors: errors, el: $errorEl });
+        errorView.render();
+
+      }.bind(this),
+
       success: function(){
         this.remove();
         this.currentUser.trips().add(trip);

@@ -27,7 +27,7 @@ class Trip < ActiveRecord::Base
       traveler_details = { fname: trav.fname, lname: trav.lname, from: trav.location }
       trip_details = { description: trip.description, to: trip.location,
                        arrival_date: trip.arrival_date, departure_date: trip.departure_date,
-                       num_guests: trip.num_guests }
+                       num_guests: trip.num_guests, user_id: trav.id }
       travelers.push(traveler_details.merge(trip_details));
     end
 
