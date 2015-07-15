@@ -6,8 +6,6 @@
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  created_at      :datetime
-#  updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
