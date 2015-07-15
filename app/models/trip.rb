@@ -22,8 +22,17 @@ class Trip < ActiveRecord::Base
 
   def self.find_all_travelers
     travelers = [];
-    Trip.all.each { |trip| travelers.push(trip.traveler) }
+    Trip.all.each do |trip|
+      trav = trip.traveler;
+      traveler_details = { fname: trav.fname, lname: trav.lname, from: trav.location }
+      trip_details = { description: trip.description, to: trip.location,
+                       arrival_date: trip.arrival_date, departure_date: trip.departure_date,
+                       num_guests: trip.num_guests }
+      travelers.push(traveler_details.merge(trip_details));
+    end
 
-    travelers.uniq;
+    travelers
   end
+
+
 end

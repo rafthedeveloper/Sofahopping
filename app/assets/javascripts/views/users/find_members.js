@@ -8,10 +8,12 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(this.collection, "sync", this.render);
     this.currentUser = options.currentUser;
+    this.searchType = options.searchType;
   },
 
   render: function(){
-    var renderedContent = this.template({ members: this.collection });
+    var renderedContent = this.template({ members: this.collection,
+                                          searchType: this.searchType });
     this.$el.html(renderedContent);
 
     return this;

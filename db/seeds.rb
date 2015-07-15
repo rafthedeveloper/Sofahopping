@@ -41,3 +41,39 @@ u4 = User.create!(
      location: "Taipei, Taiwan",
      hosting_status: "ACCEPTING GUESTS"
 )
+
+t1 = Trip.create!(
+     user_id: u1.id,
+     location: "Iceland",
+     description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
+     arrival_date: "15/07/2015",
+     departure_date: "18/07/2015",
+     num_guests: 1
+)
+
+t2 = Trip.create!(
+     user_id: u2.id,
+     location: "Japan",
+     description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
+     arrival_date: "15/07/2015",
+     departure_date: "18/07/2015",
+     num_guests: 2
+)
+
+t3 = Trip.create!(
+     user_id: u2.id,
+     location: "Spain",
+     description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
+     arrival_date: "15/07/2015",
+     departure_date: "18/07/2015",
+     num_guests: 1
+)
+
+t4 = Trip.create!(
+     user_id: u2.id,
+     location: "Montreal",
+     description: "Hey, I'm looking for a place to stay for a few days while I'm traveling!",
+     arrival_date: "15/07/2015",
+     departure_date: "18/07/2015",
+     num_guests: 3
+)
