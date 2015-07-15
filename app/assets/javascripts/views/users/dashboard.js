@@ -8,7 +8,7 @@ SofaHopping.Views.DashboardView = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.listenTo(this.model, "sync change:hosting_status", this.render)
+    this.listenTo(this.model, "sync", this.render)
 
   },
 
@@ -27,6 +27,10 @@ SofaHopping.Views.DashboardView = Backbone.View.extend({
     event.preventDefault();
     var attr = $(event.currentTarget).serializeJSON().user;
     this.model.set(attr)
-    this.model.save();
+    this.model.save({}, {
+      success: function(model, response) {
+        var success = response.message
+      }.bind(this)
+   });
   }
 });
