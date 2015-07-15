@@ -10,7 +10,6 @@ SofaHopping.Models.User = Backbone.Model.extend({
   },
 
   parse: function(payload){
-    debugger
     if (payload.trips){
       this.trips().set(payload.trips);
     }

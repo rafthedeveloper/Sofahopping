@@ -4,9 +4,9 @@ SofaHopping.Views.DashboardView = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.model, "sync", this.render)
   },
-  
+
   render: function(){
-    var renderedContent = this.template({ user: this.model });
+    var renderedContent = this.template({ user: this.model, trips: this.model.trips() });
     this.$el.html(renderedContent);
 
     return this;
