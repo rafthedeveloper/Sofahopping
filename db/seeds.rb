@@ -6,7 +6,7 @@ u1 = User.create!(
      gender: "Male",
      birthday: "1989-06-01",
      location: "Brooklyn, New York",
-     hosting_status: "MAYBE ACCEPTING GUESTS"
+     hosting_status: "Maybe Accepting Guests"
 )
 
 u2 = User.create!(
@@ -17,7 +17,7 @@ u2 = User.create!(
      gender: "Female",
      birthday: "1989-09-21",
      location: "Taipei, Taiwan",
-     hosting_status: "MAYBE ACCEPTING GUESTS"
+     hosting_status: "Maybe Accepting Guests"
 )
 
 u3 = User.create!(
@@ -28,7 +28,7 @@ u3 = User.create!(
      gender: "Female",
      birthday: "1989-07-18",
      location: "Brooklyn, New York",
-     hosting_status: "NOT ACCEPTING GUESTS"
+     hosting_status: "Not Accepting Guests"
 )
 
 u4 = User.create!(
@@ -39,7 +39,7 @@ u4 = User.create!(
      gender: "Male",
      birthday: "1988-03-29",
      location: "Taipei, Taiwan",
-     hosting_status: "ACCEPTING GUESTS"
+     hosting_status: "Accepting Guests"
 )
 
 t1 = Trip.create!(

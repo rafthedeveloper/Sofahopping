@@ -50,7 +50,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   findHosts: function(){
     var hosts = new SofaHopping.Collections.Users();
-    hosts.fetch({ data: { status: "ACCEPTING GUESTS" }});
+    hosts.fetch({ data: { status: "Accepting Guests" }});
 
     var membersView = new SofaHopping.Views.MembersView({
       collection: hosts, currentUser: this.currentUser, searchType: "hosts" })
