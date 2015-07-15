@@ -8,6 +8,8 @@ class Api::UsersController < ApplicationController
   def index
     if params[:status]
        @users = User.where(hosting_status: params[:status])
+    elsif params[:trips]
+      @users = Trip.find_all_travelers
     else
       @users = User.all
     end

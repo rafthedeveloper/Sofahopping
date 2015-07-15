@@ -25,9 +25,6 @@
 * TripsIndexItem
 * TripsNewForm
 * TripEditForm
-* TravelersIndex (composite view, contains travelers index item subview)
-* TravelersIndexItem
-
 
 ## Gems/Libraries
 * https://developers.google.com/places/webservice/autocomplete

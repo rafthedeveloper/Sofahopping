@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def num_trips
+    return trips.length
+  end
+
 
   def password=(password)
     @password = password

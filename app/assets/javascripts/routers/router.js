@@ -4,11 +4,12 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     "": "userDashboard",
     "people/:id": "userProfile",
     "members/hosts": "findHosts",
-    "members/all": "findAllMembers"
+    "members/all": "findAllMembers",
+    "members/travelers": "findAllTravelers"
   },
 
   initialize: function(options){
-    this.current_user = options.user;
+    this.currentUser = options.user;
     this.$rootEl = options.$rootEl;
     $("#search").on("submit", this.memberSearchBar);
   },
@@ -23,13 +24,14 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     else if (hosting_status === "2"){
       Backbone.history.navigate("members/all", { trigger: true });
     }
+    else if (hosting_status === "3"){
+      Backbone.history.navigate("members/travelers", { trigger: true });
+    }
   },
 
   userDashboard: function(){
-
-
     var dashboardView = new SofaHopping.Views.DashboardView({
-      model: this.current_user
+      model: this.currentUser
     });
 
     this._swapView(dashboardView);
@@ -50,7 +52,8 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var hosts = new SofaHopping.Collections.Users();
     hosts.fetch({ data: { status: "ACCEPTING GUESTS" }});
 
-    var membersView = new SofaHopping.Views.MembersView({ collection: hosts })
+    var membersView = new SofaHopping.Views.MembersView({
+      collection: hosts, currentUser: this.currentUser })
     this._swapView(membersView);
 
   },
@@ -59,9 +62,18 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var allMembers = new SofaHopping.Collections.Users();
     allMembers.fetch();
 
-    var membersView = new SofaHopping.Views.MembersView({ collection: allMembers })
+    var membersView = new SofaHopping.Views.MembersView({ collection: allMembers, currentUser: this.currentUser })
     this._swapView(membersView);
   },
+
+  findAllTravelers: function(){
+    var allTravelers = new SofaHopping.Collections.Users();
+    allTravelers.fetch({ data: { trips : true }});
+
+    var travelersView = new SofaHopping.Views.MembersView({ collection: allTravelers, currentUser: this.currentUser })
+    this._swapView(travelersView);
+  },
+
 
   _swapView: function(view){
     this.currentView && this.currentView.remove();
