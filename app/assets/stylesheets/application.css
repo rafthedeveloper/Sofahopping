@@ -300,3 +300,7 @@ line-height:40px;
   .search_form button{
     margin-left:20px;
   }
+
+  .uppercase{
+    text-transform: uppercase;
+  }

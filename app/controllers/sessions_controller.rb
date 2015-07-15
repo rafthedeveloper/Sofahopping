@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if user
       sign_in(user)
+      flash[:success] = ["Successfully logged in. Welcome back, #{user.username}."]
     else
       flash.now[:errors] = ["Invalid username or password"]
     end

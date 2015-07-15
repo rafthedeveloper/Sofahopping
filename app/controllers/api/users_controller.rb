@@ -16,8 +16,22 @@ class Api::UsersController < ApplicationController
       @users = User.all
       render :index
     end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      render json: "Successfully updated your hosting status!"
+    else
+      render json: @user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
 
 
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :hosting_status, :location, :fname, :lname, :birthday, :gender)
   end
 
 end
