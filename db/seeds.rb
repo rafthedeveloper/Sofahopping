@@ -28,7 +28,7 @@ u3 = User.create!(
      gender: "Female",
      birthday: "1989-07-18",
      location: "Brooklyn, New York",
-     hosting_status: "NOT ACCEPTING GUESTS
+     hosting_status: "NOT ACCEPTING GUESTS"
 )
 
 u4 = User.create!(
