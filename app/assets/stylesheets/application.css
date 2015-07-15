@@ -13,3 +13,176 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button, i,
+ section, img, div, h2, p, form,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   color: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   box-sizing: inherit;
+   background: transparent;
+ }
+ body{
+   box-sizing:border-box;
+   position:relative;
+   font-size:14px;
+   font-family: Arial;
+ }
+ ul {
+   list-style: none;
+ }
+
+ img {
+   display: block;
+   width: 100%;
+   height: auto;
+ }
+
+ input[type="password"],
+ input[type="email"],
+ input[type="text"],
+ input[type="submit"],
+ textarea,
+ button {
+   /*
+   Get rid of native styling. Read more here:
+   http://css-tricks.com/almanac/properties/a/appearance/
+   */
+   -webkit-appearance: none;
+   -moz-appearance: none;
+ }
+
+ button,
+ input[type="submit"] {
+   cursor: pointer;
+ }
+
+
+
+  .group:after{
+    content: "";
+    display:block;
+    clear:both;
+  }
+
+
+ .main-header{
+   width:100%;
+   margin:0 auto;
+   height:80px;
+   line-height:80px;
+
+   padding: 10px 150px;
+ }
+ .header-nav img {
+   width:200px;
+   height:auto;
+   float:left;
+
+ }
+ .header-nav .nav-list{
+   float:right;
+ }
+
+ .header-nav .nav-list li{
+   margin-left:20px;
+   float:left;
+ }
+
+ #search{
+   float:left;
+ }
+
+ .no-display{
+  display:none;
+  opacity:0;
+}
+
+.modal-container{
+  opacity:100;
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:100%;
+  background-color: rgba(0,0,0,.4);
+
+}
+
+.modal{
+  background: #fff;
+  margin:0 auto;
+  margin-top:150px;
+  position:relative;
+  box-shadow: 0px 0px 10px #000;
+  position: relative;
+  z-index:999;
+
+}
+
+.close_modal{
+  cursor:pointer;
+  position:absolute;
+  right:0;
+  margin-right:20px;
+  font-size:24px;
+  color:#7f8c8d;
+  font-weight:bold;
+}
+.signin{
+  width:320px;
+  padding:10px 20px 30px 20px;
+}
+
+.signin header, .signin footer{
+  text-align:center;
+}
+
+.signin input, .signin select{
+  display:block;
+  width:100%;
+
+  border-radius:5px;
+line-height:40px;
+  padding:0em .5em;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  margin-bottom:5px;
+
+}
+
+.signin button{
+  display:block;
+  background-color: #287fb8;
+line-height:40px;
+  color: #fff;
+  font-weight: bold;
+  width:100%;
+  text-align:center;
+  border-radius:2px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.signin select{
+  height:40px;
+  background: #fff;
+}
+
+
+.hero{
+  width:100%;
+  height:600px;
+  background-size: cover;
+  background:url("https://placeimg.com/1980/600/nature");
+  position:relative;
+}

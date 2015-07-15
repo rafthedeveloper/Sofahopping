@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
 
   def create
     user = User.find_by_credentials(
@@ -19,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_url
+
   end
 end

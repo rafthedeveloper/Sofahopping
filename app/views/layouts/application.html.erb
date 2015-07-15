@@ -15,44 +15,112 @@
   </style>
 <body>
 
+
+<% if !current_user %>
+
 <header class="main-header group">
-
-<h1>Sofahopping</h1>
-  <% if !current_user %>
-  <nav>
-   <ul>
-     <li><a href="#">Join</a></li>
-     <li><a href="#">Login</a></li>
-   </ul>
-   </nav>
-  <% else %>
+  <nav class="header-nav group">
 
 
+<%= image_tag "logo.png" %>
+<ul class="nav-list group">
+ <li><a href="#" id="signup_link">Join</a></li>
+ <li><a href="#" id="login_link">Login</a></li>
+</ul>
+</nav>
+</header>
 
+<section class="no-display modal-container" id="login_modal">
+<form id="login_form" class="modal signin" action="<%= session_url %>" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<small id="close_login_modal" class="close_modal">X</small>
+<header> <h3>Log In with Your Sofahopping Account</h3> </header>
+<input type="text" name="user[username]" placeholder="Email or Username">
+<input type="password" name="user[password]" placeholder="Password">
+<button>Log In</button>
+<footer> <small> Don't have an account? Sign Up </small> </footer>
+</form>
+</section>
 
-  <form id="search">
-    <select id="hosting_status" name="user[hosting_status]">
-      <option value="1">Find Hosts</option>
-      <option value="2">Find Members</option>
-      <!-- <option value="3">Find Travelers</option> -->
-    </select>
-      <button>Search</button>
-  </form>
-
-   <ul>
-     <li><a href="#">Dashboard</a></li>
-     <li><a href=" <%= "#people/" + current_user.id.to_s %>"> My Profile</a></li>
-   </ul>
-   </nav>
-
-  <form action="<%= session_url %>" method="post">
+<section class="no-display modal-container" id="signup_modal">
+  <form class="modal signin" action="<%= users_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="delete">
-    <button>Log Out</button>
+    <small id="close_signup_modal" class="close_modal">X</small>
+    <header> <h3>Join SofaHopping - it's FREE</h3> </header>
+    <input type="text" name="user[fname]" placeholder="First Name">
+    <input type="text" name="user[lname]" placeholder="Last Name">
+    <br>
+    <input type="text" name="user[username]" placeholder="Email">
+    <input type="password" name="user[password]" placeholder="Password">
+    <select name="user[gender]">
+      <option>Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <input type="date" name="user[birthday]" placeholder="Birthday">
+    <input type="text" name="user[location]" placeholder="Location - Use your address for best results">
+    <button>Create Account</button>
   </form>
-  <% end %>
+</section>
 
-  </header>
+<script>
+$("#login_link").click(function(){
+$("#login_modal").removeClass("no-display");
+});
+
+$("#close_login_modal").click(function(){
+$("#login_modal").addClass("no-display");
+});
+
+
+
+$("#signup_link").click(function(){
+$("#signup_modal").removeClass("no-display");
+});
+
+$("#close_signup_modal").click(function(){
+$("#signup_modal").addClass("no-display");
+});
+
+</script>
+
+
+
+
+<% else %>
+<header class="main-header group">
+  <nav class="header-nav group">
+
+
+<%= image_tag "logo.png" %>
+<form id="search">
+  <select id="hosting_status" name="user[hosting_status]">
+    <option value="1">Find Hosts</option>
+    <option value="2">Find Members</option>
+    <!-- <option value="3">Find Travelers</option> -->
+  </select>
+    <button>Search</button>
+</form>
+
+ <ul class="nav-list group">
+   <li><a href="#">Dashboard</a></li>
+   <li><a href=" <%= "#people/" + current_user.id.to_s %>"> My Profile</a></li>
+ </ul>
+
+
+<form action="<%= session_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="delete">
+  <button>Log Out</button>
+</form>
+
+  </nav>
+</header>
+
+
+
+<% end %>
 
 
 <%= yield %>
