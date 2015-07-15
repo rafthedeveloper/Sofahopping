@@ -3,7 +3,6 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
   events:{
     "click #close_trip_modal" : "destroyForm",
-    "click #cancel_trip": "destroyForm",
     "submit #create_trip": "createTrip"
   },
 
@@ -11,17 +10,32 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
     $("body").append(this.$el);
+    this.createDatePicker();
 
     return this;
   },
 
-  destroyForm: function(){
-    console.log("CLOSE")
+  createDatePicker: function(){
+    $( ".datepicker" ).datepicker({
+      dateFormat: "dd/mm/yy"
+    });
+  },
+
+  destroyForm: function(event){
+    event.preventDefault();
     this.remove();
   },
 
   createTrip: function(event){
     event.preventDefault();
-    debugger
+    var attrs = $(event.currentTarget).serializeJSON().trip
+    var trip = new SofaHopping.Models.Trip();
+    trip.set(attrs);
+    trip.save({}, {
+      success: function(){
+        Backbone.history.navigate("", { trigger: true })
+        this.remove();
+      }.bind(this)
+    });
   }
 })
