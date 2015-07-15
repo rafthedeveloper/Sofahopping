@@ -1,38 +1,9 @@
-
-
-<% if !current_user %>
-<form action="<%= session_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="text" name="user[username]" placeholder="Email or Username">
-  <input type="password" name="user[password]" placeholder="Password">
-  <button>Log In</button>
-</form>
-
-<br><br><br>
-<form action="<%= users_url %>" method="post">
-
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="text" name="user[fname]" placeholder="First name">
-  <input type="text" name="user[lname]" placeholder="lname">
-  <input type="text" name="user[username]" placeholder="Email">
-  <input type="password" name="user[password]" placeholder="Password">
-  <select name="user[gender]">
-    <option>Select Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-  </select>
-  <input type="date" name="user[birthday]" placeholder="Birthday">
-  <input type="text" name="user[location]" placeholder="Location - Use your address for best results">
-  <button>Create Account</button>
-</form>
-<% else %>
+<% if current_user %>
   <script>
   $(document).ready(function(){
     SofaHopping.initialize(<%= current_user.id %>);
   });
   </script>
+  <section id="main">
+  </section>
 <% end %>
-
-<section id="main">
-</section>
