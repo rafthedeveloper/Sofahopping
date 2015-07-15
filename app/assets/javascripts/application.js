@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require sofa_hopping
