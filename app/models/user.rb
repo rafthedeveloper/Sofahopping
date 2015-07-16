@@ -30,7 +30,12 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
 
-  has_many :references,
+  has_many :written_references,
+    class_name: "Reference",
+    foreign_key: :referencer_id,
+    primary_key: :id
+
+  has_many :received_references,
     class_name: "Reference",
     foreign_key: :referencee_id,
     primary_key: :id

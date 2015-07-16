@@ -5,19 +5,20 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
     "click #create_reference": "createReferenceForm"
   },
 
-  initialize: function(){
-    this.listenTo(this.model, "sync", this.render);
-  },
-
   render: function(){
-    var renderedContent = this.template({ references: this.collection });
+
+    var renderedContent = this.template({
+      references: this.collection, visitedUser: this.model, currentUser: SofaHopping.currentUser });
     this.$el.html(renderedContent);
 
     return this;
   },
 
   createReferenceForm: function(){
-    var referenceForm = new SofaHopping.Views.ReferenceForm ({ model: this.model });
+
+    var referenceForm = new SofaHopping.Views.ReferenceForm ({
+      model: this.model
+    });
     referenceForm.render();
   }
 });

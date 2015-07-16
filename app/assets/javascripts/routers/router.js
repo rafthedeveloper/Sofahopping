@@ -11,6 +11,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     $("#search").on("submit", this.memberSearchBar);
+    this.users = options.users;
   },
 
   memberSearchBar: function(event){
@@ -35,8 +36,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   userProfile: function(id){
-    var visitedUser = new SofaHopping.Models.User({ id: id });
-    visitedUser.fetch();
+    var visitedUser = this.users.getOrFetch(id);
 
     var userProfileView = new SofaHopping.Views.ProfileView({
       model: visitedUser });
