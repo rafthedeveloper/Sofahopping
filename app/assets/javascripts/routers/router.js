@@ -77,9 +77,13 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
 
+
+
   _swapView: function(view){
     this.currentView && this.currentView.remove();
+
     this.$rootEl.html(view.render().$el);
+    this.$rootEl.prepend("<section class=\"server_responses\"></section>");
     this.currentView = view;
   }
 })

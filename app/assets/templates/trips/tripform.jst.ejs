@@ -1,25 +1,36 @@
 <section class="modal-container">
   <form id="create_trip" class="modal signin">
     <small id="close_trip_modal" class="close_modal">X</small>
-    <header> <h3>Create a Public Trip</h3> </header>
+    <header>
+    <% if (trip.isNew()) {%>
+        <h3>Create a Public Trip</h3>
+    <% } else { %>
+      <h3>Edit Trip</h3>
+      <% } %>
+      </header>
 
 <ul class="errors"></ul>
 
 <label for="trip-loc"> Where are you going? </label>
-    <input id="trip-loc" name="trip[location]" type="text">
+    <input id="trip-loc" name="trip[location]" type="text" value="<%= trip.escape('location') %>">
 
   <label for="trip-arr">Arriving On</label>
-  <input class="datepicker" id="trip-arr" name="trip[arrival_date]" type="text">
+  <input class="datepicker" id="trip-arr" name="trip[arrival_date]" type="text" value="<%= trip.escape('arrival_date') %>">
 
 <label for="trip-dep">Leaving On</label>
-<input class="datepicker" id="trip-dep" name="trip[departure_date]" type="text">
+<input class="datepicker" id="trip-dep" name="trip[departure_date]" type="text" value="<%= trip.escape('departure_date') %>">
 
 <label for="trip-guests">How many guests?</label>
-<input id="trip-guests" name="trip[num_guests]" type="text">
+<input id="trip-guests" name="trip[num_guests]" type="text" value="<%= trip.escape('num_guests') %>">
 
 <label for="trip-desc">Trip description</label>
-<textarea id="trip"-desc name="trip[description]" placeholder="Tell locals about your trip and why they should meet or host you."></textarea>
+<textarea id="trip"-desc name="trip[description]" placeholder="Tell locals about your trip and why they should meet or host you."><%= trip.escape('description') %></textarea>
 
+<% if (trip.isNew()) {%>
     <button>Create</button>
+<% } else { %>
+  <button>Update</button>
+  <button id="delete_trip" data-id="<%= trip.id %>">Delete</button>
+  <% } %>
   </form>
 </section>

@@ -12,16 +12,18 @@ class Api::TripsController < ApplicationController
   end
 
   def update
-    # @trip =  Trip.find(params[:id])
-    #
-    # if @trip.update(trip_params)
-    # else
-    # end
+    @trip =  Trip.find(params[:id])
+    if @trip.update(trip_params)
+      render json: { message: "Successfully edited your trip!" }
+    else
+      render json: @trip.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy!
+    render json: { message: "Successfully deleted trip, you can always add new ones!" }
   end
 
   private
