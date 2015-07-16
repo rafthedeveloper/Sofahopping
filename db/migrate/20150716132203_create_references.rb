@@ -1,8 +1,8 @@
 class CreateReferences < ActiveRecord::Migration
   def change
     create_table :references do |t|
-      t.integer :referencer, null: false
-      t.integer :referencee, null: false
+      t.integer :referencer_id, null: false
+      t.integer :referencee_id, null: false
       t.string :relationship, null: false
       t.string :experience, null: false
       t.text :description, null: false
@@ -11,7 +11,7 @@ class CreateReferences < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index(:references, :referencer)
-    add_index(:references, :referencee)
+    add_index(:references, :referencer_id)
+    add_index(:references, :referencee_id)
   end
 end

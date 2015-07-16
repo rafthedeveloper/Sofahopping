@@ -13,6 +13,11 @@
 #
 
 class Reference < ActiveRecord::Base
-  validates :referencer, :referencee, :relationship, :experience,
+  validates :referencer_id, :referencee_id, :relationship, :experience,
             :description, presence: true
+
+  belongs_to :referencee,
+    class_name: "User",
+    foreign_key: :referencee_id,
+    primary_key: :id
 end
