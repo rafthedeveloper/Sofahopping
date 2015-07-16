@@ -1,8 +1,8 @@
 class Api::ReferencesController < ApplicationController
   def create
-    @reference = Reference.new(reference_params)
-    @reference.referencer_id = current_user.id
-    
+
+    @reference = current_user.written_references.new(reference_params)
+
     if @reference.save
       render json: { message: "Successfully created your reference!" }
     else
@@ -11,8 +11,9 @@ class Api::ReferencesController < ApplicationController
   end
 
   def destroy
-    @reference = Reference.find(params[:id])
+    @reference = current_user.written_references.find(params[:id])
     @reference.destroy!
+    render json: { message: "Successfully deleted your reference!" }
   end
 
   private

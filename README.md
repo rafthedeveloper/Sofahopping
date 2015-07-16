@@ -12,13 +12,16 @@ SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 - [x] Create sessions (log in)
 - [x] Search for all members
 - [x] Search for all hosts
-- [ ] Create trips
-- [ ] Search for all travelers
+- [x] Create trips
+- [x] Search for all travelers
 - [ ] Add friends
-- [ ] Create references
+- [x] Create references
 - [ ] Create events
 - [ ] Search for events
 - [ ] Create a comment on an event
+- [ ] Create a request
+- [ ] Comment on a request
+- [ ] Approve/Deny a request
 
 ## Design Docs
 * [View Wireframes][views]

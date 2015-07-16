@@ -4,11 +4,13 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   tagName: "section",
 
   addReferencesView: function(){
-    var referencesView = new SofaHopping.Views.ReferencesIndex({ model: this.model });
+    var referencesView = new SofaHopping.Views.ReferencesIndex({
+      model: this.model, collection: this.model.references()
+    });
     this.addSubview(".user-profile-references-container", referencesView);
   },
 
-  initialize: function(){ 
+  initialize: function(){
     this.listenTo(this.model, "sync", this.render);
     this.addReferencesView(this.model);
   },
