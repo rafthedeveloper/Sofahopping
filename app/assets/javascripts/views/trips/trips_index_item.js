@@ -7,9 +7,8 @@ SofaHopping.Views.TripIndexItem = Backbone.View.extend({
     "click #edit_trip": "editTripForm"
   },
 
-  initialize: function(options){
+  initialize: function(){
     this.listenTo(this.model, "sync", this.render);
-    this.currentUser = options.currentUser;
   },
 
   render: function(){
@@ -20,7 +19,7 @@ SofaHopping.Views.TripIndexItem = Backbone.View.extend({
   },
 
   editTripForm: function(){
-    var tripForm = new SofaHopping.Views.TripForm({ model: this.model, currentUser: this.currentUser });
+    var tripForm = new SofaHopping.Views.TripForm({ model: this.model, currentUser: SofaHopping.currentUser });
     tripForm.render();
   }
 })
