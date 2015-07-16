@@ -12,8 +12,7 @@
 #
 
 class Trip < ActiveRecord::Base
-  validates :user_id, :location, :description, :arrival_date, :departure_date, :num_guests,
-            presence: true
+  validates :user_id, :location, :description, :arrival_date,                                 :departure_date, :num_guests, presence: true
 
   belongs_to :traveler,
     class_name: "User",

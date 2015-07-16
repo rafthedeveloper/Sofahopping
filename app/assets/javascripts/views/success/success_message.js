@@ -8,7 +8,7 @@ SofaHopping.Views.SuccessMessage = Backbone.View.extend({
 
   render: function(){
     var renderedContent = this.template({ message: this.message })
-    this.$el.prepend(renderedContent);
+    this.$el.html(renderedContent);
     this.startFadeOut();
     return this;
   },

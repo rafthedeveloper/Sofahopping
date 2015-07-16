@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715132058) do
+ActiveRecord::Schema.define(version: 20150716132203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "references", force: :cascade do |t|
+    t.integer  "referencer",   null: false
+    t.integer  "referencee",   null: false
+    t.string   "relationship", null: false
+    t.string   "experience",   null: false
+    t.text     "description",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "references", ["referencee"], name: "index_references_on_referencee", using: :btree
+  add_index "references", ["referencer"], name: "index_references_on_referencer", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.integer "user_id",        null: false
