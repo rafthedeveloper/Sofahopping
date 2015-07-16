@@ -12,7 +12,6 @@ SofaHopping.Views.ReferenceIndexItem = Backbone.View.extend({
   },
 
   render: function(){
-    debugger
     this.model.get('referencer_id')
     SofaHopping.currentUser.id
 
