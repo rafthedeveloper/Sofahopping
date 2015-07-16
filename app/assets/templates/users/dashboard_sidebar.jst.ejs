@@ -10,13 +10,6 @@
   </small>
 
 <br>
-<% trips.each(function(trip) { %>
-   <%= trip.escape('location') %>
-  <%= trip.escape('arrival_date') %>
-<%= trip.escape('departure_date') %>
-<%= trip.escape('description') %>
-<br>
-<% })%>
 
 <form class="no-display"  id="hosting_status_form">
 <select name="user[hosting_status]">
