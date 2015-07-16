@@ -9,7 +9,6 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   initialize: function(options){
-    this.currentUser = options.user;
     this.$rootEl = options.$rootEl;
     $("#search").on("submit", this.memberSearchBar);
   },
@@ -30,9 +29,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   userDashboard: function(){
-    var dashboardView = new SofaHopping.Views.DashboardView({
-      model: this.currentUser
-    });
+    var dashboardView = new SofaHopping.Views.DashboardView({ model: SofaHopping.currentUser });
 
     this._swapView(dashboardView);
   },
@@ -42,8 +39,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     visitedUser.fetch();
 
     var userProfileView = new SofaHopping.Views.ProfileView({
-      model: visitedUser, currentUser: this.currentUser
-    });
+      model: visitedUser });
 
     this._swapView(userProfileView);
   },
@@ -53,7 +49,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     hosts.fetch({ data: { status: "Accepting Guests" }});
 
     var membersView = new SofaHopping.Views.MembersView({
-      collection: hosts, currentUser: this.currentUser, searchType: "hosts" })
+      collection: hosts, searchType: "hosts" })
     this._swapView(membersView);
 
   },
@@ -63,7 +59,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     allMembers.fetch();
 
     var membersView = new SofaHopping.Views.MembersView({
-      collection: allMembers, currentUser: this.currentUser, searchType: "all" })
+      collection: allMembers, searchType: "all" })
     this._swapView(membersView);
   },
 
@@ -72,7 +68,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     allTravelers.fetch({ data: { trips : true }});
 
     var travelersView = new SofaHopping.Views.MembersView({
-      collection: allTravelers, currentUser: this.currentUser, searchType: "travelers" })
+      collection: allTravelers, searchType: "travelers" })
     this._swapView(travelersView);
   },
 
