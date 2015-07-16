@@ -24,12 +24,19 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
     var reference = new SofaHopping.Models.Reference({});
     reference.set(attrs);
     reference.set("referencee_id", this.model.id);
-    reference.set("referencer_id", SofaHopping.currentUser.id);
+
     reference.save({}, {
       success: function(){
-        debugger
-      }
+        this.model.references().add(reference, { merge: true });
+        this.remove();
+      }.bind(this),
+
+      error: function(model, response){
+        var $errorEl = this.$(".errors");
+        var errors = JSON.parse(response.responseText)
+        var errorView = new SofaHopping.Views.ErrorDetails({ errors: errors, el: $errorEl });
+        errorView.render();
+      }.bind(this)
     })
-    debugger
   }
 });

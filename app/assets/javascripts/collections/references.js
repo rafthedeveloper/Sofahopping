@@ -1,3 +1,3 @@
-SofaHopping.Collections.Reference = Backbone.Collection.extend({
+SofaHopping.Collections.References = Backbone.Collection.extend({
   url: "/api/references"
 });
