@@ -67,6 +67,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
       }.bind(this),
 
       success: function(trip, response){
+        debugger
         var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
         successView.render();
         this.currentUser.trips().add(this.model, { merge: true });
