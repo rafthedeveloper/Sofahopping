@@ -8,7 +8,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     this.addSubview(".user-profile-references-container", referencesView);
   },
 
-  initialize: function(){
+  initialize: function(options){
+    this.currentUser = 
     this.listenTo(this.model, "sync", this.render);
     this.addReferencesView(this.model);
   },
