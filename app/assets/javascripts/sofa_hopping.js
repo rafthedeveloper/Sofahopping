@@ -4,12 +4,15 @@ window.SofaHopping = {
   Views: {},
   Routers: {},
   initialize: function(userId, flash_messages) {
-    var user = new SofaHopping.Models.User({ id: userId });
+    this.currentUser = new SofaHopping.Models.User({ id: userId });
+    this.currentUser.fetch();
+    // var user = new SofaHopping.Models.User({ id: userId });
+        // user.fetch();
     var $rootEl = $("#content")
-    user.fetch();
+
 
     new SofaHopping.Routers.Router({
-      user: user, $rootEl: $rootEl
+      $rootEl: $rootEl
     });
     Backbone.history.start();
 

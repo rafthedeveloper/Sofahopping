@@ -7,7 +7,6 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(this.collection, "sync", this.render);
-    this.currentUser = options.currentUser;
     this.searchType = options.searchType;
   },
 
@@ -21,7 +20,7 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
 
   addTripForm: function(){
     var newTrip = new SofaHopping.Models.Trip({});
-    var tripForm = new SofaHopping.Views.TripForm({ model: newTrip, currentUser: this.currentUser });
+    var tripForm = new SofaHopping.Views.TripForm({ model: newTrip, currentUser: SofaHopping.currentUser });
     tripForm.render();
   }
 })
