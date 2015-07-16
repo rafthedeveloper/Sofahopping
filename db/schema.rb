@@ -17,17 +17,17 @@ ActiveRecord::Schema.define(version: 20150716132203) do
   enable_extension "plpgsql"
 
   create_table "references", force: :cascade do |t|
-    t.integer  "referencer",   null: false
-    t.integer  "referencee",   null: false
-    t.string   "relationship", null: false
-    t.string   "experience",   null: false
-    t.text     "description",  null: false
+    t.integer  "referencer_id", null: false
+    t.integer  "referencee_id", null: false
+    t.string   "relationship",  null: false
+    t.string   "experience",    null: false
+    t.text     "description",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "references", ["referencee"], name: "index_references_on_referencee", using: :btree
-  add_index "references", ["referencer"], name: "index_references_on_referencer", using: :btree
+  add_index "references", ["referencee_id"], name: "index_references_on_referencee_id", using: :btree
+  add_index "references", ["referencer_id"], name: "index_references_on_referencer_id", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.integer "user_id",        null: false
