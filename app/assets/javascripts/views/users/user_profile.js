@@ -21,7 +21,6 @@ SofaHopping.Views.ProfileView = Backbone.CompositeView.extend({
     var renderedContent = this.template({ user: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();
-
     return this;
   },
 
