@@ -1,31 +1,3 @@
-<section class="dashboard-sidebar">
-  <section class="dashboard-profile">
-  <figure class="profile">
-    <img src="">
-    <h2> <%= user.escape('fname') %><%= user.escape('lname') %> </h2>
-    <figcaption><%= user.escape('location') %></figcaption>
-  </figure>
-  <small><%= user.escape('hosting_status')%>
+<section class="sidebar_container"></section>
 
-  <button id="edit_hosting_status">edit</button>
-  </small>
-  </section>
-</section>
-<br>
-<% trips.each(function(trip) { %>
-   <%= trip.escape('location') %>
-  <%= trip.escape('arrival_date') %>
-<%= trip.escape('departure_date') %>
-<%= trip.escape('description') %>
-<br>
-<% })%>
-
-<form class="no-display"  id="hosting_status_form">
-<select name="user[hosting_status]">
-  <option>Accepting Guests</option>
-  <option>Maybe Accepting Guests</option>
-  <option>Not Accepting Guests</option>
-  <option>Wants to Meet up</option>
-</select>
-<button>Save</button>
-</form>
+<section class="trips_container"></section>
