@@ -26,8 +26,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     });
   },
 
-  destroyForm: function(event){
-    event.preventDefault();
+  destroyForm: function(){
     this.remove();
   },
 

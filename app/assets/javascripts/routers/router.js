@@ -42,7 +42,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     visitedUser.fetch();
 
     var userProfileView = new SofaHopping.Views.ProfileView({
-      model: visitedUser
+      model: visitedUser, currentUser: this.currentUser
     });
 
     this._swapView(userProfileView);
