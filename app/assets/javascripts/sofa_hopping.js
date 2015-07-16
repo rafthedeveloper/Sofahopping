@@ -5,7 +5,7 @@ window.SofaHopping = {
   Routers: {},
   initialize: function(userId, flash_messages) {
     var user = new SofaHopping.Models.User({ id: userId });
-    var $rootEl = $("#main")
+    var $rootEl = $("#content")
     user.fetch();
 
     new SofaHopping.Routers.Router({

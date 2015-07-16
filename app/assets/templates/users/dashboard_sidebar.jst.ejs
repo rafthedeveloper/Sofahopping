@@ -1,6 +1,6 @@
 
   <figure class="profile">
-    <img src="">
+    <img>
     <h2> <%= user.escape('fname') %><%= user.escape('lname') %> </h2>
     <figcaption><%= user.escape('location') %></figcaption>
   </figure>
@@ -20,3 +20,28 @@
 </select>
 <button>Save</button>
 </form>
+
+<style>
+
+.profile{
+position:relative;
+}
+.profile img{
+  width:250px;
+  height:250px;
+  background-color:#FFF;
+
+}
+
+  .profile h2{
+    position: absolute;
+    top:0;
+    margin-top:150px;
+  }
+
+  .profile figcaption{
+position: absolute;
+top:0;
+margin-top:190px;
+}
+</style>

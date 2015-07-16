@@ -3,7 +3,8 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
   events:{
     "click #close_trip_modal" : "destroyForm",
-    "submit #create_trip": "createTrip"
+    "submit #create_trip": "submitTrip",
+    "click #delete_trip": "deleteTrip"
   },
 
   initialize: function(options){
@@ -11,7 +12,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
   },
 
   render: function(){
-    var renderedContent = this.template();
+    var renderedContent = this.template({ trip: this.model });
     this.$el.html(renderedContent);
     $("body").append(this.$el);
     this.createDatePicker();
@@ -30,13 +31,33 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     this.remove();
   },
 
-  createTrip: function(event){
+  deleteTrip: function(event){
+    event.preventDefault();
+    var tripId = $(event.currentTarget).data("id");
+    var trip = this.currentUser.trips().get(tripId);
+
+    trip.destroy({
+      success: function(model, response){
+        debugger
+        var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
+        successView.render();
+        this.currentUser.trips().remove(trip);
+        this.remove();
+      }.bind(this),
+
+      error: function(){
+
+      }
+    })
+
+  },
+
+  submitTrip: function(event){
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON().trip
-    var trip = new SofaHopping.Models.Trip();
-    trip.set(attrs);
+    this.model.set(attrs)
 
-    trip.save({}, {
+    this.model.save({}, {
       error: function(trip, response){
         var $errorEl = this.$(".errors");
         var errors = JSON.parse(response.responseText)
@@ -45,11 +66,11 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
       }.bind(this),
 
-      success: function(){
+      success: function(trip, response){
+        var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
+        successView.render();
+        this.currentUser.trips().add(this.model, { merge: true });
         this.remove();
-        this.currentUser.trips().add(trip);
-        Backbone.history.navigate("", { trigger: true })
-
       }.bind(this)
     });
   }

@@ -1,0 +1,5 @@
+  <%= trip.escape('location') %>
+  <%= trip.escape('arrival_date') %> - <%= trip.escape('departure_date') %>
+  <%= trip.escape('description') %>
+
+  <button data-id="<%= trip.id %>" id="edit_trip">Edit</button>
