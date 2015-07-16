@@ -1,9 +1,29 @@
 <section class="modal-container">
-  <form id="create_trip" class="modal signin">
+  <form id="create_reference" class="modal signin">
 <small id="close_reference_modal" class="close_modal">X</small>
 <h3>Write Reference</h3>
 <ul class="errors"></ul>
 
+  <label>How do you know <%= visitedUser.escape('username') %>?</label>
+
+<select name="reference[relationship]">
+  <option></option>
+  <option value="host">I hosted <%= visitedUser.escape('username') %></option>
+  <option value="guest">I stayed with <%= visitedUser.escape('username') %></option>
+  <option value="friend">I'm friends with <%= visitedUser.escape('username') %></option>
+  <option value="other">Other</option>
+</select>
+
+<label>Your experience with <%= visitedUser.escape('username') %>:</label>
+<select name="reference[experience]">
+  <option></option>
+  <option value="positive">Positive</option>
+  <option value="neutral">Neutral</option>
+  <option value="negative">Negative</option>
+</select>
+
+<label>Describe your experience with <%= visitedUser.escape('username') %>:</label>
+<textarea name="reference[description]"></textarea>
 
 
   <button id="create_reference">Post Reference</button>

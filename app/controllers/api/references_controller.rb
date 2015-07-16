@@ -3,7 +3,9 @@ class Api::ReferencesController < ApplicationController
     @reference = Reference.new(reference_params)
 
     if @reference.save
+      render json: { message: "Successfully created your reference!" }
     else
+      render json: @reference.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -15,7 +17,7 @@ class Api::ReferencesController < ApplicationController
   private
 
   def reference_params
-    params.require(:reference).permit(:referencee_id, :relationship,
+    params.require(:reference).permit(:referencee_id, :referencer_id, :relationship,
                                       :experience, :description)
   end
 end
