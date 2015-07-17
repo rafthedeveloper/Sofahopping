@@ -310,3 +310,26 @@ line-height:40px;
   .uppercase{
     text-transform: uppercase;
   }
+
+  #content{
+    width:1120px;
+    margin:0 auto;
+    padding:20px 0px;
+  }
+  .profile-sidebar-container{
+    float:left;
+    width:300px;
+    margin-right:40px;
+    background: blue;
+  }
+
+  .profile-main-container{
+    float:right;
+    width:780px;
+
+  }
+
+  .profile-main-content{
+    margin-bottom:40px;
+    background: red;
+  }

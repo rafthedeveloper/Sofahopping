@@ -77,3 +77,35 @@ t4 = Trip.create!(
      departure_date: "18/07/2015",
      num_guests: 3
 )
+
+r1 = Reference.create!(
+     referencer_id: u1.id,
+     referencee_id: u2.id,
+     relationship: "host",
+     description: "they weere great!",
+     experience: "positive"
+)
+
+r2 = Reference.create!(
+     referencer_id: u3.id,
+     referencee_id: u2.id,
+     relationship: "guest",
+     description: "they weere great!",
+     experience: "positive"
+)
+
+r3 = Reference.create!(
+     referencer_id: u2.id,
+     referencee_id: u1.id,
+     relationship: "guest",
+     description: "they weere great!",
+     experience: "positive"
+)
+
+r4 = Reference.create!(
+     referencer_id: u3.id,
+     referencee_id: u1.id,
+     relationship: "host",
+     description: "they weere great!",
+     experience: "positive"
+)

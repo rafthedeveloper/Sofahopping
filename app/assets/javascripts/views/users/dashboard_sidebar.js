@@ -23,14 +23,12 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
     this.$("#hosting_status_form").toggleClass("no-display");
   },
 
-  updateHostingStatus: function(event){å
+  updateHostingStatus: function(event){
     event.preventDefault();
     var attr = $(event.currentTarget).serializeJSON().user;
     this.model.set(attr)
     this.model.save({}, {
       success: function(model, response) {
-        var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
-        successView.render();
       }.bind(this)
    });
   }
