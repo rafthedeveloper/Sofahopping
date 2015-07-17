@@ -12,12 +12,13 @@
 #
 
 class Trip < ActiveRecord::Base
-  validates :user_id, :location, :description, :arrival_date,                                 :departure_date, :num_guests, presence: true
+  validates :traveler, :location, :description, :arrival_date, :departure_date, :num_guests, presence: true
 
   belongs_to :traveler,
     class_name: "User",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :trips
 
   def self.find_all_travelers
     travelers = [];

@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   has_many :trips,
     class_name: "Trip",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :traveler
 
   has_many :written_references,
     class_name: "Reference",
@@ -38,7 +39,8 @@ class User < ActiveRecord::Base
   has_many :received_references,
     class_name: "Reference",
     foreign_key: :referencee_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :referencee
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
