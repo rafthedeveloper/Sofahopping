@@ -22,6 +22,7 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   },
 
   render: function(){
+
     var renderedContent = this.template({
       visitedUser: this.model, currentUser: SofaHopping.currentUser
     });

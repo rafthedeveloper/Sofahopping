@@ -2,6 +2,6 @@
 <%= reference.escape('relationship') %>
 <%= reference.escape('experience') %>
 
-<% if (parseInt(currentUser.id) === reference.get("referencer_id")) {%>
+<% if (currentUser.id === reference.get("referencer_id")) {%>
   <button id="delete_reference">Delete Reference</button>
 <% } %>

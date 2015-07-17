@@ -1,0 +1,40 @@
+
+
+$("#login_link").click(function(){
+$("#login_modal").removeClass("no-display");
+});
+
+$("#close_login_modal").click(function(){
+$("#login_modal").addClass("no-display");
+});
+
+
+
+$("#signup_link").click(function(){
+
+$("#signup_modal").removeClass("no-display");
+});
+
+$("#close_signup_modal").click(function(){
+$("#signup_modal").addClass("no-display");
+});
+$( ".datepicker" ).datepicker({
+  maxDate: "-18y",
+  dateFormat: "dd/mm/yy"
+});
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places">
+      </script>
+<script>
+  var autocomplete;
+  function initialize() {
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+        { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    });
+  }
+</script>
+</head>
+
+<body onload="initialize()">

@@ -2,7 +2,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "userDashboard",
+    "users/new": "new",
+    "session/new": "signIn",
     "people/:id": "userProfile",
+    "members/search": "memberSearchBar",
     "members/hosts": "findHosts",
     "members/all": "findAllMembers",
     "members/travelers": "findAllTravelers"
@@ -10,12 +13,32 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
-    $("#search").on("submit", this.memberSearchBar);
-    this.users = options.users;
   },
 
-  memberSearchBar: function(event){
-    event.preventDefault();
+  new: function(){
+
+    if (!this._requireSignedOut()) { return; }
+
+    var newUser = new SofaHopping.Models.User({});
+    var formView = new SofaHopping.Views.UsersForm({
+      model: newUser
+    });
+
+    this._swapView(formView);
+  },
+
+  signIn: function(callback){
+
+    if (!this._requireSignedOut(callback)) { return; }
+
+    var signInView = new SofaHopping.Views.SignIn({
+      callback: callback
+    });
+    this._swapView(signInView);
+  },
+
+  memberSearchBar: function(redirected){
+
     var hosting_status = $(event.currentTarget).find("#hosting_status").val();
 
     if (hosting_status === "1"){
@@ -30,13 +53,21 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   userDashboard: function(){
-    var dashboardView = new SofaHopping.Views.DashboardView({ model: SofaHopping.currentUser });
+
+    var callback = this.userDashboard.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+
+    var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id);
+    var dashboardView = new SofaHopping.Views.DashboardView({ model: user });
 
     this._swapView(dashboardView);
   },
 
   userProfile: function(id){
-    var visitedUser = this.users.getOrFetch(id);
+    var callback = this.userProfile.bind(this, id);
+    if (!this._requireSignedIn(callback)) { return; }
+
+    var visitedUser = SofaHopping.users.getOrFetch(id);
 
     var userProfileView = new SofaHopping.Views.ProfileView({
       model: visitedUser });
@@ -45,6 +76,9 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   findHosts: function(){
+    var callback = this.findHosts.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+
     var hosts = new SofaHopping.Collections.Users();
     hosts.fetch({ data: { status: "Accepting Guests" }});
 
@@ -55,6 +89,9 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   findAllMembers: function(){
+    var callback = this.findAllMembers.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+
     var allMembers = new SofaHopping.Collections.Users();
     allMembers.fetch();
 
@@ -64,6 +101,9 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   findAllTravelers: function(){
+    var callback = this.findAllTravelers.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+
     var allTravelers = new SofaHopping.Collections.Users();
     allTravelers.fetch({ data: { trips : true }});
 
@@ -74,6 +114,30 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
 
 
+  _requireSignedIn: function(callback){
+
+    if (!SofaHopping.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      this.signIn(callback);
+      return false;
+    }
+
+    return true;
+  },
+
+  _requireSignedOut: function(callback){
+    if (SofaHopping.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      callback();
+      return false;
+    }
+
+    return true;
+  },
+
+  _goHome: function(){
+      Backbone.history.navigate("", { trigger: true });
+    },
 
   _swapView: function(view){
     this.currentView && this.currentView.remove();

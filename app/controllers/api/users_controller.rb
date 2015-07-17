@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     render :show
+
   end
 
   def index
@@ -28,10 +29,21 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def create
+    @user = User.new(user_params)
 
-  private
+    if @user.save
+      sign_in!(@user)
+      render :show
+    else
+      render json: @user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+
+  protected
   def user_params
-    params.require(:user).permit(:username, :password, :hosting_status, :location, :fname, :lname, :birthday, :gender)
+    params.require(:user).permit(:username, :password, :fname, :lname, :gender, :birthday, :location)
   end
 
 end

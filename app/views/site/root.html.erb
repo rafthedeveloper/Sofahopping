@@ -1,14 +1,11 @@
 
-
-
-<% if current_user %>
   <script>
   $(document).ready(function(){
-    SofaHopping.initialize(<%= current_user.id %>);
+    SofaHopping.initialize();
   });
   </script>
-  <section id="main">
-    <section id="content"></section>
 
-  </section>
-<% end %>
+<header class="main-header" id="header"></header>
+<section id="main">
+  <section id="content"></section>
+</section>
