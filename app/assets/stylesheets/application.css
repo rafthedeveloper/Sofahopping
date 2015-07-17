@@ -181,7 +181,12 @@
   box-shadow: inset 0 1px 3px #ddd;
   border-radius: 4px;
   margin-bottom:10px;
+}
 
+.content-form textarea{
+  height:100px;
+  max-height:150px;
+  max-width:280px;
 }
 
 .content-form label{
@@ -203,6 +208,11 @@
   float:left;
 }
 
+.content-form button:active{
+  border:none;
+  position:relative;
+  margin-top:1px;
+}
 .content-form button:hover{
   background: #2980b9;
 }
@@ -346,7 +356,6 @@
     float:left;
     width:300px;
     margin-right:40px;
-    background: blue;
   }
 
   .profile-main-container{
@@ -386,12 +395,13 @@
   }
 
 /** BUTTON STYLING **/
+
 .content-form .submit{
   background: #2ecc71;
   border-bottom: 2px #186f3c solid;
 }
 
-.content-form .submit:hover{
+.content-form .submit:hover, .content-form .submit:active{
   background: #27ae60;
 }
 
@@ -400,9 +410,10 @@
   border-bottom: 2px #82251c solid;
 }
 
-.content-form .delete:hover{
+.content-form .delete:hover, .content-form .delete:active{
   background: #c0392b;
 }
+
 
 .content-form .cancel{
   background: #d8d8d8;
@@ -410,6 +421,16 @@
   border-bottom: 2px #898989 solid;
 }
 
-.content-form .cancel:hover{
+.content-form .cancel:hover, .content-form .cancel:active{
   background: #acacac;
 }
+
+/**  ERROR STYLING **/
+ .errors{
+    color: #D8000C;
+    background-color: #FFBABA;
+  }
+
+  .errors li{
+    margin: 10px 20px 0px 20px;
+  }

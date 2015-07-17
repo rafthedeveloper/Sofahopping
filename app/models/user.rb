@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def friends
+  def accepted_friends
     all_friends = []
     requested_friends = self.requested_friendships.where("pending_status = ?", "accepted")
     requested_by_others = self.requested_by_others.where("pending_status = ?", "accepted")
@@ -90,9 +90,17 @@ class User < ActiveRecord::Base
     all_friends.concat(requested_friends).concat(requested_by_others)
   end
 
+  def pending_friends
+    pending_friends = []
+    requested_friends = self.requested_friendships.where("pending_status = ?", "pending")
+    requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
+
+    pending_friends.concat(requested_friends).concat(requested_by_others)
+  end
+
   def remove_friend
     all_friends = self.friends
-    
+
   end
 
   private

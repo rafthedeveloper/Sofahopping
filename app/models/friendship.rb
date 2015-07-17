@@ -34,8 +34,8 @@ class Friendship < ActiveRecord::Base
   end
 
   def not_already_friends
-    if Friendship.find_friendship(self.requestee_id, self.requester_id)
-      errors.add(:requester_id, "is already friends with that person.")
+    if Friendship.find_friendship(self.requestee_id, self.requester_id) || Friendship.find_friendship(self.requester_id, self.requestee_id)
+      errors.add(:requester_id, "has already requested or is friends with that person.")
     elsif(self.requestee_id == self.requester_id)
       errors.add(:requester_id, "cannot be friends with yourself.")
     end

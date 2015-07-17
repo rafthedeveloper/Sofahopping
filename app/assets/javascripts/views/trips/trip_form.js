@@ -5,6 +5,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     "click #close_trip_modal" : "destroyForm",
     "submit #create_trip": "submitTrip",
     "click #delete_trip": "deleteTrip"
+
   },
 
   initialize: function(options){
@@ -20,6 +21,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     return this;
   },
 
+
   createDatePicker: function(){
     $( ".datepicker" ).datepicker({
       dateFormat: "dd/mm/yy"
@@ -32,7 +34,6 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
   deleteTrip: function(event){
     event.preventDefault();
-      debugger
     var tripId = $(event.currentTarget).data("id");
     var trip = this.collection.get(tripId)
 
