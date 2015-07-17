@@ -1,4 +1,12 @@
-User profile main
+<section class="user-profile-info profile-main-content">
+<h3><%= user.escape('hosting_status') %></h3>
+
+  <% if (SofaHopping.currentUser.id !== user.id) { %>
+    <button id="add_friend">Add friend</button>
+    <% } %>
+</section>
+
+
 
 <section class="user-profile-references-container profile-main-content"></section>
 <section class="user-profile-friends-container profile-main-content"></section>

@@ -42,6 +42,6 @@ class Friendship < ActiveRecord::Base
   end
 
   def ensure_pending_status
-    self.pending_status = "pending"
+    self.pending_status ||= "pending"
   end
 end
