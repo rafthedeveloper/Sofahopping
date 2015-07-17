@@ -1,4 +1,4 @@
-class Api::TripsController < ApplicationController
+class Api::FriendshipsController < ApplicationController
   def create
     @friendship = current_user.requested_friendships.new(friend_params)
 
@@ -12,6 +12,7 @@ class Api::TripsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.destroy!
+    render json: @friendship
   end
 
   private

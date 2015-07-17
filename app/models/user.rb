@@ -90,6 +90,11 @@ class User < ActiveRecord::Base
     all_friends.concat(requested_friends).concat(requested_by_others)
   end
 
+  def remove_friend
+    all_friends = self.friends
+    
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
