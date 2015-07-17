@@ -151,16 +151,16 @@
   color:#7f8c8d;
   font-weight:bold;
 }
-.signin{
+.content-form{
   width:320px;
   padding:10px 20px 30px 20px;
 }
 
-.signin header, .signin footer{
+.content-form header, .content-form footer{
   text-align:center;
 }
 
-.signin input, .signin select{
+.content-form input, .content-form select{
   display:block;
   width:100%;
 
@@ -174,20 +174,25 @@ line-height:40px;
 
 }
 
-.signin button{
+.content-form button{
   display:block;
-  background-color: #287fb8;
-line-height:40px;
+  background: #3498db;
+  line-height:40px;
   color: #fff;
-  font-weight: bold;
-  width:100%;
   text-align:center;
   border-radius:2px;
   margin-top:20px;
-  margin-bottom:20px;
+  margin-right:10px;
+  padding:0 20px;
+  border-bottom: 2px solid #206694;
+  float:left;
 }
 
-.signin select{
+.content-form button:hover{
+  background: #2980b9;
+}
+
+.content-form select{
   height:40px;
   background: #fff;
 }
@@ -358,3 +363,32 @@ line-height:40px;
   .references-list li:last-child, .friends-list li:last-child, .profile-main-content:last-child{
     border-bottom :none;
   }
+
+/** BUTTON STYLING **/
+.content-form .submit{
+  background: #2ecc71;
+  border-bottom: 2px #186f3c solid;
+}
+
+.content-form .submit:hover{
+  background: #27ae60;
+}
+
+.content-form .delete{
+  background: #e74c3c;
+  border-bottom: 2px #82251c solid;
+}
+
+.content-form .delete:hover{
+  background: #c0392b;
+}
+
+.content-form .cancel{
+  background: #d8d8d8;
+  color: #fff;
+  border-bottom: 2px #898989 solid;
+}
+
+.content-form .cancel:hover{
+  background: #acacac;
+}

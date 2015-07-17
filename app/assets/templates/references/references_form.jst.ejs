@@ -1,5 +1,5 @@
 <section class="modal-container">
-  <form id="create_reference" class="modal signin">
+  <form id="create_reference" class="modal signin content-form">
 <small id="close_reference_modal" class="close_modal">X</small>
 <h3>Write Reference</h3>
 <ul class="errors"></ul>
@@ -25,8 +25,9 @@
 <label>Describe your experience with <%= visitedUser.escape('username') %>:</label>
 <textarea name="reference[description]"></textarea>
 
-
-  <button id="create_reference">Post Reference</button>
-
+  <section class="group">
+  <button class="submit" id="create_reference">Post Reference</button>
+  <button class="cancel" id="cancel_reference_form">Cancel</button>
+</section>
   </form>
 </section>
