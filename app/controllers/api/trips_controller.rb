@@ -1,8 +1,6 @@
 class Api::TripsController < ApplicationController
   def create
-
-    @trip = Trip.new(trip_params)
-    @trip.user_id = current_user.id
+    @trip = current_user.trips.new(trip_params)
 
     if @trip.save
       render json: @trip

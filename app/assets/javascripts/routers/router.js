@@ -55,6 +55,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   userDashboard: function(){
 
     var callback = this.userDashboard.bind(this);
+
     if (!this._requireSignedIn(callback)) { return; }
 
     var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id);
@@ -117,7 +118,8 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   _requireSignedIn: function(callback){
 
     if (!SofaHopping.currentUser.isSignedIn()) {
-      callback = callback || this._goHome.bind(this);
+      debugger
+      callback = callback
       this.signIn(callback);
       return false;
     }
@@ -127,7 +129,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   _requireSignedOut: function(callback){
     if (SofaHopping.currentUser.isSignedIn()) {
-      callback = callback || this._goHome.bind(this);
+      callback = callback
       callback();
       return false;
     }
@@ -135,9 +137,9 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     return true;
   },
 
-  _goHome: function(){
-      Backbone.history.navigate("", { trigger: true });
-    },
+  // _goHome: function(){
+  //     Backbone.history.navigate("", { trigger: true });
+  //   },
 
   _swapView: function(view){
     this.currentView && this.currentView.remove();

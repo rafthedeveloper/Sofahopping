@@ -13,18 +13,19 @@
 #
 
 class Reference < ActiveRecord::Base
-  validates :referencer_id, :referencee_id, :relationship, :experience,
+  validates :referencee, :referencee_id, :relationship, :experience,
             :description, presence: true
 
   belongs_to :referencee,
     class_name: "User",
     foreign_key: :referencee_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :received_references
 
   belongs_to :author,
     class_name: "User",
     foreign_key: :referencer_id,
     primary_key: :id
 
-  
+
 end
