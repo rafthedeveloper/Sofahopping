@@ -11,14 +11,16 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   },
 
   addFriendshipsView: function(){
-    var friendshipsView = new SofaHopping.Views.FriendsIndex({});
+    var friendshipsView = new SofaHopping.Views.FriendsIndex({
+      model: this.model, collection: this.model.friends()
+    });
     this.addSubview(".user-profile-friends-container", friendshipsView);
   },
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
     this.addReferencesView(this.model);
-    this.addFriendshipsView();
+    this.addFriendshipsView(this.model);
   },
 
   render: function(){

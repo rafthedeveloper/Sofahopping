@@ -1,26 +1,26 @@
 SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
   template: JST["friends/friends_index"],
 
-  // addReferenceView: function(reference){
-  //   var referenceView = new SofaHopping.Views.ReferenceIndexItem({ model: reference });
-  //   this.addSubview('.references-list', referenceView);
-  // },
-  //
-  // removeReferenceView: function(reference){
-  //   this.removeModelSubview('.references-list', reference);
-  // },
+  addFriendView: function(friend){
+    var friendView = new SofaHopping.Views.FriendsIndexItem({ model: friend, visitedUser: this.model });
+    this.addSubview('.friends-list', friendView);
+  },
+
+  removeFriendView: function(friend){
+    this.removeModelSubview('.friends-list', friend);
+  },
 
   initialize: function(){
-    // this.listenTo(this.collection, "sync", this.render)
-    // this.listenTo(this.collection, "add", this.addReferenceView);
-    // this.listenTo(this.collection, "remove", this.removeReferenceView);
-    // this.collection.each(this.addReferenceView.bind(this));
+    this.listenTo(this.collection, "sync", this.render)
+    this.listenTo(this.collection, "add", this.addFriendView);
+    this.listenTo(this.collection, "remove", this.removeFriendView);
+    this.collection.each(this.addFriendView.bind(this));
   },
 
   render: function(){
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-    // this.attachSubviews();
+    this.attachSubviews();
 
     return this;
   }
