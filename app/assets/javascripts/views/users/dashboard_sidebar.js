@@ -23,7 +23,7 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
     this.$("#hosting_status_form").toggleClass("no-display");
   },
 
-  updateHostingStatus: function(event){
+  updateHostingStatus: function(event){å
     event.preventDefault();
     var attr = $(event.currentTarget).serializeJSON().user;
     this.model.set(attr)

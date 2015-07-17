@@ -1,0 +1,25 @@
+<nav class="header-nav group">
+  <img src="/assets/logo.png" />
+  <ul class="nav-list group">
+<% if(currentUser.isSignedIn()) { %>
+  <li>
+   <form id="search" class="search_form group">
+     <select id="hosting_status" name="user[hosting_status]">
+       <option value="1">Find Hosts</option>
+       <option value="2">Find Members</option>
+       <option value="3">Find Travelers</option>
+     </select>
+       <button>Search</button>
+   </form>
+  </li>
+  <li><a href="#">Dashboard</a></li>
+  <li><a href=" <%= "#people/" + SofaHopping.currentUser.id %>"> My Profile</a></li>
+  <li><a href="#" id="sign-out-link">Sign Out</a></li>
+
+<% } else { %>
+  <li><a id="login_link" href="#users/new">Join</a></li>
+  <li><a href="#session/new" id="login_link">Login</a></li>
+<% } %>
+
+  </ul>
+</nav>
