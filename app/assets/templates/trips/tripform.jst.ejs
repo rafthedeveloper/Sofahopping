@@ -1,5 +1,5 @@
 <section class="modal-container">
-  <form id="create_trip" class="modal signin">
+  <form id="create_trip" class="modal signin content-form">
     <small id="close_trip_modal" class="close_modal">X</small>
     <header>
     <% if (trip.isNew()) {%>
@@ -26,11 +26,14 @@
 <label for="trip-desc">Trip description</label>
 <textarea id="trip"-desc name="trip[description]" placeholder="Tell locals about your trip and why they should meet or host you."><%= trip.escape('description') %></textarea>
 
+<section class="group">
 <% if (trip.isNew()) {%>
-    <button>Create</button>
+    <button class="submit">Create</button>
 <% } else { %>
-  <button>Update</button>
-  <button id="delete_trip" data-id="<%= trip.id %>">Delete</button>
+  <button class="submit">Update</button>
+  <button class="delete" id="delete_trip" data-id="<%= trip.id %>">Delete</button>
   <% } %>
+  <button class="cancel" id="cancel_trip_form">Cancel</button>
+</section>
   </form>
 </section>
