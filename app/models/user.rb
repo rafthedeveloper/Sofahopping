@@ -82,6 +82,14 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def friends
+    all_friends = []
+    requested_friends = self.requested_friendships.where("pending_status = ?", "accepted")
+    requested_by_others = self.requested_by_others.where("pending_status = ?", "accepted")
+
+    all_friends.concat(requested_friends).concat(requested_by_others)
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)

@@ -109,3 +109,9 @@ r4 = Reference.create!(
      description: "they weere great!",
      experience: "positive"
 )
+
+f1 = Friendship.create!(
+     friend_requestee: u1,
+     friend_requester: u2,
+     pending_status: "accepted"
+  )

@@ -330,6 +330,31 @@ line-height:40px;
   }
 
   .profile-main-content{
-    margin-bottom:40px;
-    background: red;
+    margin-top:40px;
+    background: #fff;
+    border: 1px solid #d5d5d5;
+
+  }
+
+  .profile-main-content h2, .profile-main-content h3{
+    border-bottom: 1px solid #d5d5d5;
+    padding:20px;
+    font-size: 18px;
+  }
+
+  .profile-main-content h3{
+    border:none;
+  }
+
+  .references-list, .friends-list{
+    padding: 0px 20px;
+  }
+
+  .references-list li, .friends-list li{
+    padding:20px 0px;
+    border-bottom:#EDEDED 1px solid;
+  }
+
+  .references-list li:last-child, .friends-list li:last-child, .profile-main-content:last-child{
+    border-bottom :none;
   }
