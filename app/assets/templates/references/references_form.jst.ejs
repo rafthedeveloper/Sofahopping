@@ -1,7 +1,9 @@
 <section class="modal-container">
   <form id="create_reference" class="modal signin content-form">
 <small id="close_reference_modal" class="close_modal">X</small>
+<header>
 <h3>Write Reference</h3>
+</header>
 <ul class="errors"></ul>
 
   <label>How do you know <%= visitedUser.escape('username') %>?</label>
@@ -25,7 +27,7 @@
 <label>Describe your experience with <%= visitedUser.escape('username') %>:</label>
 <textarea name="reference[description]"></textarea>
 
-  <section class="group">
+  <section class="group button-list">
   <button class="submit" id="create_reference">Post Reference</button>
   <button class="cancel" id="cancel_reference_form">Cancel</button>
 </section>

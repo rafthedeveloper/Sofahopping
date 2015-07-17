@@ -3,6 +3,10 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   className: "profile-main",
   tagName: "section",
 
+  events: {
+    "click #add_friend": "createFriend"
+  },
+
   addReferencesView: function(){
     var referencesView = new SofaHopping.Views.ReferencesIndex({
       model: this.model, collection: this.model.references()
@@ -30,6 +34,10 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
 
     return this;
   },
+
+  createFriend: function(){
+    debugger
+  }
 
 
 });
