@@ -4,20 +4,20 @@ SofaHopping.Views.DashboardView = Backbone.CompositeView.extend({
 
   template: JST["users/dashboard"],
 
-  addSideBarView: function(user){
-    var sideBarView = new SofaHopping.Views.DashboardSidebar({ model: user });
+  addSideBarView: function(){
+    var sideBarView = new SofaHopping.Views.DashboardSidebar({ model: this.model });
     this.addSubview('.sidebar_container', sideBarView)
   },
 
-  addTripsView: function(user){
-    var tripsIndexView = new SofaHopping.Views.TripsIndex({ model: user });
+  addTripsView: function(){
+    var tripsIndexView = new SofaHopping.Views.TripsIndex({ model: this.model, collection: this.model.trips() });
     this.addSubview('.trips_container', tripsIndexView)
   },
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render)
-    this.addSideBarView(this.model);
-    this.addTripsView(this.model);
+    this.addSideBarView();
+    this.addTripsView();
   },
 
   render: function(){

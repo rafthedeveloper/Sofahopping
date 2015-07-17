@@ -30,7 +30,7 @@ SofaHopping.Views.ReferenceIndexItem = Backbone.View.extend({
       },
 
       error: function(model, response){
-        debugger
+
       }.bind(this)
     })
 

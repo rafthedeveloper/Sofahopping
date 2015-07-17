@@ -19,7 +19,7 @@ SofaHopping.Views.TripIndexItem = Backbone.View.extend({
   },
 
   editTripForm: function(){
-    var tripForm = new SofaHopping.Views.TripForm({ model: this.model, currentUser: SofaHopping.currentUser });
+    var tripForm = new SofaHopping.Views.TripForm({ model: this.model, currentUser: SofaHopping.currentUser, collection: this.collection });
     tripForm.render();
   }
 })

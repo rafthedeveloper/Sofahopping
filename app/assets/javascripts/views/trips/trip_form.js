@@ -32,14 +32,12 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
   deleteTrip: function(event){
     event.preventDefault();
+      debugger
     var tripId = $(event.currentTarget).data("id");
-    var trip = this.currentUser.trips().get(tripId);
+    var trip = this.collection.get(tripId)
 
     trip.destroy({
       success: function(model, response){
-        var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
-        successView.render();
-        this.currentUser.trips().remove(trip);
         this.remove();
       }.bind(this),
 
@@ -61,12 +59,9 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
         var errors = JSON.parse(response.responseText)
         var errorView = new SofaHopping.Views.ErrorDetails({ errors: errors, el: $errorEl });
         errorView.render();
-
       }.bind(this),
 
       success: function(trip, response){
-        var successView = new SofaHopping.Views.SuccessMessage ({ message: response.message });
-        successView.render();
         SofaHopping.currentUser.trips().add(this.model, { merge: true });
         Backbone.history.navigate("#", { trigger: true })
         this.remove();
