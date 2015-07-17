@@ -13,11 +13,13 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
+    debugger
   },
 
   new: function(){
 
-    if (!this._requireSignedOut()) { return; }
+    if (!this._requireSignedOut()) {
+      return; }
 
     var newUser = new SofaHopping.Models.User({});
     var formView = new SofaHopping.Views.UsersForm({
@@ -118,8 +120,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   _requireSignedIn: function(callback){
 
     if (!SofaHopping.currentUser.isSignedIn()) {
-      debugger
-      callback = callback
+      callback = callback || this._goHome;
       this.signIn(callback);
       return false;
     }
@@ -129,7 +130,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   _requireSignedOut: function(callback){
     if (SofaHopping.currentUser.isSignedIn()) {
-      callback = callback
+      callback = callback || this._goHome;
       callback();
       return false;
     }
@@ -137,9 +138,9 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     return true;
   },
 
-  // _goHome: function(){
-  //     Backbone.history.navigate("", { trigger: true });
-  //   },
+  _goHome: function(){
+      Backbone.history.navigate("", { trigger: true });
+    },
 
   _swapView: function(view){
     this.currentView && this.currentView.remove();

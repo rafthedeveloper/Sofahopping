@@ -42,6 +42,20 @@ class User < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :referencee
 
+  has_many :requested_friendships,
+    class_name: "Friendship",
+    foreign_key: :requester_id,
+    primary_key: :id,
+    inverse_of: :friend_requester
+
+  has_many :requested_by_others,
+    class_name: "Friendship",
+    foreign_key: :requestee_id,
+    primary_key: :id,
+    inverse_of: :friend_requestee
+
+
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.valid_password?(password)
