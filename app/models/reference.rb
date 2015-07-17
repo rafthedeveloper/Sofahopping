@@ -2,14 +2,14 @@
 #
 # Table name: references
 #
-#  id           :integer          not null, primary key
-#  referencer   :integer          not null
-#  referencee   :integer          not null
-#  relationship :string           not null
-#  experience   :string           not null
-#  description  :text             not null
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id            :integer          not null, primary key
+#  referencer_id :integer          not null
+#  referencee_id :integer          not null
+#  relationship  :string           not null
+#  experience    :string           not null
+#  description   :text             not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Reference < ActiveRecord::Base
