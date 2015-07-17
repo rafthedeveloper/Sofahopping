@@ -3,9 +3,9 @@
     <small id="close_trip_modal" class="close_modal">X</small>
     <header>
     <% if (trip.isNew()) {%>
-        <h3>Create a Public Trip</h3>
+        <h3>Create a public trip</h3>
     <% } else { %>
-      <h3>Edit Trip</h3>
+      <h3>Edit your public trip</h3>
       <% } %>
       </header>
 
@@ -26,7 +26,7 @@
 <label for="trip-desc">Trip description</label>
 <textarea id="trip"-desc name="trip[description]" placeholder="Tell locals about your trip and why they should meet or host you."><%= trip.escape('description') %></textarea>
 
-<section class="group">
+<section class="group button-list">
 <% if (trip.isNew()) {%>
     <button class="submit">Create</button>
 <% } else { %>

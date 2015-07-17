@@ -3,6 +3,7 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
 
   events: {
     "click #close_reference_modal": "destroyReferenceForm",
+    "click #cancel_reference_form": "destroyReferenceForm",
     "submit #create_reference": "createReference"
   },
 
@@ -14,7 +15,8 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
     return this;
   },
 
-  destroyReferenceForm: function(){
+  destroyReferenceForm: function(event){
+    event.preventDefault();
     this.remove();
   },
 
