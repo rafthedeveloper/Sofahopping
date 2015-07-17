@@ -115,3 +115,27 @@ f1 = Friendship.create!(
      friend_requester: u2,
      pending_status: "accepted"
   )
+
+f2 = Friendship.create!(
+     friend_requestee: u3,
+     friend_requester: u1,
+     pending_status: "accepted"
+  )
+
+f3 = Friendship.create!(
+     friend_requestee: u1,
+     friend_requester: u4,
+     pending_status: "rejected"
+  )
+
+f4 = Friendship.create!(
+     friend_requestee: u3,
+     friend_requester: u4,
+     pending_status: "accepted"
+  )
+
+f5 = Friendship.create!(
+     friend_requestee: u4,
+     friend_requester: u2,
+     pending_status: "accepted"
+  )
