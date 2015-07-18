@@ -3,7 +3,9 @@ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
   className: "li",
 
   events: {
-    "click #delete_friend": "removeFriend"
+    "click #delete_friend": "destroyFriendship",
+    "click #accept_friend_request": "acceptFriendRequest",
+    "click #reject_friend_request": "destroyFriendship"
   },
 
   initialize: function(options){
@@ -18,7 +20,19 @@ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
     return this;
   },
 
-  removeFriend: function(event){
+  acceptFriendRequest: function(event){
+    event.preventDefault();
+
+    this.model.set("pending_status", "accepted");
+    this.model.save({}, {
+      success: function(model, response){
+        debugger
+        this.collection.remove(this.model)
+      }.bind(this)
+    })
+  },
+
+  destroyFriendship: function(event){
     event.preventDefault();
     this.model.destroy({});
 

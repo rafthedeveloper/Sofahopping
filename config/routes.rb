@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :trips, only: [:create, :index, :update, :destroy]
     resources :users, only: [:show, :index, :update, :create]
     resources :references, only: [:create, :destroy]
-    resources :friendships, only: [:create, :destroy]
+    resources :friendships, only: [:create, :destroy, :update]
   end
 end
