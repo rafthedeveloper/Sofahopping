@@ -96,11 +96,11 @@ class User < ActiveRecord::Base
     requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
 
     pending_friends.concat(requested_friends).concat(requested_by_others)
+
   end
 
   def remove_friend
     all_friends = self.friends
-
   end
 
   private

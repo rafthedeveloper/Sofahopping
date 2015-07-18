@@ -1,6 +1,6 @@
 SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
   template: JST["friends/friends_index_item"],
-  className: "li",
+  tagName: "li",
 
   events: {
     "click #delete_friend": "destroyFriendship",

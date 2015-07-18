@@ -1,5 +1,37 @@
-  <%= trip.escape('location') %>
-  <%= trip.escape('arrival_date') %> - <%= trip.escape('departure_date') %>
-  <%= trip.escape('description') %>
 
-  <button data-id="<%= trip.id %>" id="edit_trip">Edit</button>
+  <h3>Public Trip</h3>
+  <small>Visiting: <%= trip.escape('location') %>
+    (<%= trip.escape('arrival_date') %> to <%= trip.escape('departure_date') %>)
+  </small>
+
+  <p>Description: <%= trip.escape('description') %></p>
+
+<form class="content-form group">
+  <button  data-id="<%= trip.id %>" id="edit_trip">Edit</button>
+</form>
+
+<style>
+  .trips-list{
+    padding:20px 20px 0px 20px;
+  }
+
+  .trips-list li{
+    margin-bottom:20px;
+    background: #f6f6f6;
+    padding:20px;
+  }
+
+  .trips-list h3{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+
+  .trips-list small{
+    display:block;
+    margin-bottom:10px;
+  }
+
+  .trips-list p{
+    margin-bottom:10px;
+  }
+  </style>

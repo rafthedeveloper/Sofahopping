@@ -29,6 +29,7 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
 
     reference.save({}, {
       success: function(){
+
         this.model.references().add(reference, { merge: true });
         this.remove();
       }.bind(this),

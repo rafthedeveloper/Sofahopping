@@ -4,7 +4,7 @@ class Api::ReferencesController < ApplicationController
     @reference = current_user.written_references.new(reference_params)
 
     if @reference.save
-      render json: { message: "Successfully created your reference!" }
+      render json: @reference
     else
       render json: @reference.errors.full_messages, status: :unprocessable_entity
     end
