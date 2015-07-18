@@ -19,7 +19,7 @@ SofaHopping.Views.SignIn = Backbone.View.extend({
   },
 
   destroyLoginForm: function(){
-    debugger
+
     this.remove();
     Backbone.history.navigate("", { trigger: true });
   },

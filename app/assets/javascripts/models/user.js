@@ -25,6 +25,14 @@ SofaHopping.Models.User = Backbone.Model.extend({
     return this._friends
   },
 
+  pendingFriends: function(){
+    if (!this._pendingFriends){
+      this._pendingFriends = new SofaHopping.Collections.Friends([], { user: this });
+    }
+
+    return this._pendingFriends
+  },
+
   parse: function(payload){
     if (payload.trips){
       this.trips().set(payload.trips);
@@ -39,6 +47,11 @@ SofaHopping.Models.User = Backbone.Model.extend({
     if (payload.friends){
       this.friends().set(payload.friends)
       delete payload.friends
+    }
+
+    if (payload.pending_friends){
+      this.pendingFriends().set(payload.pending_friends)
+      delete payload.pending_friends
     }
 
     return payload;

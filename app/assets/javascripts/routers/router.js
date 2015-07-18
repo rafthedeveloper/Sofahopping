@@ -59,7 +59,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
     if (!this._requireSignedIn(callback)) { return; }
 
-    var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id);
+    var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id, { data: { view: "dashboard" }});
     var dashboardView = new SofaHopping.Views.DashboardView({ model: user });
 
     this._swapView(dashboardView);
@@ -69,7 +69,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var callback = this.userProfile.bind(this, id);
     if (!this._requireSignedIn(callback)) { return; }
 
-    var visitedUser = SofaHopping.users.getOrFetch(id);
+    var visitedUser = SofaHopping.users.getOrFetch(id, { data: { view: "profile"} });
 
     var userProfileView = new SofaHopping.Views.ProfileView({
       model: visitedUser });

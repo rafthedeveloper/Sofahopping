@@ -1,46 +1,23 @@
 
   <figure class="profile">
-    <img>
-    <h2> <%= user.escape('fname') %><%= user.escape('lname') %> </h2>
+      <img src="/assets/default.png" />
+    <h2> <%= user.escape('fname') %> <%= user.escape('lname') %> </h2>
     <figcaption><%= user.escape('location') %></figcaption>
   </figure>
-  <small><%= user.escape('hosting_status')%>
+  <section class="hosting-status">
 
-  <button id="edit_hosting_status">edit</button>
-  </small>
+
+    <form class="content-form"  id="hosting_status_form">
+    <select name="user[hosting_status]">
+      <option>Accepting Guests</option>
+      <option>Maybe Accepting Guests</option>
+      <option>Not Accepting Guests</option>
+
+    </select>
+    <button class="submit">Save</button>
+  </section>
+
 <br>
 
-<form class="no-display"  id="hosting_status_form">
-<select name="user[hosting_status]">
-  <option>Accepting Guests</option>
-  <option>Maybe Accepting Guests</option>
-  <option>Not Accepting Guests</option>
-  <option>Wants to Meet up</option>
-</select>
-<button>Save</button>
+
 </form>
-
-<style>
-
-.profile{
-position:relative;
-}
-.profile img{
-  width:250px;
-  height:250px;
-  background-color:#FFF;
-
-}
-
-  .profile h2{
-    position: absolute;
-    top:0;
-    margin-top:150px;
-  }
-
-  .profile figcaption{
-position: absolute;
-top:0;
-margin-top:190px;
-}
-</style>
