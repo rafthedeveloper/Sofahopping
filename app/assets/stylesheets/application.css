@@ -66,6 +66,10 @@
    cursor: pointer;
  }
 
+ h1, h2, h3{
+   color: #354a5f;
+ }
+
  #main{
    background-color:#f6f6f6;
   width:100%;
@@ -106,6 +110,39 @@
    float:left;
  }
 
+ /** DASHBOARD STYLING */
+
+ .profile{
+ position:relative;
+ }
+ .profile img{
+   width:250px;
+   height:250px;
+   background-color:#FFF;
+
+
+ }
+
+ .profile h2{
+     position: absolute;
+     top:0;
+     margin-top:170px;
+     margin-left:10px;
+     color:#FFF;
+     font-size:24px;
+ }
+
+ .profile figcaption{
+   position: absolute;
+   top:0;
+   margin-top:220px;
+   margin-left:10px;
+   color:#FFF;
+   font-size:16px;
+ }
+
+ /** SEARCH STYLING **/
+
  #search{
    float:left;
  }
@@ -120,7 +157,8 @@
   position:fixed;
   top:0;
   bottom:0;
-  width:100%;
+  left:0;
+  right:0;
   background-color: rgba(0,0,0,.4);
 
 }
@@ -352,26 +390,26 @@
     margin:0 auto;
     padding:20px 0px;
   }
-  .profile-sidebar-container{
+  .profile-sidebar-container, .dash-sidebar-container{
     float:left;
     width:300px;
     margin-right:40px;
   }
 
-  .profile-main-container{
+  .profile-main-container, .dash-main-container{
     float:right;
     width:780px;
 
   }
 
-  .profile-main-content{
+  .profile-main-content, .dash-main-content{
     margin-top:40px;
     background: #fff;
     border: 1px solid #d5d5d5;
 
   }
 
-  .profile-main-content h2, .profile-main-content h3{
+  .profile-main-content h2, .profile-main-content h3, .dash-main-content h2{
     border-bottom: 1px solid #d5d5d5;
     padding:20px;
     font-size: 18px;

@@ -1,4 +1,11 @@
-<h2>Friends</h2>
+<h2>
+<% if (listType === "pending") { %>
+<%= "Pending friends" %>
+<% } else { %>
+  <%= "Friends" %>
+<% } %>
+</h2>
+
 
 
 <ul class="friends-list"></ul>

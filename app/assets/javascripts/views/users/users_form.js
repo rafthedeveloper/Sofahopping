@@ -29,19 +29,18 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
     var $form = $(event.currentTarget);
     var userData = $form.serializeJSON();
     var that = this;
-    debugger
+
 
     this.model.set(userData);
     this.model.save({}, {
       success: function(object, response){
-        debugger
-        SofaHopping.currentUser.fetch();
+           SofaHopping.currentUser.fetch();
         Backbone.history.navigate("", { trigger: true });
       },
       error: function(data, jqxhr){
-        debugger
+
         alert("Form invalid. Let the user know what went wrong.");
-        console.log(data);
+  
       }
     });
   }

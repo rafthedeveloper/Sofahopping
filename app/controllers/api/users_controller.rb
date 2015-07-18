@@ -2,8 +2,15 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render :show
+    if params[:view] == "dashboard" && current_user && @user.id == current_user.id
+      render :dashboard
+      return
+    elsif params[:view] == "profile" && current_user
+      render :profile
+      return
+    end
 
+    render json: { message: "It appears that you are not logged in." }
   end
 
   def index

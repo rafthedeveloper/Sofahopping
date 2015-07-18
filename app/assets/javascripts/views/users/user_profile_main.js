@@ -4,7 +4,7 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "click #add_friend": "createFriend",
+    "click #add_friend": "createFriend"
 
   },
 
@@ -24,6 +24,7 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   },
 
   initialize: function(){
+
     this.listenTo(this.model, "sync", this.render);
     this.addReferencesView(this.model);
     this.addFriendshipsView(this.model);
@@ -40,7 +41,7 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   createFriend: function(){
     var newFriend = new SofaHopping.Models.Friend({});
     newFriend.set("requestee_id", this.model.id);
-    debugger
+  
     newFriend.save({}, {
       success: function(){
         SofaHopping.currentUser.friends().add(newFriend);

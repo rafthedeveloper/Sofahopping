@@ -6,7 +6,7 @@ u1 = User.create!(
      gender: "Male",
      birthday: "1989-06-01",
      location: "Brooklyn, New York",
-     hosting_status: "Maybe Accepting Guests"
+     hosting_status: "maybe"
 )
 
 u2 = User.create!(
@@ -17,7 +17,7 @@ u2 = User.create!(
      gender: "Female",
      birthday: "1989-09-21",
      location: "Taipei, Taiwan",
-     hosting_status: "Maybe Accepting Guests"
+     hosting_status: "maybe"
 )
 
 u3 = User.create!(
@@ -28,7 +28,7 @@ u3 = User.create!(
      gender: "Female",
      birthday: "1989-07-18",
      location: "Brooklyn, New York",
-     hosting_status: "Not Accepting Guests"
+     hosting_status: "no"
 )
 
 u4 = User.create!(
@@ -39,7 +39,7 @@ u4 = User.create!(
      gender: "Male",
      birthday: "1988-03-29",
      location: "Taipei, Taiwan",
-     hosting_status: "Accepting Guests"
+     hosting_status: "yes"
 )
 
 t1 = Trip.create!(
@@ -117,15 +117,15 @@ f1 = Friendship.create!(
   )
 
 f2 = Friendship.create!(
-     friend_requestee: u3,
-     friend_requester: u1,
+     friend_requestee: u1,
+     friend_requester: u3,
      pending_status: "accepted"
   )
 
 f3 = Friendship.create!(
      friend_requestee: u1,
      friend_requester: u4,
-     pending_status: "rejected"
+     pending_status: "pending"
   )
 
 f4 = Friendship.create!(

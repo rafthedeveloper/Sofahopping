@@ -1,5 +1,15 @@
 <%= friend.id %>
 
-<% if (parseInt(visitedUser.id) === SofaHopping.currentUser.id) {%>
-<button id="delete_friend">Delete friend</button>
+<% if (friend.get('pending_status') === "pending") { %>
+<form class="content-form group">
+    <button class="submit" id="accept_friend_request">Accept friend</button>
+    <button class="delete" id="reject_friend_request">Reject</button>
+</form>
+
+<% } else if (friend.get('pending_status') === "accepted") { %>
+  <% if (parseInt(visitedUser.id) === SofaHopping.currentUser.id) {%>
+  <form class="content-form group">
+  <button class="delete" id="delete_friend">Delete friend</button>
+  </form>
+  <% } %>
 <% } %>

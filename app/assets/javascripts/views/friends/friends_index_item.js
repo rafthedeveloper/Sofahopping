@@ -11,6 +11,7 @@ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
   },
 
   render: function(){
+
     var renderedContent = this.template({ friend: this.model, visitedUser: this.visitedUser });
     this.$el.html(renderedContent);
 
