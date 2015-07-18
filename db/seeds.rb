@@ -65,6 +65,17 @@ u6 = User.create!(
      hosting_status: "yes"
 )
 
+u7 = User.create!(
+     username: "JBurgos",
+     password: "password",
+     fname: "Joel",
+     lname: "Burgos",
+     gender: "Male",
+     birthday: "1988-03-29",
+     location: "NYC",
+     hosting_status: "yes"
+)
+
 
 t1 = Trip.create!(
      user_id: u1.id,

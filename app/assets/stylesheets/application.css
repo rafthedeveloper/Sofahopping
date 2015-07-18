@@ -244,6 +244,7 @@
   padding:0 10px;
   border-bottom: 2px solid #206694;
   float:left;
+  min-width:80px;
 }
 
 .content-form button:active{
@@ -428,7 +429,7 @@
     border-bottom:#EDEDED 1px solid;
   }
 
-  .references-list li:last-child, .friends-list li:last-child, .profile-main-content:last-child{
+  .references-list li:last-child, .friends-list li:last-child{
     border-bottom :none;
   }
 

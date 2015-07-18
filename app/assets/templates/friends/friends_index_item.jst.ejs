@@ -1,6 +1,9 @@
 <%= friend.id %>
 
 <% if (friend.get('pending_status') === "pending") { %>
+<a href="#people/<%= friend.get('friend_details').id %>">
+  <%= friend.get('friend_details').fname %> <%= friend.get('friend_details').lname %>
+</a>
 <form class="content-form group">
     <button class="submit" id="accept_friend_request">Accept friend</button>
     <button class="delete" id="reject_friend_request">Reject</button>

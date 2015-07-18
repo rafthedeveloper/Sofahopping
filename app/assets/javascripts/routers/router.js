@@ -82,7 +82,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     var hosts = new SofaHopping.Collections.Users();
-    hosts.fetch({ data: { status: "Accepting Guests" }});
+    hosts.fetch({ data: { status: "yes" }});
 
     var membersView = new SofaHopping.Views.MembersView({
       collection: hosts, searchType: "hosts" })

@@ -27,6 +27,8 @@ class Friendship < ActiveRecord::Base
     inverse_of: :requested_by_others
 
 
+
+
   def self.find_friendship(id1, id2)
     friends = Friendship.where("requester_id = ? AND requestee_id = ? AND pending_status = ?", id1, id2, "accepted")
     return nil if friends == []
@@ -40,6 +42,18 @@ class Friendship < ActiveRecord::Base
       errors.add(:requester_id, "cannot be friends with yourself.")
     end
   end
+
+  def friend_details
+    details = {}
+    requester = self.friend_requester
+    details["fname"] = requester.fname
+    details["lname"] = requester.lname
+    details["id"] = requester.id
+
+    details
+  end
+
+
 
   def ensure_pending_status
     self.pending_status ||= "pending"
