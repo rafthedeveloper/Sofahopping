@@ -42,6 +42,30 @@ u4 = User.create!(
      hosting_status: "yes"
 )
 
+u5 = User.create!(
+     username: "test_1",
+     password: "password",
+     fname: "test_1",
+     lname: "test_1",
+     gender: "Male",
+     birthday: "1988-03-29",
+     location: "Taipei, Taiwan",
+     hosting_status: "yes"
+)
+
+
+u6 = User.create!(
+     username: "test_2",
+     password: "password",
+     fname: "test_2",
+     lname: "test_2",
+     gender: "Male",
+     birthday: "1988-03-29",
+     location: "NYC",
+     hosting_status: "yes"
+)
+
+
 t1 = Trip.create!(
      user_id: u1.id,
      location: "Iceland",
@@ -138,4 +162,16 @@ f5 = Friendship.create!(
      friend_requestee: u4,
      friend_requester: u2,
      pending_status: "accepted"
+  )
+
+f6 = Friendship.create!(
+   friend_requestee: u1,
+   friend_requester: u5,
+   pending_status: "pending"
+)
+
+f7 = Friendship.create!(
+     friend_requestee: u1,
+     friend_requester: u6,
+     pending_status: "pending"
   )

@@ -28,7 +28,7 @@ class Friendship < ActiveRecord::Base
 
 
   def self.find_friendship(id1, id2)
-    friends = Friendship.where("requester_id = ? AND requestee_id = ?", id1, id2)
+    friends = Friendship.where("requester_id = ? AND requestee_id = ? AND pending_status = ?", id1, id2, "accepted")
     return nil if friends == []
     return friends
   end
