@@ -7,7 +7,9 @@ SofaHopping.Views.Header = Backbone.View.extend({
 
   events: {
     "click #sign-out-link": "signOut",
-    "submit #search": "redirectToSearch"
+    "submit #search": "redirectToSearch",
+    "click #dash-link": "goToDash",
+    "click #profile-link": "goToProfile"
   },
 
   template: JST['shared/header'],
@@ -17,6 +19,16 @@ SofaHopping.Views.Header = Backbone.View.extend({
     this.$el.html(html);
 
     return this;
+  },
+
+  goToDash: function(){
+
+    Backbone.history.navigate("#", { trigger: true })
+  },
+
+  goToProfile: function(){
+
+    Backbone.history.navigate("people/"+ SofaHopping.currentUser.id, { trigger: true })
   },
 
   redirectToSearch: function(event){
