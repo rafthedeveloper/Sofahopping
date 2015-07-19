@@ -304,13 +304,7 @@
 }
 
 
-.hero{
-  width:100%;
-  height:600px;
-  background-size: cover;
-  background:url("https://placeimg.com/1980/600/nature");
-  position:relative;
-}
+
 
 .search-results{
   width:700px;
@@ -452,7 +446,8 @@
   #content{
     width:1120px;
     margin:0 auto;
-    padding:20px 0px;
+
+
   }
   .profile-sidebar-container, .dash-sidebar-container{
     float:left;

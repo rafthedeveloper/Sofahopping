@@ -1,7 +1,8 @@
 SofaHopping.Routers.Router = Backbone.Router.extend({
 
   routes: {
-    "": "userDashboard",
+    "": "root",
+    "dashboard": "userDashboard",
     "users/new": "new",
     "session/new": "signIn",
     "people/:id": "userProfile",
@@ -13,6 +14,15 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
+    this.$rootHero = options.$rootHero
+  },
+
+  root: function(){
+    var callback = function(){ Backbone.history.navigate("#dashboard", { trigger: true })};
+        if (!this._requireSignedOut(callback)) { return; }
+
+    var rootView = new SofaHopping.Views.RootView({ });
+    this._swapView(rootView, this.$rootHero);
   },
 
   new: function(){
@@ -141,9 +151,13 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       Backbone.history.navigate("", { trigger: true });
     },
 
-  _swapView: function(view){
+  _swapView: function(view, el){
     this.currentView && this.currentView.remove();
-
+    if (el){
+      el.html(view.render().$el);
+      this.currentView = view;
+      return;
+    }
     this.$rootEl.html(view.render().$el);
     this.$rootEl.prepend("<section class=\"server_responses\"></section>");
     this.currentView = view;

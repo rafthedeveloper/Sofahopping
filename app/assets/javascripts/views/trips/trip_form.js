@@ -65,7 +65,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
       success: function(trip, response){
         SofaHopping.currentUser.trips().add(this.model, { merge: true });
-        Backbone.history.navigate("#", { trigger: true })
+        Backbone.history.navigate("dashboard", { trigger: true })
         this.destroyForm();
       }.bind(this)
     });

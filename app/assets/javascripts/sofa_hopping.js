@@ -11,7 +11,7 @@ window.SofaHopping = {
     this.header = new SofaHopping.Views.Header({ el: "#header" });
     this.currentUser.fetch({
       success: function(){
-        new SofaHopping.Routers.Router({ $rootEl: $("#content") });
+        new SofaHopping.Routers.Router({ $rootEl: $("#content"), $rootHero: $("#splash-page") });
         Backbone.history.start();
       }
     });
