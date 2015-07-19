@@ -9,7 +9,7 @@
     <button class="delete" id="reject_friend_request">Reject</button>
 </form>
 
-<% } else if (friend.get('pending_status') === "accepted") { %>
+<% } else  { %>
   <% if (parseInt(visitedUser.id) === SofaHopping.currentUser.id) {%>
   <form class="content-form group">
   <button class="delete" id="delete_friend">Delete friend</button>

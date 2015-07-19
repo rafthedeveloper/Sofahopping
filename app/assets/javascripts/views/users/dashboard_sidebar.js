@@ -13,6 +13,7 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
   },
 
   render: function(){
+
     var renderedContent = this.template({ user: this.model });
     this.$el.html(renderedContent);
 
@@ -24,11 +25,13 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
   },
 
   updateHostingStatus: function(event){
+
     event.preventDefault();
     var attr = $(event.currentTarget).serializeJSON().user;
     this.model.set(attr)
     this.model.save({}, {
       success: function(model, response) {
+
       }.bind(this)
    });
   }

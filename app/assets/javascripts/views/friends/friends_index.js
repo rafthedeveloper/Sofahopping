@@ -9,8 +9,8 @@ SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
 
   removeFriendView: function(friend){
     this.removeModelSubview('.friends-list', friend);
-    debugger
-    if (this.collection.length === 0) { this.$el.find(".friends-list").append("<li>No pending friend requests.</li>") }
+
+    if (this.collection.length === 0) { this.$el.find(".friends-list").append("<li>Nothing to find here!</li>") }
   },
 
   initialize: function(options){

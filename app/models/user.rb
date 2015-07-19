@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def num_refs
+    self.received_references.length
+  end
+
   def accepted_friends
     all_friends = []
     requested_friends = self.requested_friendships.where("pending_status = ?", "accepted")
