@@ -27,6 +27,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   new: function(){
 
+
     if (!this._requireSignedOut()) {
       return; }
 
@@ -34,8 +35,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var formView = new SofaHopping.Views.UsersForm({
       model: newUser
     });
-
-    this._swapView(formView);
+    this._swapView(formView, this.$rootHero);
   },
 
   signIn: function(callback){
@@ -45,7 +45,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var signInView = new SofaHopping.Views.SignIn({
       callback: callback
     });
-    this._swapView(signInView);
+    this._swapView(signInView, this.$rootHero);
   },
 
   memberSearchBar: function(redirected){

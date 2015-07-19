@@ -3,6 +3,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
   initialize: function(options){
     this.listenTo(SofaHopping.currentUser, "signIn signOut", this.render);
     this.render();
+
   },
 
   events: {
@@ -40,7 +41,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
     event.preventDefault();
     SofaHopping.currentUser.signOut({
       success: function(){
-        Backbone.history.navigate("session/new", { trigger: true });
+        Backbone.history.navigate("#", { trigger: true });
       }
     });
   }

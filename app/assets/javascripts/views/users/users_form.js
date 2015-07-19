@@ -3,6 +3,8 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync change", this.render);
+    this.$rootHero = options.$rootHero
+
   },
 
   events: {
@@ -11,6 +13,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
+
     var html = this.template({ user: this.model });
     this.$el.html(html);
 
@@ -40,7 +43,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
       error: function(data, jqxhr){
 
         alert("Form invalid. Let the user know what went wrong.");
-  
+
       }
     });
   }
