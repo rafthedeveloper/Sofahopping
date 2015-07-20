@@ -19,6 +19,7 @@ SofaHopping.Views.DashboardTodo = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.attachSubviews();
 
+
     return this;
   }
 })

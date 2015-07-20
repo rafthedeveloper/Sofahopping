@@ -9,7 +9,7 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync change", this.render)
   },
 
   render: function(){
@@ -31,7 +31,8 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
     this.model.set(attr)
     this.model.save({}, {
       success: function(model, response) {
-
+        var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
+        success.render();
       }.bind(this)
    });
   }

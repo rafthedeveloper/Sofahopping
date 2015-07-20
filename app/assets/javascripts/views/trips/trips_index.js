@@ -3,13 +3,21 @@ SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
   className: "trips dash-main-content",
   tagName: "section",
 
+  events:{
+    "click #create-trip": "doStuff"
+  },
+
   addTripView: function(trip){
+
     var tripView = new SofaHopping.Views.TripIndexItem ({ model: trip, currentUser: this.model, collection: this.collection });
     this.addSubview('.trips-list', tripView);
+
+
   },
 
   removeTripView: function(trip){
     this.removeModelSubview('.trips-list', trip);
+    if (this.collection.length === 0) { this.$(".trips-list").addClass("none") }
   },
 
   initialize: function(){
@@ -19,11 +27,16 @@ SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
     this.collection.each(this.addTripView.bind(this));
   },
 
+  doStuff: function(event){
+    Backbone.history.navigate("members/hosts", { trigger: true })
+    $("#create_trip").trigger("click");
+  },
+
   render: function(){
-    var renderedContent = this.template({ trips: this.model.trips() });
+    var renderedContent = this.template({});
     this.$el.html(renderedContent);
     this.attachSubviews();
-
+    if (this.collection.length > 0) { this.$(".trips-list").removeClass("none") }
     return this;
   }
 })

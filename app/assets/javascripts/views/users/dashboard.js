@@ -21,14 +21,14 @@ SofaHopping.Views.DashboardView = Backbone.CompositeView.extend({
 
   initialize: function(){
 
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync change", this.render)
     this.addSideBarView();
     this.addTodoView();
     this.addTripsView();
   },
 
   render: function(){
-
+    
     var renderedContent = this.template();
     this.$el.html(renderedContent)
     this.attachSubviews();

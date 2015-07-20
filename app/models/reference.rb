@@ -27,5 +27,18 @@ class Reference < ActiveRecord::Base
     foreign_key: :referencer_id,
     primary_key: :id
 
+  def author_details
+
+      details = {}
+      author = self.author
+      details["fname"] = author.fname
+      details["lname"] = author.lname
+      details["id"] = author.id
+      details["location"] = author.location
+      
+      details
+    end
+
+
 
 end

@@ -12,14 +12,14 @@ class Api::FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.destroy!
-    render json: @friendship
+    render json: { message: "Successfully removed/rejected friend/friend request." }
   end
 
   def update
     @friendship = current_user.requested_by_others.find(params[:id])
 
     if @friendship.update(update_friend_params)
-      render json: @friendship
+      render json: { message: "Successfully accepted friend request." }
     else
       render json: @friendship.errors.full_messages, status: :unprocessable_entity
     end

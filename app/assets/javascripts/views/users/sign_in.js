@@ -34,6 +34,7 @@ SofaHopping.Views.SignIn = Backbone.View.extend({
       username: formData.username,
       password: formData.password,
       success: function(){
+
         this.remove();
       }.bind(this),
       error: function(){

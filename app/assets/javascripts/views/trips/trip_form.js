@@ -40,6 +40,9 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
     trip.destroy({
       success: function(model, response){
+
+        var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
+        success.render();
         this.remove();
       }.bind(this),
 
@@ -64,6 +67,8 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
       }.bind(this),
 
       success: function(trip, response){
+        var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
+        success.render();
         SofaHopping.currentUser.trips().add(this.model, { merge: true });
         Backbone.history.navigate("dashboard", { trigger: true })
         this.destroyForm();

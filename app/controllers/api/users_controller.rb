@@ -30,7 +30,10 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      render json: { message: "Successfully updated your hosting status!" }
+      hosting_status = "Accepting Guests" if @user.hosting_status == "yes"
+      hosting_status = "Maybe Accepting Guests" if @user.hosting_status == "maybe"
+      hosting_status = "Not Accepting Guests" if @user.hosting_status == "no"
+      render json: { message: "Successfully updated your hosting status to '#{hosting_status}'" }
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
     end
