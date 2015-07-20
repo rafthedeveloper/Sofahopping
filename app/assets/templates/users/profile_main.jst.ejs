@@ -8,10 +8,14 @@
 
 
 </h3>
+<% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
 
-  <% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
+  <% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
     <button id="add_friend">Add friend</button>
-    <% } %>
+  <% } else if(SofaHopping.currentUser.is_added_friend(parseInt(user.id))){ %>
+    <button id="remove_friend">Remove friend</button>
+  <% } %>
+<% } %>
 </section>
 
 <section class="user-profile-references-container profile-main-content"></section>

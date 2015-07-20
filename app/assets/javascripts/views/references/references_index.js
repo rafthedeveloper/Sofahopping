@@ -9,10 +9,12 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   addReferenceView: function(reference){
     var referenceView = new SofaHopping.Views.ReferenceIndexItem({ model: reference });
     this.addSubview('.references-list', referenceView);
+    this.$(".references-list").removeClass("none")
   },
 
   removeReferenceView: function(reference){
     this.removeModelSubview('.references-list', reference);
+    if (this.collection.length === 0) { this.$(".references-list").addClass("none") }
   },
 
   initialize: function(){

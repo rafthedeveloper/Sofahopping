@@ -5,6 +5,8 @@ SofaHopping.Views.RootView = Backbone.View.extend({
     "click #sign-in-google-root": "oauthLogin"
   },
 
+
+
   render: function(){
 
     var renderedContent = this.template({});
@@ -13,14 +15,15 @@ SofaHopping.Views.RootView = Backbone.View.extend({
     return this
   },
 
+
+
   oauthLogin: function(event){
     event.preventDefault();
     window.location = '/auth/google_oauth2';
   },
 
   renderSignUp: function(event){
-    debugger
     event.preventDefault();
-    Backbone.history.navigate("session/new", { trigger: true })
+    Backbone.history.navigate("users/new", { trigger: true })
   }
 });

@@ -49,6 +49,7 @@ class Friendship < ActiveRecord::Base
     details["fname"] = requester.fname
     details["lname"] = requester.lname
     details["id"] = requester.id
+    details["location"] = requester.location
 
     details
   end

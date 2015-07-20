@@ -33,6 +33,67 @@ SofaHopping.Models.User = Backbone.Model.extend({
     return this._pendingFriends
   },
 
+  get_friend_id: function(friendship){
+
+    var friend = this.friends().get(friendship);
+    if (friend.get('requester_id') === parseInt(this.id)) {
+      return friend.get('requestee_id')
+    } else {
+      return friend.get('requester_id')
+    }
+
+  },
+
+  is_added_friend: function(other_user){
+    var result = false;
+
+
+    if (this.id === other_user) { result = true };
+
+    this.friends().each(function(friend){
+
+      if (friend.get('requester_id') === other_user || friend.get('requestee_id') === other_user){
+        result = true;
+      }
+    })
+
+
+
+    return result;
+  },
+
+  is_pending_friend: function(other_user){
+    var result = false;
+
+    this.pendingFriends().each(function(friend){
+
+      if (friend.get('requester_id') === other_user || friend.get('requestee_id') === other_user){
+        result = true;
+      }
+    })
+
+    return result;
+  },
+
+  is_connected_with: function(other_user){
+    var result;
+    result = this.is_added_friend(other_user) || this.is_pending_friend(other_user)
+
+    return result;
+  },
+
+
+  find_added_friend: function(id){
+    var added_friend;
+    this.friends().each(function(friend){
+      if (friend.get('requester_id') === id || friend.get('requestee_id') === id){
+        added_friend = friend;
+      }
+    })
+
+    return added_friend
+  },
+
   parse: function(payload){
     if (payload.trips){
       this.trips().set(payload.trips);
@@ -110,10 +171,8 @@ SofaHopping.Models.CurrentUser = SofaHopping.Models.User.extend({
   fireSessionEvent: function(){
   if(this.isSignedIn()){
     this.trigger("signIn");
-    console.log("currentUser is signed in!", this);
   } else {
     this.trigger("signOut");
-    console.log("currentUser is signed out!", this);
   }
 }
 

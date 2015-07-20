@@ -1,4 +1,15 @@
-<%= friend.id %>
+<figure>
+  <img src="http://i.imgur.com/u3ttnE3.png"  />
+</figure>
+
+<section class="friend-details">
+  <% if (listType === "pending") { %>
+    <a href="<%= "#people/" + friend.escape('requester_id') %>"><%= friend.escape('fname') %> <%= friend.escape('lname') %></a>
+  <% } else { %>
+  <a href="<%= "#people/" + visitedUser.get_friend_id(friend.id) %>"><%= friend.escape('fname') %> <%= friend.escape('lname') %></a>
+  <% } %>
+  <small><%= friend.escape('location') %></small>
+</section>
 
 <% if (friend.get('pending_status') === "pending") { %>
 <a href="#people/<%= friend.get('friend_details').id %>">
@@ -9,10 +20,5 @@
     <button class="delete" id="reject_friend_request">Reject</button>
 </form>
 
-<% } else  { %>
-  <% if (parseInt(visitedUser.id) === SofaHopping.currentUser.id) {%>
-  <form class="content-form group">
-  <button class="delete" id="delete_friend">Delete friend</button>
-  </form>
-  <% } %>
+
 <% } %>
