@@ -110,18 +110,91 @@ class User < ActiveRecord::Base
 
   def accepted_friends
     all_friends = []
+    all_friends_details = []
     requested_friends = self.requested_friendships.where("pending_status = ?", "accepted")
     requested_by_others = self.requested_by_others.where("pending_status = ?", "accepted")
 
     all_friends.concat(requested_friends).concat(requested_by_others)
+    all_friends.each do |friend|
+      if (friend.friend_requester.id == self.id)
+        added_friend = friend.friend_requestee
+      else
+        added_friend = friend.friend_requester
+      end
+
+      details = {}
+      details["requester_id"] = friend.requester_id
+      details["requestee_id"] = friend.requestee_id
+      details["id"] = friend.id
+      details["fname"] = added_friend.fname
+      details["lname"] = added_friend.lname
+
+      details["location"] = added_friend.location
+      all_friends_details.push(details);
+    end
+
+    all_friends_details
   end
 
   def pending_friends
     pending_friends = []
-    requested_friends = self.requested_friendships.where("pending_status = ?", "pending")
+    pending_friends_details = [];
+    requested_friends = self.requested_friendships.where("pending_status = ?" , "pending")
     requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
 
     pending_friends.concat(requested_friends).concat(requested_by_others)
+
+    pending_friends.each do |friend|
+      if (friend.friend_requester.id == self.id)
+        pending_friend = friend.friend_requestee
+      else
+        pending_friend = friend.friend_requester
+      end
+
+      details = {}
+      details["requester_id"] = friend.requester_id
+      details["requestee_id"] = friend.requestee_id
+      details["id"] = friend.id
+      details["fname"] = pending_friend.fname
+      details["lname"] = pending_friend.lname
+
+      details["location"] = pending_friend.location
+
+      pending_friends_details.push(details);
+    end
+
+    pending_friends_details
+
+  end
+
+  def pending_requested_friends
+    pending_friends = []
+    pending_friends_details = [];
+    requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
+
+    pending_friends.concat(requested_by_others)
+
+    pending_friends.each do |friend|
+      if (friend.friend_requester.id == self.id)
+        pending_friend = friend.friend_requestee
+      else
+        pending_friend = friend.friend_requester
+      end
+
+      details = {}
+      details["requester_id"] = friend.requester_id
+      details["requestee_id"] = friend.requestee_id
+      details["id"] = friend.id
+      details["fname"] = pending_friend.fname
+      details["lname"] = pending_friend.lname
+
+      details["location"] = pending_friend.location
+
+      pending_friends_details.push(details);
+    end
+
+    pending_friends_details
+
 
   end
 

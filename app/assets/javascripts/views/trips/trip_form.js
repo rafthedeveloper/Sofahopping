@@ -18,6 +18,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     this.$el.html(renderedContent);
     $("body").append(this.$el);
     this.createDatePicker();
+    
     return this;
   },
 

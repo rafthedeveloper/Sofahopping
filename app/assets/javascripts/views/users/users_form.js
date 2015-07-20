@@ -5,6 +5,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
     this.listenTo(this.model, "sync change", this.render);
     this.$rootHero = options.$rootHero
 
+
   },
 
   events: {
@@ -17,8 +18,16 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
 
     var html = this.template({ user: this.model });
     this.$el.html(html);
+    this.createDatePicker();
 
     return this;
+  },
+
+  createDatePicker: function(){
+
+    this.$(".datepicker").datepicker({
+      dateFormat: "dd/mm/yy"
+    });
   },
 
   destroySignUpForm: function(){

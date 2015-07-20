@@ -211,7 +211,7 @@
 
 
 
- /** DASHBOARD STYLING */
+ /** PROFILE STYLING */
 
  .profile{
  position:relative;
@@ -242,6 +242,33 @@
    font-size:16px;
  }
 
+ /** FRIENDS STYLING **/
+
+ .friends-list li{
+   float:left;
+   width:33%;
+ }
+ .friends-list li figure{
+   width:50px;
+   height:50px;
+   float:left;
+ }
+
+ .friends-list li figure img{
+   border-radius:25px;
+ }
+
+ .friends-list li .friend-details{
+   float:left;
+   margin-left:5px;
+   margin-top:5px;
+ }
+
+ .friends-list li .friend-details a{
+   color:#2980b9;
+   font-weight:bold;
+ }
+
  /** TRIPS STYLING **/
 
  .trips-list{
@@ -270,7 +297,7 @@
  }
 
  .friends-list.none:before{
-   content:"Nothing found here!";
+   content:"No friends have been found.";
    padding:20px 0px;
    display:block;
  }
@@ -278,6 +305,12 @@
  .trips-list.none:before{
    content:"No trips have been found.";
    padding-bottom:20px;
+   display:block;
+ }
+
+ .references-list.none:before{
+   content: "No references have been found.";
+   padding:20px 0px;
    display:block;
  }
 
@@ -359,6 +392,8 @@
   width:320px;
   color: #444;
   max-width:100%;
+  max-height:700px;
+  overflow-y:auto;
 }
 
 
@@ -606,7 +641,10 @@ max-width:100%;
     padding: 0px 20px;
   }
 
-  .references-list li, .friends-list li{
+  .friends-list li{
+    padding:20px 0px;
+  }
+  .references-list li{
     padding:20px 0px;
     border-top:#EDEDED 1px solid;
   }
@@ -650,10 +688,11 @@ max-width:100%;
  .errors{
     color: #D8000C;
     background-color: #FFBABA;
+    margin-bottom:20px;
   }
 
   .errors li{
-    margin: 10px 20px 0px 20px;
+    margin-left:20px;
   }
 
   .server_responses{

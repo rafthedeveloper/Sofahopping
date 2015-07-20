@@ -9,12 +9,17 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     "members/search": "memberSearchBar",
     "members/hosts": "findHosts",
     "members/all": "findAllMembers",
-    "members/travelers": "findAllTravelers"
+    "members/travelers": "findAllTravelers",
+    "404": "noPageFound"
   },
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.$rootHero = options.$rootHero
+  },
+
+  noPageFound: function(){
+
   },
 
   root: function(){
@@ -36,6 +41,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       model: newUser
     });
     this._swapView(formView, this.$rootHero);
+    initialize();
   },
 
   signIn: function(callback){
@@ -79,6 +85,8 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var callback = this.userProfile.bind(this, id);
     if (!this._requireSignedIn(callback)) { return; }
 
+    SofaHopping.currentUser.fetch();
+
     var visitedUser = SofaHopping.users.getOrFetch(id, { data: { view: "profile"} });
 
     var userProfileView = new SofaHopping.Views.ProfileView({
@@ -97,6 +105,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var membersView = new SofaHopping.Views.MembersView({
       collection: hosts, searchType: "hosts" })
     this._swapView(membersView);
+
 
   },
 

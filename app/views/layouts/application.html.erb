@@ -5,12 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   <script src="//use.typekit.net/svp4qrc.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
+  <script>
 
+    function initialize() {
+      var autocomplete;
+      autocomplete = new google.maps.places.Autocomplete(
+          /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+          { types: ['geocode'] });
+      google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      });
+    }
+  </script>
 
   <body>
     <%= yield %>
   </body>
+
 
 </html>

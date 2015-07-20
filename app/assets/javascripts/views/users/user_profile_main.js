@@ -4,7 +4,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "click #add_friend": "createFriend"
+    "click #add_friend": "createFriend",
+    "click #remove_friend": "removeFriend"
 
   },
 
@@ -26,6 +27,9 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   initialize: function(){
 
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.currentUser, "sync", this.render);
+    this.listenTo(SofaHopping.currentUser.pendingFriends(), "add remove", this.render);
+    this.listenTo(SofaHopping.currentUser.friends(), "add remove", this.render);
     this.addReferencesView(this.model);
     this.addFriendshipsView(this.model);
   },
@@ -41,12 +45,21 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   createFriend: function(){
     var newFriend = new SofaHopping.Models.Friend({});
     newFriend.set("requestee_id", this.model.id);
-  
+
     newFriend.save({}, {
       success: function(){
-        SofaHopping.currentUser.friends().add(newFriend);
+        SofaHopping.currentUser.pendingFriends().add(newFriend);
       }.bind(this)
     })
+  },
+
+  removeFriend: function(){
+    var added_friend = SofaHopping.currentUser.find_added_friend(this.model.id)
+    added_friend.destroy({
+      success: function(){
+        SofaHopping.currentUser.friends().remove(added_friend);
+      }
+    });
   }
 
 
