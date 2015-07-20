@@ -220,6 +220,6 @@ class User < ActiveRecord::Base
   end
 
   def generate_hosting_status
-    self.hosting_status ||= "MAYBE ACCEPTING GUESTS"
+    self.hosting_status ||= "maybe"
   end
 end
