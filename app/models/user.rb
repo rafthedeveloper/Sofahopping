@@ -56,6 +56,16 @@ class User < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :friend_requestee
 
+  has_many :created_requests,
+    class_name: "Request",
+    foreign_key: :requester_id,
+    primary_key: :id
+
+  has_many :received_requests,
+    class_name: "Request",
+    foreign_key: :requestee_id,
+    primary_key: :id
+
 
 
   def self.find_by_credentials(username, password)
