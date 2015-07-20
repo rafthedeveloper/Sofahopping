@@ -5,7 +5,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
 
   events: {
     "click #add_friend": "createFriend",
-    "click #remove_friend": "removeFriend"
+    "click #remove_friend": "removeFriend",
+    "click #make_request": "makeRequest",
 
   },
 
@@ -61,6 +62,11 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
         SofaHopping.currentUser.friends().remove(added_friend);
       }.bind(this)
     });
+  },
+
+  makeRequest: function(){
+    var requestForm = new SofaHopping.Views.RequestForm({ model: this.model, requestType: "guest" });
+    requestForm.render();
   }
 
 

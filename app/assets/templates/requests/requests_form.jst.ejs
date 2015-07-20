@@ -1,0 +1,28 @@
+<section class="modal-container">
+  <form id="create_request" class="modal signin content-form">
+    <small id="close_request_modal" class="close_modal">X</small>
+    <header>
+      <h3>Stay with <%= user.escape('fname') %></h3>
+      </header>
+
+<ul class="errors"></ul>
+
+<input type="hidden" name="request[requestee_id]" value="<%= user.id %>">
+  <label for="request-arr">Arriving On</label>
+  <input class="datepicker" id="request-arr" name="request[arrival_date]" type="text">
+
+<label for="request-dep">Leaving On</label>
+<input class="datepicker" id="request-dep" name="request[departure_date]" type="text" >
+
+<label for="request-guests">How many guests?</label>
+<input id="request-guests" name="request[num_guests]" type="text">
+
+<label for="request-message">Message</label>
+<textarea id="request-message" name="request[message]" placeholder="Introduce yourself to <%= user.escape('fname')%> with a nice note describing your trip, why you'd like to stay, and why'd you be a great guest."></textarea>
+
+<section class="group button-list">
+    <button class="submit">Send</button>
+
+</section>
+  </form>
+</section>
