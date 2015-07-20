@@ -657,13 +657,9 @@ max-width:100%;
   }
 
   .server_responses{
-
-
     margin-top:20px;
-    min-height:40px;
-
+    min-height:60px;
     margin-left:340px;
-
   }
 
   .server_responses small:before{
@@ -675,15 +671,14 @@ max-width:100%;
     margin-right:5px;
     display:block;
     float:left;
-    padding-left:2px;
+    padding-top:1px;
     text-align:center;
-    font-size:16px;
+    font-size:14px;
 
 
   }
 
   .server_responses small{
-
     padding:20px;
     color:#fff;
     background: rgba(46, 204, 113, .5);

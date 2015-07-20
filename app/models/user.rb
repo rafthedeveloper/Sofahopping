@@ -66,6 +66,28 @@ class User < ActiveRecord::Base
     return trips.length
   end
 
+  def self.find_or_create_by_auth_hash(auth_hash)
+    user = User.find_by(
+            provider: auth_hash[:provider],
+            uid: auth_hash[:uid])
+
+    unless user
+      user = User.create!(
+        provider: auth_hash[:provider],
+        uid: auth_hash[:uid],
+        fname: auth_hash[:info][:first_name],
+        lname: auth_hash[:info][:last_name],
+        username: auth_hash[:info][:email],
+        password: SecureRandom::urlsafe_base64,
+        location: "other",
+        birthday: "29/10/1969",
+        gender: "other"
+      )
+    end
+
+    user
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

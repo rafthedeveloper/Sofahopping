@@ -6,8 +6,10 @@ SofaHopping.Views.SignIn = Backbone.View.extend({
   },
 
   events: {
+    "click #google-sign-in": "oauthLogin",
     "submit #login_form": "submit",
-    "click #close_login_modal": "destroyLoginForm"
+    "click #close_login_modal": "destroyLoginForm",
+
   },
 
   template: JST['users/sign_in'],
@@ -17,6 +19,13 @@ SofaHopping.Views.SignIn = Backbone.View.extend({
 
     return this;
   },
+
+  oauthLogin: function(event){
+    event.preventDefault();
+    window.location = '/auth/google_oauth2';
+  },
+
+
 
   destroyLoginForm: function(){
 
