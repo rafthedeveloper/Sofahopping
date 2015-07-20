@@ -11,12 +11,10 @@
   <small><%= friend.escape('location') %></small>
 </section>
 
-<% if (friend.get('pending_status') === "pending") { %>
-<a href="#people/<%= friend.get('friend_details').id %>">
-  <%= friend.get('friend_details').fname %> <%= friend.get('friend_details').lname %>
-</a>
+<% if (listType === "pending") { %>
+
 <form class="content-form group">
-    <button class="submit" id="accept_friend_request">Accept friend</button>
+    <button class="submit" id="accept_friend_request">Accept</button>
     <button class="delete" id="reject_friend_request">Reject</button>
 </form>
 

@@ -14,6 +14,8 @@
 #  hosting_status  :string           not null
 #  created_at      :datetime
 #  updated_at      :datetime
+#  provider        :string
+#  uid             :string
 #
 
 class User < ActiveRecord::Base

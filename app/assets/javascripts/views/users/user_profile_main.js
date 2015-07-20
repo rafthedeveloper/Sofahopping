@@ -57,8 +57,9 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     var added_friend = SofaHopping.currentUser.find_added_friend(this.model.id)
     added_friend.destroy({
       success: function(){
+        this.model.friends().remove(added_friend);
         SofaHopping.currentUser.friends().remove(added_friend);
-      }
+      }.bind(this)
     });
   }
 
