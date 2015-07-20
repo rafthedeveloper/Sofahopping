@@ -14,6 +14,8 @@ gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'js_assets'
 gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
+gem "figaro"
 
 group :doc do
   gem 'sdoc', require: false

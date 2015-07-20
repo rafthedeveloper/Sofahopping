@@ -8,6 +8,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
   },
 
   events: {
+    "click #google-sign-in": "oauthLogin",
     "click #close_signup_modal": "destroySignUpForm",
     "submit #signup_form": "submit"
   },
@@ -25,6 +26,10 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
     Backbone.history.navigate("", { trigger: true });
   },
 
+  oauthLogin: function(event){
+    event.preventDefault();
+    window.location = '/auth/google_oauth2';
+  },
 
   submit: function(event){
     event.preventDefault();
@@ -38,7 +43,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
     this.model.save({}, {
       success: function(object, response){
            SofaHopping.currentUser.fetch();
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("#dashboard", { trigger: true });
       },
       error: function(data, jqxhr){
 
