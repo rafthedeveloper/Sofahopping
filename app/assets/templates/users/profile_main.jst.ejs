@@ -1,4 +1,4 @@
-<section class="user-profile-info profile-main-content">
+<section class="user-profile-info profile-main-content group">
 <h3>
   <% if (user.get('hosting_status') === "yes") { %> <span class="accepting">ACCEPTING GUESTS</span> <% } %>
   <% if (user.get('hosting_status') === "maybe") { %><span class="maybe">MAYBE ACCEPTING GUESTS</span> <% } %>
@@ -8,6 +8,9 @@
 
 
 </h3>
+
+
+<section class="profile-actions">
 <% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
 
   <% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
@@ -17,6 +20,14 @@
   <% } %>
 <% } %>
 </section>
+</section>
 
 <section class="user-profile-references-container profile-main-content"></section>
 <section class="user-profile-friends-container profile-main-content"></section>
+
+<style>
+
+.profile-actions{
+  float:right;
+}
+</style>

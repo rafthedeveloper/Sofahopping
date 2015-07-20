@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720151705) do
+ActiveRecord::Schema.define(version: 20150720202625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 20150720151705) do
 
   add_index "references", ["referencee_id"], name: "index_references_on_referencee_id", using: :btree
   add_index "references", ["referencer_id"], name: "index_references_on_referencer_id", using: :btree
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "requester_id",   null: false
+    t.integer "requestee_id",   null: false
+    t.string  "location",       null: false
+    t.string  "message",        null: false
+    t.date    "arrival_date",   null: false
+    t.date    "departure_date", null: false
+    t.integer "num_guests",     null: false
+  end
+
+  add_index "requests", ["requestee_id"], name: "index_requests_on_requestee_id", using: :btree
+  add_index "requests", ["requester_id"], name: "index_requests_on_requester_id", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.integer "user_id",        null: false
