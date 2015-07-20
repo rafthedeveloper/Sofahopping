@@ -1,6 +1,7 @@
 SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   template: JST["references/references_index"],
 
+
   events: {
     "click #create_reference": "createReferenceForm"
   },
@@ -32,8 +33,8 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
     return this;
   },
 
-  createReferenceForm: function(){
-
+  createReferenceForm: function(event){
+    event.preventDefault();
     var referenceForm = new SofaHopping.Views.ReferenceForm ({
       model: this.model
     });

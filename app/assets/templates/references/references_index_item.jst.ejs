@@ -1,7 +1,82 @@
-<%= reference.escape('description') %>
-<%= reference.escape('relationship') %>
-<%= reference.escape('experience') %>
+<section class="referencer-info">
+<figure>
+  <img src="http://i.imgur.com/u3ttnE3.png"  />
+</figure>
+
+<header>
+  <a href="<%= "#people/" + reference.get('author_details').id  %>" ><%= reference.get('author_details').fname %> <%= reference.get('author_details').lname %></a>
+  <small><%= reference.get('author_details').location %></small>
+  
+</header>
+
+
+</section>
+<article class="reference-description">
+
+  <small class="<%= reference.escape('experience') %>">
+    <%= reference.escape('relationship') %> - <strong><%= reference.escape('experience') %></strong>
+  </small>
+  <p>
+    <%= reference.escape('description') %>
+  <p>
+</article>
 
 <% if (parseInt(currentUser.id) === reference.get("referencer_id")) {%>
-  <button id="delete_reference">Delete Reference</button>
+  <form class="content-form group">
+  <button class="delete" id="delete_reference">Delete</button>
+</form>
 <% } %>
+
+
+
+<style>
+  .referencer-info{
+    width:100%;
+    display:block;
+  }
+
+  .reference-list-item form{
+    margin-left:60px;
+  }
+  .referencer-info figure{
+    width:50px;
+    float:left;
+    margin-right:10px;
+  }
+
+  .referencer-info header small{
+    margin-top:5px;
+    font-size:12px;
+
+  }
+
+
+  .referencer-info header{
+    padding-top:5px;
+
+  }
+
+  .referencer-info header a{
+    color:#2980b9;
+    font-weight:bold;
+  }
+
+  .referencer-info header a:hover{
+    text-decoration:underline;
+
+  }
+
+  .referencer-info figure img{
+      border-radius:25px;
+  }
+
+  .reference-description{
+    margin-left:60px;
+    margin-top:10px;
+    display:block;
+  }
+
+  .reference-description p{
+    margin-top:10px;
+  }
+</style>

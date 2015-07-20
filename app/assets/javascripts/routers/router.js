@@ -159,7 +159,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       return;
     }
     this.$rootEl.html(view.render().$el);
-    this.$rootEl.prepend("<section class=\"server_responses\"></section>");
+    this.$rootEl.prepend("<section class=\"server_responses group\"></section>");
     this.currentView = view;
   }
 })

@@ -1,6 +1,7 @@
 SofaHopping.Views.SuccessMessage = Backbone.View.extend({
   template: JST["success/message"],
 
+
   initialize: function(options){
     this.message = options.message;
     this.$el = $(".server_responses");
@@ -14,8 +15,10 @@ SofaHopping.Views.SuccessMessage = Backbone.View.extend({
   },
 
   startFadeOut: function(){
+    window.scrollTo(0, 0);
     this.$el.delay(10000).fadeOut(400, function(){
-      this.remove();
-    })
+      this.$el.empty();
+      this.$el.css("display", "block");
+    }.bind(this))
   }
 })

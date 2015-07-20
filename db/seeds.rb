@@ -129,12 +129,20 @@ r2 = Reference.create!(
      experience: "positive"
 )
 
+r2 = Reference.create!(
+     referencer_id: u5.id,
+     referencee_id: u1.id,
+     relationship: "guest",
+     description: "What an awesome company to have, I would love to hang out with them again! Definitely a positive experience!",
+     experience: "neutral"
+)
+
 r3 = Reference.create!(
      referencer_id: u2.id,
      referencee_id: u1.id,
      relationship: "guest",
      description: "What an awesome company to have, I would love to hang out with them again! Definitely a positive experience!",
-     experience: "positive"
+     experience: "negative"
 )
 
 r4 = Reference.create!(

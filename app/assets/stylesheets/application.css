@@ -267,6 +267,29 @@
    margin-bottom:10px;
  }
 
+ .friends-list.none:before{
+   content:"Nothing found here!";
+   padding:20px 0px;
+   display:block;
+ }
+
+ .trips-list.none:before{
+   content:"No trips have been found.";
+   padding-bottom:20px;
+   display:block;
+ }
+
+ .trips strong{
+ display:block;
+   margin:20px 0px 0px 20px;
+   cursor:pointer;
+   color: #2980b9;
+ }
+
+ .trips strong:hover{
+   text-decoration:underline;
+}
+
  /** SEARCH STYLING **/
 
  #search{
@@ -280,6 +303,7 @@
 
 .modal-container{
   z-index:1;
+
 
   position:fixed;
   top:0;
@@ -332,6 +356,7 @@
 .content-form{
   width:320px;
   color: #444;
+  max-width:100%;
 }
 
 
@@ -340,7 +365,7 @@
   width:280px;
   margin:0 auto;
   border-radius:5px;
-
+max-width:100%;
   padding:10px;
   border: 1px solid #ccc;
   box-shadow: inset 0 1px 3px #ddd;
@@ -511,15 +536,19 @@
     margin-left:20px;
   }
 
-  .accepting{
+  .accepting, .positive{
     color: #27ae60;
+  }
+
+  .negative{
+    color: #c0392b;
   }
 
   .maybe{
     color: #2980b9;
   }
 
-  .no{
+  .no, .neutral{
     color: #898989;
   }
 
@@ -543,7 +572,7 @@
   }
   .profile-sidebar-container, .dash-sidebar-container{
     float:left;
-    width:300px;
+    width:250px;
     margin-right:40px;
   }
 
@@ -555,7 +584,7 @@
   }
 
   .profile-main-content, .dash-main-content{
-    margin-top:40px;
+    margin-bottom:40px;
     background: #fff;
     border: 1px solid #d5d5d5;
 
@@ -577,7 +606,7 @@
 
   .references-list li, .friends-list li{
     padding:20px 0px;
-    border-bottom:#EDEDED 1px solid;
+    border-top:#EDEDED 1px solid;
   }
 
   .references-list li:last-child, .friends-list li:last-child{
@@ -623,4 +652,37 @@
 
   .errors li{
     margin: 10px 20px 0px 20px;
+  }
+
+  .server_responses{
+
+
+    margin-top:20px;
+    min-height:40px;
+
+    margin-left:340px;
+
+  }
+
+  .server_responses small:before{
+    content: "✓";
+    background: rgba(46, 204, 113, 1);
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    margin-right:5px;
+    display:block;
+    float:left;
+    padding-left:2px;
+    text-align:center;
+    font-size:16px;
+
+
+  }
+
+  .server_responses small{
+
+    padding:20px;
+    color:#fff;
+    background: rgba(46, 204, 113, .5);
   }
