@@ -9,6 +9,14 @@ SofaHopping.Models.User = Backbone.Model.extend({
     return this._trips;
   },
 
+  requests: function(){
+    if (!this._requests){
+      this._requests = new SofaHopping.Collections.Requests([], { user: this });
+    }
+
+    return this._requests
+  },
+
   references: function(){
     if (!this._references){
       this._references = new SofaHopping.Collections.References([], { user: this });

@@ -120,6 +120,10 @@ class User < ActiveRecord::Base
     self.received_references.length
   end
 
+  def all_requests
+    self.received_requests + self.created_requests
+  end
+
   def accepted_friends
     all_friends = []
     all_friends_details = []
@@ -208,7 +212,7 @@ class User < ActiveRecord::Base
     pending_friends_details
   end
 
-  
+
 
   def remove_friend
     all_friends = self.friends
