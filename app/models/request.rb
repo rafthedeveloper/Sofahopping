@@ -15,7 +15,9 @@
 
 class Request < ActiveRecord::Base
   validates :requester_id, :requestee_id, :location, :message, :arrival_date,
-  :departure_date, :num_guests, :requester_type, presence: true
+  :departure_date, :num_guests, :requester_type, :status, presence: true
+
+  after_initialize :ensure_status
 
   belongs_to :requester,
   class_name: "User",
@@ -47,6 +49,10 @@ class Request < ActiveRecord::Base
     requestee_details["id"] = requestee.id
 
     requestee_details
+  end
+
+  def ensure_status
+    self.status ||= "pending"
   end
 
 end

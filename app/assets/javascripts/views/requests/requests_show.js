@@ -3,6 +3,10 @@ SofaHopping.Views.RequestsShow = Backbone.View.extend({
 	tagName: "article",
 	className: "request-details",
 
+	events:{
+		"click #cancel-request": "cancelRequest",
+		"click #reject-request": "rejectRequest"
+	},
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render)
 	},
@@ -13,5 +17,21 @@ SofaHopping.Views.RequestsShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 
 		return this;
+	},
+
+	cancelRequest: function(){
+		this.model.set("status", "cancelled")
+		this.model.save({}, {
+			success: function(){
+			}.bind(this)
+		})
+	},
+
+	rejectRequest: function(){
+		this.model.set("status", "rejected")
+		this.model.save({}, {
+			success: function(){
+			}.bind(this)
+		})
 	}
 })
