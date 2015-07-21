@@ -159,6 +159,72 @@ r3 = Reference.create!(
      experience: "neutral"
 )
 
+r4 = Reference.create!(
+     referencer_id: u1.id,
+     referencee_id: u2.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r5 = Reference.create!(
+     referencer_id: u1.id,
+     referencee_id: u3.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r6 = Reference.create!(
+     referencer_id: u1.id,
+     referencee_id: u4.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r7 = Reference.create!(
+     referencer_id: u1.id,
+     referencee_id: u5.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r8 = Reference.create!(
+     referencer_id: u2.id,
+     referencee_id: u3.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r9 = Reference.create!(
+     referencer_id: u2.id,
+     referencee_id: u4.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r10 = Reference.create!(
+     referencer_id: u2.id,
+     referencee_id: u5.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+r11 = Reference.create!(
+     referencer_id: u3.id,
+     referencee_id: u2.id,
+     relationship: "host",
+     description: "What an ok company to have, I would maybe like to hang out with them again! Definitely an ok experience!",
+     experience: "neutral"
+)
+
+
+
 
 
 
