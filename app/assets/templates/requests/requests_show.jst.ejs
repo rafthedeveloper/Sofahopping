@@ -8,17 +8,26 @@
 			</a>
 			From: <%= request.escape('location') %><br>
 
-			<button>Cancel Request</button>
+			<% if (request.escape("status") === "pending") { %>
+				<button id="cancel-request">Cancel Request</button>
+			<% } %>
 		</header>
 
-		<!-- <form class="content-form">
-			<textarea placeholder="Write a message..."></textarea>
-			<button>Send</button>
-		</form> -->
 
 		<section class="request-description">
+			Status: <%= request.escape('status') %><br>
 			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 			Travelers: <%= request.escape('num_guests') %><br>
+
+		<% if (request.escape("status") === "cancelled") { %>
+		<p>
+			<strong>You cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+		</p>
+		<% } else if (request.escape("status") === "rejected") { %>
+		<p>
+			<strong><%= request.get("requestee_details").fname %> rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+		</p>
+		<% } %>
 
 		<p>
 			<strong>You requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
@@ -34,12 +43,27 @@
 				<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %><br>
 			</a>
 			Traveling to: <%= request.escape('location') %><br>
-			<button>Reject Request</button>
+
+			<% if (request.escape("status") === "pending") { %>
+				<button id="reject-request">Reject Request</button>
+			<% } %>
 		</header>
 
 		<section class="request-description">
+			Status: <%= request.escape('status') %><br>
 			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 		  Travelers: <%= request.escape('num_guests') %><br>
+
+			<% if (request.escape("status") === "cancelled") { %>
+			<p>
+				<strong><%= request.get("requester_details").fname %> cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			</p>
+			<% } else if (request.escape("status") === "rejected") { %>
+			<p>
+				<strong>You rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			</p>
+			<% } %>
+
 			<p>
 				<strong><%= request.get("requester_details").fname %> requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 				<%= request.escape("message") %>
