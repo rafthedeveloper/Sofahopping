@@ -1,5 +1,7 @@
 SofaHopping.Views.RequestsShow = Backbone.View.extend({
 	template: JST["requests/requests_show"],
+	tagName: "article",
+	className: "request-details",
 
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render)
