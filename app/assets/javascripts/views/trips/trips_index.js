@@ -22,10 +22,6 @@ SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
-    
-    this.listenTo(this.collection, "add", this.addTripView.bind(this));
-    this.listenTo(this.collection, "remove", this.removeTripView.bind(this));
-    this.collection.each(this.addTripView.bind(this));
   },
 
   doStuff: function(event){
@@ -36,7 +32,9 @@ SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
   render: function(){
     var renderedContent = this.template({});
     this.$el.html(renderedContent);
-    this.attachSubviews();
+
+    this.collection.each(this.addTripView.bind(this));
+
     if (this.collection.length > 0) { this.$(".trips-list").removeClass("none") }
     return this;
   }

@@ -10,6 +10,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     "members/hosts": "findHosts",
     "members/all": "findAllMembers",
     "members/travelers": "findAllTravelers",
+    "requests": "requestsIndex",
     "404": "noPageFound"
   },
 
@@ -52,6 +53,19 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       callback: callback
     });
     this._swapView(signInView, this.$rootHero);
+  },
+
+  requestsIndex: function(){
+    var callback = this.requestsIndex.bind(this);
+
+    if (!this._requireSignedIn(callback)) { return; }
+
+    SofaHopping.currentUser.requests().fetch();
+    var requestsIndex = new SofaHopping.Views.RequestsIndex({
+      collection: SofaHopping.currentUser.requests()
+    });
+
+    this._swapView(requestsIndex);
   },
 
   memberSearchBar: function(redirected){
