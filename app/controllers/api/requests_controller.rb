@@ -20,6 +20,15 @@ class Api::RequestsController < ApplicationController
     render :index
   end
 
+  def show
+    @request = Request.find(params[:id])
+    if @request.requester_id == current_user.id || @request.requestee_id == current_user.id
+      render :show
+    else
+      render json: {}
+    end
+  end
+
   protected
 
   def request_params
