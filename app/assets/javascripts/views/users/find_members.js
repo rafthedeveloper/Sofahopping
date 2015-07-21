@@ -23,6 +23,7 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
     var newTrip = new SofaHopping.Models.Trip({});
     var tripForm = new SofaHopping.Views.TripForm({ model: newTrip, currentUser: SofaHopping.currentUser });
     tripForm.render();
+    
 
   }
 })

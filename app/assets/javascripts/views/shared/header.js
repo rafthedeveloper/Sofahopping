@@ -2,6 +2,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(SofaHopping.currentUser, "signIn signOut", this.render);
+
     this.render();
 
   },
@@ -16,6 +17,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
   template: JST['shared/header'],
 
   render: function(){
+
     var html = this.template({ currentUser: SofaHopping.currentUser });
     this.$el.html(html);
 

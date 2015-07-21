@@ -2,7 +2,8 @@ SofaHopping.Views.RootView = Backbone.View.extend({
   template: JST["shared/root"],
   events:{
     "click #sign-up-root": "renderSignUp",
-    "click #sign-in-google-root": "oauthLogin"
+    "click #sign-in-google-root": "oauthLogin",
+    "click #guest-login": "guestLogin"
   },
 
 
@@ -13,6 +14,12 @@ SofaHopping.Views.RootView = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this
+  },
+
+  guestLogin: function(event){
+    event.preventDefault();
+    SofaHopping.currentUser.signIn({ username: "LebronJames", password: "password" })
+    Backbone.history.navigate("dashboard", { trigger: true });
   },
 
 

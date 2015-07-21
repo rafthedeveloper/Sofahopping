@@ -22,6 +22,7 @@ SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
+    
     this.listenTo(this.collection, "add", this.addTripView.bind(this));
     this.listenTo(this.collection, "remove", this.removeTripView.bind(this));
     this.collection.each(this.addTripView.bind(this));

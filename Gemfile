@@ -17,6 +17,7 @@ gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 gem "figaro"
 
+
 group :doc do
   gem 'sdoc', require: false
 end
