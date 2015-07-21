@@ -1,6 +1,3 @@
-
-
-<a href="<%= "#requests/"+ request.id %>">
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
 
@@ -18,24 +15,4 @@
 <% } %>
 
 <br>
-<%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %>
-</a>
-<style>
-.requests-list {
-	width:750px;
-	margin:0 auto;
-	padding-bottom:60px;
-}
-
-.requests-list li a{
-	display:block;
-	width:100%;
-	height:100%;
-}
-
-.requests-list li{
-	background:#fff;
-	border-bottom: 1px solid #ccc;
-	padding:10px;
-}
-</style>
+<%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %> - <%= request.escape('num_guests') %> traveler(s)
