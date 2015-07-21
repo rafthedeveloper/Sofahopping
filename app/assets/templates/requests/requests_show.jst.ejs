@@ -1,18 +1,79 @@
+<a href="#requests">Back to Index</a>
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
 
+		<header>
+			<a href="<%= "#people/"+ request.get("requestee_details").id %>">
+				<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %><br>
+			</a>
+			From: <%= request.escape('location') %><br>
 
-			<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %>
-			(<%= request.escape('location') %>)
+			<button>Cancel Request</button>
+		</header>
+
+		<!-- <form class="content-form">
+			<textarea placeholder="Write a message..."></textarea>
+			<button>Send</button>
+		</form> -->
+
+		<section class="request-description">
+			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			Travelers: <%= request.escape('num_guests') %><br>
+
+		<p>
+			<strong>You requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			<%= request.escape("message") %>
+		</p>
+
+		</section>
 
 	<% } else { %>
 
-			<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %>
-			(<%= request.escape('location') %>)
+		<header>
+			<a href="">
+				<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %><br>
+			</a>
+			Traveling to: <%= request.escape('location') %><br>
+			<button>Reject Request</button>
+		</header>
 
+		<section class="request-description">
+			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+		  Travelers: <%= request.escape('num_guests') %><br>
+			<p>
+				<strong><%= request.get("requester_details").fname %> requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<%= request.escape("message") %>
+			</p>
+		</section>
 	<% } %>
 
 <% } %>
 
 <br>
-<%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %> - <%= request.escape('num_guests') %> traveler(s)
+
+<style>
+	.request-details{
+		width:600px;
+		margin:0 auto;
+		background:#fff;
+		margin-bottom:60px;
+	}
+
+
+	.request-description{
+		padding:20px 20px 0px 20px;
+	}
+
+	.request-description p{
+		margin-top:20px;
+	}
+
+	.request-details .dates-travelers{
+
+	}
+
+	.request-details header{
+		border-bottom:1px solid #ccc;
+		padding:20px;
+	}
+</style>
