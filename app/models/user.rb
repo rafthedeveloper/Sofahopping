@@ -206,9 +206,9 @@ class User < ActiveRecord::Base
     end
 
     pending_friends_details
-
-
   end
+
+  
 
   def remove_friend
     all_friends = self.friends

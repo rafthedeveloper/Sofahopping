@@ -15,6 +15,11 @@ class Api::RequestsController < ApplicationController
     @request.destroy!
   end
 
+  def index
+    current_user
+    render :index
+  end
+
   protected
 
   def request_params

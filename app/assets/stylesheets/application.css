@@ -32,6 +32,13 @@
    box-sizing: inherit;
    background: transparent;
  }
+ *{
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+
+ }
 
  strong{
    font-weight:bold;
@@ -550,6 +557,7 @@ max-width:100%;
   .search-results-list{
     width:700px;
     margin:0 auto;
+    padding-bottom:60px;
   }
   .search-results-list li{
     background-color:#fff;

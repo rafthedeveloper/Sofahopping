@@ -1,0 +1,2 @@
+json.created_requests current_user.created_requests
+json.received_requests current_user.received_requests
