@@ -1,5 +1,7 @@
 <h2>References</h2>
 
-
+<% if (currentUser.id !== parseInt(visitedUser.id)) { %>
+<button id="create_reference">Write Reference</button>
+<% } %>
 
 <ul class="references-list none"></ul>

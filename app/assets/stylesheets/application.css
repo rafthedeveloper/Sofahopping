@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 
  html, body, header, nav, h1, a,
@@ -325,6 +326,10 @@
  .friends-list li .friend-details a{
    color:#2980b9;
    font-weight:bold;
+ }
+
+ .friends-list li .friend-details a:hover{
+   text-decoration:underline;
  }
 
  /** TRIPS STYLING **/

@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
         lname: auth_hash[:info][:last_name],
         username: auth_hash[:info][:email],
         password: SecureRandom::urlsafe_base64,
-        location: "other",
+        location: "No location set",
         birthday: "29/10/1969",
         gender: "other"
       )

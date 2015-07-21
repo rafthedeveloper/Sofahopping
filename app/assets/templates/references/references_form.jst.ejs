@@ -6,17 +6,17 @@
 </header>
 <ul class="errors"></ul>
 
-  <label>How do you know <%= visitedUser.escape('username') %>?</label>
+  <label>How do you know <%= visitedUser.escape('fname') %>?</label>
 
 <select name="reference[relationship]">
   <option></option>
-  <option value="host">I hosted <%= visitedUser.escape('username') %></option>
-  <option value="guest">I stayed with <%= visitedUser.escape('username') %></option>
-  <option value="friend">I'm friends with <%= visitedUser.escape('username') %></option>
+  <option value="host">I hosted <%= visitedUser.escape('fname') %></option>
+  <option value="guest">I stayed with <%= visitedUser.escape('fname') %></option>
+  <option value="friend">I'm friends with <%= visitedUser.escape('fname') %></option>
   <option value="other">Other</option>
 </select>
 
-<label>Your experience with <%= visitedUser.escape('username') %>:</label>
+<label>Your experience with <%= visitedUser.escape('fname') %>:</label>
 <select name="reference[experience]">
   <option></option>
   <option value="positive">Positive</option>
@@ -24,7 +24,7 @@
   <option value="negative">Negative</option>
 </select>
 
-<label>Describe your experience with <%= visitedUser.escape('username') %>:</label>
+<label>Describe your experience with <%= visitedUser.escape('fname') %>:</label>
 <textarea name="reference[description]"></textarea>
 
   <section class="group button-list">
