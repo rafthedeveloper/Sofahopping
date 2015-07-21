@@ -13,7 +13,7 @@ SofaHopping.Views.RequestsIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function(){
-		debugger
+
 		var renderedContent = this.template({});
 		this.$el.html(renderedContent);
 		this.attachSubviews();

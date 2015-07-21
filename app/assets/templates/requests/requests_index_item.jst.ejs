@@ -1,1 +1,35 @@
-Requests Index Item
+
+
+
+<% if (request.escape("requester_type") === "guest") { %>
+	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
+
+
+			<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %>
+			(<%= request.escape('location') %>)
+
+	<% } else { %>
+
+			<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %>
+			(<%= request.escape('location') %>)
+
+	<% } %>
+
+<% } %>
+
+<br>
+<%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %>
+
+<style>
+.requests-list {
+	width:750px;
+	margin:0 auto;
+	padding-bottom:60px;
+}
+
+.requests-list li{
+	background:#fff;
+	border-bottom: 1px solid #ccc;
+	padding:10px;
+}
+</style>
