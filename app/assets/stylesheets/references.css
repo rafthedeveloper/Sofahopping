@@ -9,8 +9,10 @@
 }
 
 .references-list li{
-    padding:20px 0px;
-    border-top:#EDEDED 1px solid;
+    padding:10px 10px;
+    background:#EDEDED;
+    border-radius:10px;
+    margin-bottom:20px;
   }
 
   .references-list li:last-child, .friends-list li:last-child{

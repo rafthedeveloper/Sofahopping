@@ -1,7 +1,7 @@
 
   <figure class="profile">
   <header>
-    <small id="upload-avatar">Edit</small>
+    <small id="upload-avatar"><i class="fa fa-pencil"></i></small>
   </header>
       <img src="<%= user.get("avatar_url") %>">
 
@@ -23,24 +23,3 @@
     </select>
 <button class="submit">Update Hosting Status</button>
   </form>
-
-
-
-<form id="avatar-upload">
-
-
-  <label>
-    Image
-    <input type="file" name="user[image]" id="avatar-image">
-  </label>
-
-  <br>
-
-  <img src="" id="preview-post-image" width="50">
-
-  <br>
-
-  <button>Save</button> or <a href="#">Cancel</a>
-
-</form>
-  </section>
