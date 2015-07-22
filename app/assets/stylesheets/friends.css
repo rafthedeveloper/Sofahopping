@@ -1,6 +1,12 @@
 .friends-list li{
    float:left;
    width:33%;
+   margin-bottom:20px;
+   margin-right:10px;
+   padding:10px;
+   background:#EDEDED;
+   border-radius:10px;
+
  }
  .friends-list li figure{
    width:50px;
@@ -27,6 +33,18 @@
    text-decoration:underline;
  }
 
- .friends-list li{
-   padding:20px 0px;
- }
+.friend-details{
+  margin-bottom:10px;
+}
+.friend-actions{
+  margin-top:10px;
+  margin-left:50%;
+  transform: translateX(-40%);
+}
+
+.pending-requests h3{
+  padding:20px;
+  font-size: 18px;
+  border-bottom:1px solid #eee;
+
+}

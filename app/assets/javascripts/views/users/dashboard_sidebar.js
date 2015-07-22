@@ -27,24 +27,11 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
   },
 
   updateAvatar: function(){
-    debugger
+    var avatarForm = new SofaHopping.Views.AvatarForm({ model: this.model });
+    avatarForm.render();
   },
 
-  uploadAvatar(event){
-    event.preventDefault();
 
-    var file = this.$("#avatar-image")[0].files[0];
-
-    var formData = new FormData();
-    formData.append("user[avatar]", file);
-
-    var that = this;
-    this.model.saveFormData(formData, {
-      success: function(){
-        Backbone.history.navigate("", { trigger: true });
-      }
-    });
-  },
 
   updateHostingStatus: function(event){
 
