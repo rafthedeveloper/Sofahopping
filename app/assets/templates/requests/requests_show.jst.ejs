@@ -1,7 +1,12 @@
+
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
-
-		<section class="group">
+		<header>
+			<h3>Request to be hosted by:
+				<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %>
+			</h3>
+		</header>
+		<section class="request-container group">
 			<figure class="user-thumb">
 		  	<img src="<%= request.get("requestee_details").avatar_url %>">
 			</figure>
@@ -73,8 +78,14 @@
 	</section>
 
 	<% } else { %>
+		<header>
+			<h3>
+				<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %>'s
+				request to be hosted by you
+			</h3>
+		</header>
 
-		<section class="group">
+		<section class="request-container group">
 			<figure class="user-thumb">
 				<img src="<%= request.get("requester_details").avatar_url %>">
 			</figure>
@@ -160,18 +171,20 @@
 		width:750px;
 		margin:0 auto;
 		background:#fff;
-		padding:20px;
+
 		margin-bottom:60px;
 
 	}
 
 
-
+	.request-container{
+		margin-left:20px;
+	}
 
 	.request-description{
 		border-top:1px solid #eee;
 		margin-top:20px;
-
+		margin-left:20px;
 	}
 
 	.requests-updates-list li{
@@ -202,6 +215,17 @@
 	.request-details .content-form{
 		margin-top:20px;
 		margin-left:80px;
+	}
+
+	.request-details header{
+		background: #ecf0f1;
+		padding:20px;
+		margin-bottom:20px;
+	}
+
+	.request-details header h3{
+		font-size:24px;
+
 	}
 
 </style>

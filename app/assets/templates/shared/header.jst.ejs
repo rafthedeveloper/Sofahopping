@@ -2,7 +2,7 @@
   <img id="logo-png" src="http://i.imgur.com/ikk19KZ.png" />
   <ul class="nav-list group">
 <% if(currentUser.isSignedIn()) { %>
-  <li>
+  <!-- <li>
    <form id="search" class="search_form group">
      <select id="hosting_status" name="user[hosting_status]">
        <option value="1">Find Hosts</option>
@@ -11,14 +11,16 @@
      </select>
        <button><i class="fa fa-search"></i></button>
    </form>
+  </li> -->
+
+
+
+  <li class="notifications">
+    <!-- <%= SofaHopping.currentUser.requests().where({ status: "pending" }).length %> -->
   </li>
-
-
-
-
   <li class="dropdown-nav group">
-
-    Hello, <strong><%= currentUser.escape('fname') %></strong>
+    <figure class="header-prof-img"><img src="<%= currentUser.get('avatar_url') %>"></figure>
+    <span class="hello">Hello, <strong><%= currentUser.escape('fname') %></strong><i class="fa fa-caret-down"></i></span>
     <ul class="dropdown-nav-list">
       <li id="dash-link">Dashboard</li>
       <li id="profile-link">My Profile</li>
