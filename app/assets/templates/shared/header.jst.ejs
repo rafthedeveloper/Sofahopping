@@ -15,13 +15,14 @@
 
 
 
-  <li class="dropdown-nav">
+
+  <li class="dropdown-nav group">
 
     Hello, <strong><%= currentUser.escape('fname') %></strong>
     <ul class="dropdown-nav-list">
       <li id="dash-link">Dashboard</li>
       <li id="profile-link">My Profile</li>
-      <li id="sign-out-link"><a href="#" id="sign-out-link">Sign Out</a></li>
+      <li id="sign-out-link">Sign Out</li>
     </ul>
   </li>
 
@@ -33,3 +34,18 @@
 
   </ul>
 </nav>
+
+<style>
+.nav-list .header-prof-img{
+  float:left;
+}
+.nav-list .header-prof-img img{
+  width:50px;
+  height:50px;
+}
+
+.dropdown-nav-list{
+  float:right;
+
+}
+</style>

@@ -1,0 +1,97 @@
+/** SPLASH PAGE STYLING **/
+
+ #splash-page{
+   width:100%;
+   color:#2980b9;
+ }
+
+ .splash{
+   width:100%;
+ }
+
+ .hero-container{
+   position:relative;
+   top:0;
+   left:0;
+   right:0;
+ }
+
+ .hero{
+
+   background: url("http://i.imgur.com/36KIVJg.jpg");
+   height:400px;
+   background-size:cover;
+ }
+
+ .hero:after{
+   display:block;
+   content: "";
+   width:100%;
+   height:100%;
+   background-color: rgba(0,0,0,.6)
+ }
+
+ .hero h1{
+   position:absolute;
+   text-align:center;
+   top:40%;
+   left:50%;
+   transform: translate(-50%, -50%);
+   color:#fff;
+   font-weight:100;
+   font-size:36px;
+   text-shadow: #2f2f2f 0 0 10px;
+ }
+
+ .hero-signup{
+   position:absolute;
+   height:150px;
+   left:50%;
+   transform: translateX(-50%);
+   padding:40px;
+   background: #fff;
+   bottom:-75px;
+   text-align:center;
+   z-index:1;
+ }
+
+ .hero-signup h1{
+   font-size:24px;
+   margin-bottom:20px;
+ }
+
+/** TESTIMONIALS STYLING **/
+
+ .testimonials{
+   position:absolute;
+   padding:180px 0px;
+   background:#ecf0f1;
+   text-align:center;
+   width:100%;
+ }
+
+ .testimonials blockquote{
+   width:700px;
+   margin:0 auto;
+   position:relative;
+   font-size:16px;
+   line-height:1.5em;
+   margin-bottom:40px;
+ }
+
+ blockquote:before {
+     display: block;
+     content: "\201C";
+     font-size: 80px;
+     position:absolute;
+     left:50%;
+     margin-top:-40px;
+     transform: translateX(-50%);
+     font-family: Georgia, serif;
+ }
+
+ .testimonials img{
+   width:100px;
+   border-radius:50px;
+   margin:0 auto;
+ }

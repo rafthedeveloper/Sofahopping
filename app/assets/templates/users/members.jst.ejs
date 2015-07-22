@@ -40,7 +40,7 @@
         <% if (member.get('hosting_status') === "maybe") { %><span class="maybe">MAYBE ACCEPTING GUESTS</span><% } %>
         <% if (member.get('hosting_status') === "no") { %><span class="no">NOT ACCEPTING GUESTS</span><% } %>
       </span>
-      <small>Last login</small>
+      <small class="last-login timeago" title="<%= member.escape('updated_at') %>"></small>
       </section>
     </article>
   </li>

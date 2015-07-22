@@ -43,7 +43,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     return this;
   },
 
-  createFriend: function(){
+  createFriend: function(event){
+    event.preventDefault();
     var newFriend = new SofaHopping.Models.Friend({});
     newFriend.set("requestee_id", this.model.id);
 
@@ -54,7 +55,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     })
   },
 
-  removeFriend: function(){
+  removeFriend: function(event){
+    event.preventDefault();
     var added_friend = SofaHopping.currentUser.find_added_friend(this.model.id)
     added_friend.destroy({
       success: function(){
@@ -64,7 +66,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     });
   },
 
-  makeRequest: function(){
+  makeRequest: function(event){
+    event.preventDefault();
     var requestForm = new SofaHopping.Views.RequestForm({ model: this.model, requestType: "guest" });
     requestForm.render();
   }

@@ -5,4 +5,5 @@ json.array! @users do |user|
   json.hosting_status user.hosting_status
   json.id user.id
   json.num_refs user.num_refs
+  json.updated_at user.updated_at
 end

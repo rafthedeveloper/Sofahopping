@@ -1,7 +1,15 @@
-<h2>References</h2>
+<header class="group">
+  <h3>References</h3>
 
-<% if (currentUser.id !== parseInt(visitedUser.id)) { %>
-<button id="create_reference">Write Reference</button>
-<% } %>
+  <section class="profile-actions">
+    <% if (currentUser.id !== parseInt(visitedUser.id)) { %>
+    <form class="mini-form">
+      <button id="create_reference">Write Reference</button>
+    </form>
+    <% } %>
+  </section>
+</header>
+
+
 
 <ul class="references-list none"></ul>

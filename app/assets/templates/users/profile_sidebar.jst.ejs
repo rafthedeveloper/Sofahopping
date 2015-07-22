@@ -1,5 +1,8 @@
 <figure class="profile">
-    <img src="http://i.imgur.com/u3ttnE3.png" />
+    <img src="<%= user.get("avatar_url") %>">
+
+  <footer>
   <h2> <%= user.escape('fname') %> <%= user.escape('lname') %> </h2>
   <figcaption><%= user.escape('location') %></figcaption>
+  </footer>
 </figure>

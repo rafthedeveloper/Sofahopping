@@ -1,0 +1,32 @@
+.friends-list li{
+   float:left;
+   width:33%;
+ }
+ .friends-list li figure{
+   width:50px;
+   height:50px;
+   float:left;
+ }
+
+ .friends-list li figure img{
+   border-radius:25px;
+ }
+
+ .friends-list li .friend-details{
+   float:left;
+   margin-left:10px;
+   margin-top:5px;
+ }
+
+ .friends-list li .friend-details a{
+   color:#2980b9;
+   font-weight:bold;
+ }
+
+ .friends-list li .friend-details a:hover{
+   text-decoration:underline;
+ }
+
+ .friends-list li{
+   padding:20px 0px;
+ }

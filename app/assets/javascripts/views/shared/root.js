@@ -1,5 +1,8 @@
 SofaHopping.Views.RootView = Backbone.View.extend({
   template: JST["shared/root"],
+
+
+
   events:{
     "click #sign-up-root": "renderSignUp",
     "click #sign-in-google-root": "oauthLogin",

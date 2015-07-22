@@ -7,7 +7,8 @@ u1 = User.create!(
      gender: "Male",
      birthday: "1984-12-30",
      location: "Cleveland, Ohio",
-     hosting_status: "yes"
+     hosting_status: "yes",
+     avatar: File.open(Rails.root.join("app/assets/images/default.png"))
 )
 
 u2 = User.create!(

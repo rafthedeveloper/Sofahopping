@@ -5,7 +5,9 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
 
   events: {
     "click #edit_hosting_status": "revealHostStatusForm",
-    "submit #hosting_status_form": "updateHostingStatus"
+    "submit #hosting_status_form": "updateHostingStatus",
+    "submit #avatar-upload": "uploadAvatar",
+    "click #upload-avatar": "updateAvatar"
   },
 
   initialize: function(){
@@ -22,6 +24,26 @@ SofaHopping.Views.DashboardSidebar = Backbone.View.extend({
 
   revealHostStatusForm: function(){
     this.$("#hosting_status_form").toggleClass("no-display");
+  },
+
+  updateAvatar: function(){
+    debugger
+  },
+
+  uploadAvatar(event){
+    event.preventDefault();
+
+    var file = this.$("#avatar-image")[0].files[0];
+
+    var formData = new FormData();
+    formData.append("user[avatar]", file);
+
+    var that = this;
+    this.model.saveFormData(formData, {
+      success: function(){
+        Backbone.history.navigate("", { trigger: true });
+      }
+    });
   },
 
   updateHostingStatus: function(event){

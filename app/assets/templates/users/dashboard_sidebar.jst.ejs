@@ -1,8 +1,14 @@
 
   <figure class="profile">
-      <img src="http://i.imgur.com/u3ttnE3.png" />
+  <header>
+    <small id="upload-avatar">Edit</small>
+  </header>
+      <img src="<%= user.get("avatar_url") %>">
+
+    <footer>
     <h2> <%= user.escape('fname') %> <%= user.escape('lname') %> </h2>
     <figcaption><%= user.escape('location') %></figcaption>
+    </footer>
   </figure>
   <section class="hosting-status">
 
@@ -15,14 +21,26 @@
       <option value="no" <% if (user.get('hosting_status') === "no") { %> selected <% } %>>Not Accepting Guests</option>
 
     </select>
+<button class="submit">Update Hosting Status</button>
+  </form>
 
 
 
+<form id="avatar-upload">
 
-    <button class="submit">Update Hosting Status</button>
-  </section>
 
-<br>
+  <label>
+    Image
+    <input type="file" name="user[image]" id="avatar-image">
+  </label>
 
+  <br>
+
+  <img src="" id="preview-post-image" width="50">
+
+  <br>
+
+  <button>Save</button> or <a href="#">Cancel</a>
 
 </form>
+  </section>
