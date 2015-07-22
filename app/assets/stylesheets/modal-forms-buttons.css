@@ -1,0 +1,170 @@
+.modal-container{
+  z-index:1;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: rgba(0,0,0,.6);
+
+}
+
+.modal{
+  background: #fff;
+  margin:0 auto;
+  margin-top:100px;
+  position:relative;
+  box-shadow: 0px 0px 10px #000;
+  position: relative;
+  z-index:999;
+}
+
+.modal header{
+  background: #ecf0f1;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.modal footer{
+  margin-left:20px;
+}
+
+.modal h3{
+  font-size:24px;
+}
+
+.close_modal{
+  cursor:pointer;
+  position:absolute;
+  top:20px;
+  right:0;
+  margin-right:20px;
+  font-size:24px;
+  color: #d8d8d8;
+  font-weight:bold;
+}
+
+.close_modal:hover{
+  color:#acacac;
+}
+
+/** FORM STYLING **/
+
+.content-form{
+  width:320px;
+  color: #444;
+  max-width:100%;
+  max-height:700px;
+  overflow-y:auto;
+}
+
+
+.content-form input, .content-form select, .content-form textarea{
+  display:block;
+  width:280px;
+  margin:0 auto;
+  border-radius:5px;
+  max-width:100%;
+  padding:10px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  margin-bottom:10px;
+}
+
+.content-form textarea{
+  height:100px;
+  max-height:150px;
+  max-width:280px;
+}
+
+.content-form label{
+  margin-left:20px;
+  display:block;
+  margin-bottom:5px;
+}
+
+.content-form button, .mini-form button{
+  display:block;
+  background: #3498db;
+  line-height:35px;
+  color: #fff;
+  text-align:center;
+  border-radius:4px;
+  margin-right:10px;
+  padding:0 10px;
+  border-bottom: 2px solid #206694;
+  float:left;
+  min-width:80px;
+}
+
+.mini-form{
+  padding:12px 0px;
+
+}
+.mini-form button{
+float:left;
+
+}
+
+
+.content-form button:active, .mini-form button:active{
+  border:none;
+  position:relative;
+  margin-top:1px;
+  background: #2980b9;
+}
+.content-form button:hover, .mini-form button:hover{
+  background: #2980b9;
+}
+
+.content-form select{
+  height:40px;
+  background: #fff;
+}
+
+.content-form .button-list{
+  margin-top:40px;
+  background: #ecf0f1;
+  padding:20px;
+}
+
+
+/** BUTTON STYLING **/
+
+.content-form .submit,.mini-form .submit{
+  background: #2ecc71;
+  border-bottom: 2px #186f3c solid;
+}
+
+.content-form .submit:hover, .content-form .submit:active, .mini-form .submit:active, .mini-form .submit:hover{
+  background: #27ae60;
+}
+
+.content-form .delete, .mini-form .delete{
+  background: #c0392b;
+  border-bottom: 2px #5b1b14 solid;
+}
+
+.content-form .delete:hover, .content-form .delete:active, .mini-form .delete:active, .mini-form .delete:hover{
+  background: #992d22;
+}
+
+
+.content-form .cancel, .mini-form .cancel{
+  background: #d8d8d8;
+  color: #fff;
+  border-bottom: 2px #898989 solid;
+}
+
+.content-form .cancel:hover, .content-form .cancel:active, .mini-form .cancel:active, .mini-form .cancel:hover{
+  background: #acacac;
+}
+
+.mini-form .pending, .mini-form .pending:active, .mini-form .pending:hover{
+  background: #d8d8d8;
+  border:none;
+  margin-right:10px;
+  cursor:default;
+  padding:1px 10px;
+}

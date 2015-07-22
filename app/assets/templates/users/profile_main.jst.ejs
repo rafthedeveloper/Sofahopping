@@ -7,28 +7,27 @@
 
 
 <section class="profile-actions">
+    <form class="mini-form group">
 <% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
 
 <% if (user.get('hosting_status') === "yes" || user.get('hosting_status') === "maybe") { %>
-  <button id="make_request">Host Me</button>
+
+    <button id="make_request">Request Host</button>
+
 <% } %>
 
 
   <% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
-    <button id="add_friend">Add friend</button>
+    <button class="submit" id="add_friend">Add friend</button>
   <% } else if(SofaHopping.currentUser.is_added_friend(parseInt(user.id))){ %>
-    <button id="remove_friend">Remove friend</button>
+    <button class="delete" id="remove_friend">Unfriend</button>
+  <% } else {%>
+    <button disabled class="pending">Friend Request Pending...</button>
   <% } %>
 <% } %>
+</form>
 </section>
 </section>
 
-<section class="user-profile-references-container profile-main-content"></section>
-<section class="user-profile-friends-container profile-main-content"></section>
-
-<style>
-
-.profile-actions{
-  float:right;
-}
-</style>
+<section class="user-profile-references-container profile-main-content group"></section>
+<section class="user-profile-friends-container profile-main-content group"></section>

@@ -1,0 +1,93 @@
+ /** RESET CSS STYLING **/
+
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button, i,
+ section, img, div, h2, h3, p, form, figure,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   color: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   box-sizing: inherit;
+   background: transparent;
+ }
+
+ strong{
+   font-weight:bold;
+ }
+
+ body{
+   box-sizing:border-box;
+   position:relative;
+   font-size:14px;
+   font-family: "proxima-nova", sans-serif;
+   color: #1a1a1a;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ img {
+   display: block;
+   width: 100%;
+   height: auto;
+ }
+
+ input[type="password"],
+ input[type="email"],
+ input[type="text"],
+ input[type="submit"],
+ textarea,
+ button {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+ }
+
+ button{
+   cursor: pointer;
+ }
+
+ a{
+   color:#2980b9;
+   text-decoration:none;
+
+ }
+
+
+
+ .group:after{
+  content: "";
+  display:block;
+  clear:both;
+}
+
+#main{
+  background-color:#f6f6f6;
+ width:100%;
+ height:100%;
+}
+
+#content{
+  width:1120px;
+  margin:0 auto;
+}
+
+small{
+  display:block;
+}
+
+button{
+  font-size:14px;
+
+}
+
+small.last-login:before{
+  content: "Last login "
+}

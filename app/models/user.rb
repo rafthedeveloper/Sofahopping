@@ -19,6 +19,9 @@
 #
 
 class User < ActiveRecord::Base
+  has_attached_file :avatar, default_url: "default.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   validates :username, :password_digest, :session_token, :fname,
             :lname, :gender, :birthday, :location, presence: true
   validates :password, length: { minimum: 1, allow_nil: true }

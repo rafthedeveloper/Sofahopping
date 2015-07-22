@@ -1,6 +1,6 @@
 SofaHopping.Views.TripsIndex = Backbone.CompositeView.extend({
   template: JST["trips/trips_index"],
-  className: "trips dash-main-content",
+  className: "trips dash-main-content group",
   tagName: "section",
 
   events:{

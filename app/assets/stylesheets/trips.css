@@ -1,0 +1,46 @@
+.trips-list{
+   padding:20px 20px 0px 20px;
+ }
+
+ .trips-list li{
+   margin-bottom:20px;
+   background: #f6f6f6;
+   padding:20px;
+   border-radius:4px;
+ }
+
+ .trips-list h3{
+   font-size:18px;
+   margin-bottom:10px;
+ }
+
+ .trips-list small{
+   display:block;
+   margin-bottom:10px;
+ }
+
+ .trips-list p{
+   margin-bottom:10px;
+ }
+
+ .friends-list.none:before{
+   content:"No friends have been found.";
+   padding:20px 0px;
+   display:block;
+ }
+
+ .trips-list.none:before{
+   content:"No trips have been found.";
+   padding-bottom:20px;
+   display:block;
+ }
+ .trips strong{
+ display:block;
+   margin:20px 0px 0px 20px;
+   cursor:pointer;
+   color: #2980b9;
+ }
+
+ .trips strong:hover{
+   text-decoration:underline;
+}

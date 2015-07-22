@@ -1,0 +1,95 @@
+.profile-sidebar-container, .dash-sidebar-container{
+  float:left;
+  width:250px;
+  margin-right:40px;
+}
+
+/** PROFILE MAIN STYLES **/
+.profile-main-container, .dash-main-container{
+  float:right;
+  width:780px;
+
+}
+
+.profile-main-content, .dash-main-content{
+  margin-bottom:40px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+
+}
+
+ .profile-main-content h3, .dash-main-content h2{
+  border-bottom: 1px solid #d5d5d5;
+  padding:20px;
+  font-size: 18px;
+}
+
+.profile-main-content h3 {
+  border:none;
+  float:left;
+}
+
+.profile-actions{
+  float:right
+}
+
+.profile header{
+  position:absolute;
+  top:0;
+
+  left:0;
+
+  background-color: rgba(0,0,0,.5);
+    cursor:pointer;
+}
+
+.profile header:hover{
+
+  background-color: rgba(52, 152, 219,.75)
+}
+
+.profile header small{
+  font-size:14px;
+  font-weight:normal;
+  padding:10px 20px;
+}
+
+.profile{
+position:relative;
+color:#fff;
+}
+.profile img{
+  width:250px;
+  height:250px;
+  background-color:#FFF;
+  background-size:contain;
+
+
+}
+
+.profile h2{
+
+    margin-left:10px;
+
+    font-size:18px;
+}
+
+.profile figcaption{
+
+  margin-left:10px;
+  color:#FFF;
+  font-size:14px;
+
+}
+
+.profile footer{
+  position: absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  margin-top:200px;
+  padding:5px;
+  background-color: rgba(0,0,0,.5);
+
+}

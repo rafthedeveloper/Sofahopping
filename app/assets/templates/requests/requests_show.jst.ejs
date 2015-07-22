@@ -9,7 +9,7 @@
 			From: <%= request.escape('location') %><br>
 
 			<% if (request.escape("status") === "pending") { %>
-				<button id="cancel-request">Cancel Request</button>
+				<button value="cancelled" id="cancel-request">Cancel Request</button>
 			<% } %>
 		</header>
 
@@ -22,16 +22,19 @@
 		<% if (request.escape("status") === "cancelled") { %>
 		<p>
 			<strong>You cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 		</p>
 		<% } else if (request.escape("status") === "rejected") { %>
 		<p>
 			<strong><%= request.get("requestee_details").fname %> rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+			<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 		</p>
 		<% } %>
 
 		<p>
 			<strong>You requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 			<%= request.escape("message") %>
+			<small class="timeago" title="<%= request.escape('created_at') %>"></small>
 		</p>
 
 		</section>
@@ -45,7 +48,12 @@
 			Traveling to: <%= request.escape('location') %><br>
 
 			<% if (request.escape("status") === "pending") { %>
-				<button id="reject-request">Reject Request</button>
+				<form class="content-form">
+					<button value="accepted" id="accept-request">Accept</button>
+					<button value="rejected" class="delete" id="reject-request">Reject</button>
+
+				</form>
+
 			<% } %>
 		</header>
 
@@ -57,16 +65,19 @@
 			<% if (request.escape("status") === "cancelled") { %>
 			<p>
 				<strong><%= request.get("requester_details").fname %> cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 			</p>
 			<% } else if (request.escape("status") === "rejected") { %>
 			<p>
 				<strong>You rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 			</p>
 			<% } %>
 
 			<p>
 				<strong><%= request.get("requester_details").fname %> requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 				<%= request.escape("message") %>
+				<small class="timeago" title="<%= request.escape('created_at') %>"></small>
 			</p>
 		</section>
 	<% } %>

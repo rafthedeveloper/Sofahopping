@@ -1,0 +1,151 @@
+#search{
+  float:left;
+}
+
+.no-display{
+ display:none;
+ opacity:0;
+}
+
+
+
+
+
+.search-results{
+ width:700px;
+ margin:0 auto;
+}
+
+.create-trip, .search-results header{
+ width:700px;
+ margin:0 auto;
+ background-color:#FFF;
+ border-bottom: 3px solid #ecf0f1;
+ padding:10px 20px;
+
+}
+.search-results h2, .search-results header{
+ color: #34495e;
+ font-size:20px;
+ font-weight:bold;
+
+}
+
+.create-trip h2{
+ margin-bottom:5px;
+}
+ .search-results-list{
+   width:700px;
+   margin:0 auto;
+   padding-bottom:60px;
+ }
+ .search-results-list li{
+   background-color:#fff;
+   padding:20px;
+   border-top: 1px solid #ecf0f1;
+
+ }
+
+ .search-results img{
+   width:80px;
+   height:80px;
+   border-radius:4px;
+   float:left;
+ }
+
+ .search-results .user-name-loc{
+   float:left;
+   margin-left:20px;
+   width:440px;
+ }
+
+ .search-results a{
+   font-weight:bold;
+   font-size:20px;
+   color:#2f2f2f;
+ }
+
+ .search-results a:hover{
+   text-decoration:underline;
+ }
+ .search-results .user-host-logged{
+   float:left;
+
+ }
+ .user-host-logged{
+   word-wrap: break-word;
+  width:120px;
+  text-align:right;
+ }
+ .user-host-logged span{
+   display:block;
+
+     font-weight:bold;
+     font-size:20px;
+     line-height:20px;
+
+ }
+ .user-host-logged small{
+   display:block;
+      word-wrap: break-word;
+   color: #bdc3c7;
+   margin-top:10px;
+   font-size:12px;
+ }
+
+ .search_form{
+
+   height:40px;
+   line-height:40px;
+   border: 1px #bdc3c7 solid;
+   border-radius:20px;
+   z-index:1;
+   padding:0px 20px;
+   margin-top:20px;
+ }
+
+ .search_form select, .search_form button{
+   float:left;
+   margin-top:-2px;
+ }
+
+ .search_form select{
+   background:none;
+   border:none;
+   height:40px;
+   outline:0;
+
+ }
+
+ .search_form select option{
+   padding:10px;
+ }
+
+ .search_form button{
+   margin-left:20px;
+ }
+
+ .accepting, .positive{
+   color: #27ae60;
+ }
+
+ .negative{
+   color: #c0392b;
+ }
+
+ .maybe{
+   color: #2980b9;
+ }
+
+ .no, .neutral{
+   color: #898989;
+ }
+
+ small.loc{
+   margin-bottom:10px;
+ }
+
+ .num_refs{
+   color: #acacac;
+
+ }

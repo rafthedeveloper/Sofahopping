@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
     elsif @user && params[:view] == "profile" && current_user
       render :profile
     end
-    
+
   end
 
   def index
@@ -50,7 +50,7 @@ class Api::UsersController < ApplicationController
 
   protected
   def user_params
-    params.require(:user).permit(:username, :password, :fname, :lname, :gender, :birthday, :location, :hosting_status)
+    params.require(:user).permit(:avatar, :username, :password, :fname, :lname, :gender, :birthday, :location, :hosting_status)
   end
 
 end

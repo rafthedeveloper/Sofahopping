@@ -25,10 +25,11 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   root: function(){
+
     var callback = function(){ Backbone.history.navigate("#dashboard", { trigger: true })};
         if (!this._requireSignedOut(callback)) { return; }
 
-    var rootView = new SofaHopping.Views.RootView({ });
+    var rootView = new SofaHopping.Views.RootView({});
     this._swapView(rootView, this.$rootHero);
   },
 
@@ -147,6 +148,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var membersView = new SofaHopping.Views.MembersView({
       collection: allMembers, searchType: "all" })
     this._swapView(membersView);
+
   },
 
   findAllTravelers: function(){
@@ -185,7 +187,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   _goHome: function(){
-      Backbone.history.navigate("", { trigger: true });
+      Backbone.history.navigate("#", { trigger: true });
     },
 
   _swapView: function(view, el){

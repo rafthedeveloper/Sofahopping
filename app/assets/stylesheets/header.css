@@ -1,0 +1,74 @@
+.main-header{
+   width:1120px;
+   margin:0 auto;
+   line-height:60px;
+ }
+
+ .header-nav img {
+   width:180px;
+   float:left;
+ }
+
+ .nav-list{
+   float:right;
+   line-height:60px;
+ }
+
+ .header-nav .nav-list li{
+   float:left;
+   margin-left:20px;
+ }
+
+ /** DROP DOWN NAVIGATION STYLING **/
+
+ .dropdown-nav{
+   cursor:pointer;
+   width:200px;
+   text-align:right;
+   position:relative;
+   margin:0;
+
+ }
+
+ .dropdown-nav:after{
+   display:block;
+   content: "";
+   width: 0;
+ height: 0;
+ border-left: 4px solid transparent;
+ border-right: 4px solid transparent;
+
+ border-top: 4px solid #2980b9;
+ position:absolute;
+margin-top:-35px;
+ right:0;
+ margin-right:-10px;
+
+
+ }
+
+
+ .dropdown-nav:hover .dropdown-nav-list{
+   display:block;
+ }
+
+ .dropdown-nav-list{
+   width:100%;
+   display:none;
+   position:absolute;
+   margin-top:-20px;
+ }
+
+ .dropdown-nav-list li{
+   line-height:40px;
+   padding-left:20px;
+   background: #2980b9;
+   width:200px;
+   text-align:left;
+   color:#fff;
+ }
+
+
+ .dropdown-nav-list li:hover{
+   background: #1c5981;
+ }

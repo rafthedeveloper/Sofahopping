@@ -35,7 +35,8 @@ class Reference < ActiveRecord::Base
       details["lname"] = author.lname
       details["id"] = author.id
       details["location"] = author.location
-      
+      details["avatar_url"] = ActionController::Base.helpers.asset_path(author.avatar.url(:original))
+
       details
     end
 

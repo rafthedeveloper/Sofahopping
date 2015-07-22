@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721190828) do
+ActiveRecord::Schema.define(version: 20150722125519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,15 +38,17 @@ ActiveRecord::Schema.define(version: 20150721190828) do
   add_index "references", ["referencer_id"], name: "index_references_on_referencer_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
-    t.integer "requester_id",   null: false
-    t.integer "requestee_id",   null: false
-    t.string  "location",       null: false
-    t.string  "message",        null: false
-    t.date    "arrival_date",   null: false
-    t.date    "departure_date", null: false
-    t.integer "num_guests",     null: false
-    t.string  "requester_type"
-    t.string  "status",         null: false
+    t.integer  "requester_id",   null: false
+    t.integer  "requestee_id",   null: false
+    t.string   "location",       null: false
+    t.string   "message",        null: false
+    t.date     "arrival_date",   null: false
+    t.date     "departure_date", null: false
+    t.integer  "num_guests",     null: false
+    t.string   "requester_type"
+    t.string   "status",         null: false
+    t.datetime "updated_at"
+    t.datetime "created_at"
   end
 
   add_index "requests", ["requestee_id"], name: "index_requests_on_requestee_id", using: :btree
@@ -64,19 +66,23 @@ ActiveRecord::Schema.define(version: 20150721190828) do
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "fname",           null: false
-    t.string   "lname",           null: false
-    t.string   "gender",          null: false
-    t.date     "birthday",        null: false
-    t.string   "location",        null: false
-    t.string   "hosting_status",  null: false
+    t.string   "username",            null: false
+    t.string   "password_digest",     null: false
+    t.string   "session_token",       null: false
+    t.string   "fname",               null: false
+    t.string   "lname",               null: false
+    t.string   "gender",              null: false
+    t.date     "birthday",            null: false
+    t.string   "location",            null: false
+    t.string   "hosting_status",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

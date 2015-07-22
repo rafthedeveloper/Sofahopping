@@ -1,0 +1,37 @@
+.errors{
+   color: #D8000C;
+   background-color: #FFBABA;
+   margin-bottom:20px;
+ }
+
+ .errors li{
+   margin-left:20px;
+ }
+
+ .server_responses{
+   margin-top:20px;
+   min-height:60px;
+   margin-left:340px;
+ }
+
+ .server_responses small:before{
+   content: "✓";
+   background: rgba(46, 204, 113, 1);
+   width:20px;
+   height:20px;
+   border-radius:10px;
+   margin-right:5px;
+   display:block;
+   float:left;
+   padding-top:1px;
+   text-align:center;
+   font-size:14px;
+
+
+ }
+
+ .server_responses small{
+   padding:20px;
+   color:#fff;
+   background: rgba(46, 204, 113, .5);
+ }

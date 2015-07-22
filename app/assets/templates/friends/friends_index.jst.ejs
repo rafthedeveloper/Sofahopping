@@ -1,11 +1,12 @@
-<h2>
-<% if (listType === "pending") { %>
-<%= "Pending Friend Requests" %>
-<% } else { %>
-  <%= "Friends" %>
-<% } %>
-</h2>
-
+<header class="group">
+  <h3>
+  <% if (listType === "pending") { %>
+    <%= "Pending Friend Requests" %>
+  <% } else { %>
+    <%= "Friends" %>
+  <% } %>
+  </h3>
+</header>
 
 
 <ul class="none friends-list group">

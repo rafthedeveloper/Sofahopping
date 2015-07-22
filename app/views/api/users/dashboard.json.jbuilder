@@ -2,3 +2,4 @@ json.extract! @user, :fname, :lname, :location, :hosting_status, :gender, :birth
 json.trips @user.trips, :location, :description, :arrival_date, :departure_date, :num_guests, :id
 json.pending_friends @user.pending_requested_friends
 json.received_requests @user.received_requests
+json.avatar_url asset_path(@user.avatar.url(:original))
