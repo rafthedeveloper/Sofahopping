@@ -1,7 +1,7 @@
 .errors{
    color: #D8000C;
    background-color: #FFBABA;
-   margin-bottom:20px;
+
  }
 
  .errors li{
@@ -9,9 +9,8 @@
  }
 
  .server_responses{
-   margin-top:20px;
-   min-height:60px;
    margin-left:340px;
+   min-height:60px;
  }
 
  .server_responses small:before{
@@ -23,7 +22,7 @@
    margin-right:5px;
    display:block;
    float:left;
-   padding-top:1px;
+
    text-align:center;
    font-size:14px;
 

@@ -91,3 +91,7 @@ button{
 small.last-login:before{
   content: "Last login "
 }
+
+small.updatedat:before{
+  content: "Last updated: "
+}

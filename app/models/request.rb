@@ -36,6 +36,7 @@ class Request < ActiveRecord::Base
     requester_details["fname"] = requester.fname
     requester_details["lname"] = requester.lname
     requester_details["id"] = requester.id
+    requester_details["avatar_url"] = ActionController::Base.helpers.asset_path(requester.avatar.url(:original))
 
     requester_details
   end
@@ -47,6 +48,7 @@ class Request < ActiveRecord::Base
     requestee_details["fname"] = requestee.fname
     requestee_details["lname"] = requestee.lname
     requestee_details["id"] = requestee.id
+    requestee_details["avatar_url"] = ActionController::Base.helpers.asset_path(requestee.avatar.url(:original))
 
     requestee_details
   end

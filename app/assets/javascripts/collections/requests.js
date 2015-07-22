@@ -1,6 +1,8 @@
 SofaHopping.Collections.Requests = Backbone.Collection.extend({
   url: "/api/requests",
   model: SofaHopping.Models.Request,
+  tagName: "section",
+  className: "requests",
 
   getOrFetch: function(id) {
       var request = this.get(id),
