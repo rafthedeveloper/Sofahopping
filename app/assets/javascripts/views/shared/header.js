@@ -24,7 +24,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
     return this;
   },
 
-  goToDash: function(){
+  goToDash: function(event){
 
     Backbone.history.navigate("#", { trigger: true })
   },

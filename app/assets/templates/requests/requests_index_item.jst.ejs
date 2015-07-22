@@ -4,38 +4,43 @@
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
 
+<section class="group">
+		<figure class="user-thumb">
+		  <img src="<%= request.get("requestee_details").avatar_url %>">
+		</figure>
 
-			<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %>
-			(<%= request.escape('location') %>)
+		<section class="request-user-details">
+			<h3>
+				<strong><%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %></strong>
+				(<%= request.escape('location') %>)
+			</h3>
+			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
 
+		</section>
+</section>
 	<% } else { %>
+		<section class="group">
+				<figure class="user-thumb">
+			<img src="<%= request.get("requester_details").avatar_url %>">
+		</figure>
 
-			<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %>
-			(<%= request.escape('location') %>)
+		<section class="request-user-details">
+			<h3>
+				<strong><%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %></strong>
+			(<%= request.escape('location') %>)</h3>
+			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
+			</section>
+	</section>
 
 	<% } %>
 
 <% } %>
 
-<br>
-<%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %>
+
+
 </a>
 <style>
-.requests-list {
-	width:750px;
-	margin:0 auto;
-	padding-bottom:60px;
-}
 
-.requests-list li a{
-	display:block;
-	width:100%;
-	height:100%;
-}
-
-.requests-list li{
-	background:#fff;
-	border-bottom: 1px solid #ccc;
-	padding:10px;
-}
 </style>

@@ -1,8 +1,12 @@
+
+.friends-list li:first-child{
+
+}
 .friends-list li{
    float:left;
    width:33%;
    margin-bottom:20px;
-   margin-right:10px;
+   margin-right:20px;
    padding:10px;
    background:#EDEDED;
    border-radius:10px;

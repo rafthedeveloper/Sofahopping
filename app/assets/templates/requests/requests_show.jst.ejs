@@ -1,84 +1,153 @@
-<a href="#requests">Back to Index</a>
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
 
-		<header>
-			<a href="<%= "#people/"+ request.get("requestee_details").id %>">
-				<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %><br>
-			</a>
-			From: <%= request.escape('location') %><br>
+		<section class="group">
+			<figure class="user-thumb">
+		  	<img src="<%= request.get("requestee_details").avatar_url %>">
+			</figure>
 
-			<% if (request.escape("status") === "pending") { %>
-				<button value="cancelled" id="cancel-request">Cancel Request</button>
-			<% } %>
-		</header>
+			<section class="request-user-details">
+				<h3>
+					<strong><a href="<%= "#people/"+ request.get("requestee_details").id %>">
+						<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %><br>
+					</a></strong>
+					<strong>From</strong>: <%= request.escape('location') %><br>
+				</h3>
+				<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+				<strong>Status: </strong><%= request.escape('status') %><br>
+				<strong>Travelers: </strong><%= request.escape('num_guests') %><br>
+			</section>
+	</section>
+
+	<% if (request.escape("status") === "pending") { %>
+		<form class="content-form">
+		<button value="cancelled" class="cancel" id="cancel-request">Cancel Request</button>
+	</form>
+	<% } %>
+
+	<section class="request-description">
+
+	<ul class="requests-updates-list">
+	<% if (request.escape("status") === "cancelled") { %>
+		<li class="group">
+		 <figure><img src="<%= request.get("requester_details").avatar_url %>"></figure>
+			<p>
+				<strong>You cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
+			</p>
+		</li>
+
+	<% } else if (request.escape("status") === "rejected") { %>
+
+			<li class="group">
+				<figure><img src="<%= request.get("requestee_details").avatar_url %>"></figure>
+				<p>
+					<strong><%= request.get("requestee_details").fname %> rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+					<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
+				</p>
+			</li>
+
+	<% } else if (request.escape("status") === "accepted") { %>
+		<li class="group">
+			<figure><img src="<%= request.get("requestee_details").avatar_url %>"></figure>
+			<p>
+				<strong><%= request.get("requestee_details").fname %> accepted: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
+			</p>
+		</li>
 
 
-		<section class="request-description">
-			Status: <%= request.escape('status') %><br>
-			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
-			Travelers: <%= request.escape('num_guests') %><br>
+	<% } %>
 
-		<% if (request.escape("status") === "cancelled") { %>
-		<p>
-			<strong>You cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
-			<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
-		</p>
-		<% } else if (request.escape("status") === "rejected") { %>
-		<p>
-			<strong><%= request.get("requestee_details").fname %> rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
-			<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
-		</p>
-		<% } %>
 
+
+		<li class="group">
+		<figure><img src="<%= request.get("requester_details").avatar_url %>"></figure>
 		<p>
 			<strong>You requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 			<%= request.escape("message") %>
 			<small class="timeago" title="<%= request.escape('created_at') %>"></small>
 		</p>
-
-		</section>
+		</li>
+	</ul>
+	</section>
 
 	<% } else { %>
 
-		<header>
-			<a href="">
-				<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %><br>
-			</a>
-			Traveling to: <%= request.escape('location') %><br>
+		<section class="group">
+			<figure class="user-thumb">
+				<img src="<%= request.get("requester_details").avatar_url %>">
+			</figure>
 
-			<% if (request.escape("status") === "pending") { %>
+			<section class="request-user-details">
+				<h3>
+					<strong><a href="<%= "#people/" + request.get("requester_details").id %>">
+						<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %><br>
+					</a></strong>
+					<strong>Traveling to: </strong><%= request.escape('location') %><br>
+				</h3>
+				<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+				<strong>Status: </strong><%= request.escape('status') %><br>
+				<strong>Travelers: </strong><%= request.escape('num_guests') %><br>
+			</section>
+	</section>
+
+
+
+
+
+	<% if (request.escape("status") === "pending") { %>
 				<form class="content-form">
-					<button value="accepted" id="accept-request">Accept</button>
+					<button value="accepted" class="submit" id="accept-request">Accept</button>
 					<button value="rejected" class="delete" id="reject-request">Reject</button>
 
 				</form>
 
 			<% } %>
-		</header>
+
+
+
+
 
 		<section class="request-description">
-			Status: <%= request.escape('status') %><br>
-			Dates: <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
-		  Travelers: <%= request.escape('num_guests') %><br>
 
+				<ul class="requests-updates-list">
 			<% if (request.escape("status") === "cancelled") { %>
+				<li class="group">
+					<figure><img src="<%= request.get("requester_details").avatar_url %>"></figure>
 			<p>
 				<strong><%= request.get("requester_details").fname %> cancelled: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 			</p>
+		</li>
 			<% } else if (request.escape("status") === "rejected") { %>
+				<li class="group">
+					<figure><img src="<%= request.get("requestee_details").avatar_url %>"></figure>
 			<p>
 				<strong>You rejected: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
 			</p>
-			<% } %>
+			</li>
+			<% } else if (request.escape("status") === "accepted") { %>
 
+				<li class="group">
+					<figure><img src="<%= request.get("requestee_details").avatar_url %>"></figure>
+			<p>
+				<strong>You accepted: </strong><%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
+				<small class="timeago" title="<%= request.escape('updated_at') %>"></small>
+			</p>
+			</li>
+
+			<% } %>
+			<li class="group">
+				<figure><img src="<%= request.get("requester_details").avatar_url %>"></figure>
 			<p>
 				<strong><%= request.get("requester_details").fname %> requested:</strong> <%= request.escape('arrival_date') %> to <%= request.escape('departure_date') %><br>
 				<%= request.escape("message") %>
 				<small class="timeago" title="<%= request.escape('created_at') %>"></small>
 			</p>
+		</li>
+	</ul>
 		</section>
 	<% } %>
 
@@ -88,27 +157,51 @@
 
 <style>
 	.request-details{
-		width:600px;
+		width:750px;
 		margin:0 auto;
 		background:#fff;
+		padding:20px;
 		margin-bottom:60px;
+
 	}
+
+
 
 
 	.request-description{
-		padding:20px 20px 0px 20px;
-	}
-
-	.request-description p{
+		border-top:1px solid #eee;
 		margin-top:20px;
-	}
-
-	.request-details .dates-travelers{
 
 	}
 
-	.request-details header{
-		border-bottom:1px solid #ccc;
-		padding:20px;
+	.requests-updates-list li{
+		width:100%;
+		display:block;
+		margin-top:40px;
+
 	}
+
+	.requests-updates-list li figure{
+		width:75px;
+		height:75px;
+		float:left;
+
+	}
+
+	.requests-updates-list li p{
+		margin-top:10px;
+		margin-left:10px;
+		float:left;
+
+	}
+
+	.requests-updates-list li figure img{
+		border-radius: 37px;
+	}
+
+	.request-details .content-form{
+		margin-top:20px;
+		margin-left:80px;
+	}
+
 </style>

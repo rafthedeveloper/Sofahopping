@@ -1,5 +1,7 @@
 SofaHopping.Views.SuccessMessage = Backbone.View.extend({
   template: JST["success/message"],
+  className: "group",
+
 
 
   initialize: function(options){
