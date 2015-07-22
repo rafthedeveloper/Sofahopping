@@ -2,6 +2,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(SofaHopping.currentUser, "signIn signOut", this.render);
+    this.listenTo(SofaHopping.currentUser.requests(), "sync", this.render)
 
     this.render();
 

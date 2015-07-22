@@ -62,7 +62,11 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
     if (!this._requireSignedIn(callback)) { return; }
 
-    SofaHopping.currentUser.requests().fetch();
+    SofaHopping.currentUser.requests().fetch({
+      success: function(){
+      
+      }
+    });
     var requestsIndex = new SofaHopping.Views.RequestsIndex({
       collection: SofaHopping.currentUser.requests()
     });

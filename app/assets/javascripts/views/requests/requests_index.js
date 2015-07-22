@@ -8,15 +8,13 @@ SofaHopping.Views.RequestsIndex = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		this.listenTo(this.collection, "sync", this.render);
-		this.listenTo(this.collection, "add", this.addRequestView);
-		this.collection.each(this.addRequestView.bind(this));
 	},
 
 	render: function(){
 
 		var renderedContent = this.template({});
 		this.$el.html(renderedContent);
-		this.attachSubviews();
+		this.collection.each(this.addRequestView.bind(this));
 		$("small.timeago").timeago();
 		return this;
 	}

@@ -28,13 +28,14 @@ SofaHopping.Views.RequestForm = Backbone.View.extend({
     var attrs = $(event.currentTarget).serializeJSON().request
     var tripRequest = new SofaHopping.Models.Request({});
     var tripLocation = this.model.get("location")
-    
+
     tripRequest.set(attrs);
     tripRequest.set("requester_type", "guest")
     tripRequest.set("location", tripLocation)
 
     tripRequest.save({}, {
       success: function(){
+        SofaHopping.currentUser.requests().add(tripRequest);
         this.destroyRequestForm();
       }.bind(this)
     })
