@@ -117,7 +117,6 @@ u10 = User.create!(
   location: "Chicago, Illinois",
   hosting_status: "yes",
   avatar: File.open(Rails.root.join("app/assets/images/derrick-rose.jpg"))
-  hosting_status: "yes"
 )
 
 
