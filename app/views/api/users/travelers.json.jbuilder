@@ -1,11 +1,12 @@
-json.array! @travelers do |traveler|
-  json.fname traveler[:fname]
-  json.lname traveler[:lname]
-  json.from traveler[:from]
-  json.user_id traveler[:user_id]
-  json.to traveler[:to]
-  json.arrival_date traveler[:arrival_date]
-  json.departure_date traveler[:departure_date]
-  json.num_guests traveler[:num_guests]
-  json.description traveler[:description]
+json.array! @trips do |trip|
+  json.user_id trip.traveler[:id]
+  json.fname trip.traveler[:fname]
+  json.lname trip.traveler[:lname]
+  json.from trip[:from]
+  json.to trip[:to]
+  json.arrival_date trip[:arrival_date]
+  json.departure_date trip[:departure_date]
+  json.num_guests trip[:num_guests]
+  json.description trip[:description]
+  json.avatar_url asset_path(trip.traveler.avatar.url(:original))
 end

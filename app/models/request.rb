@@ -11,6 +11,9 @@
 #  departure_date :date             not null
 #  num_guests     :integer          not null
 #  requester_type :string
+#  status         :string           not null
+#  updated_at     :datetime
+#  created_at     :datetime
 #
 
 class Request < ActiveRecord::Base

@@ -18,6 +18,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.$rootHero = options.$rootHero
+    this.requests = new SofaHopping.Collections.Requests({});
   },
 
   noPageFound: function(){
@@ -62,13 +63,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
     if (!this._requireSignedIn(callback)) { return; }
 
-    SofaHopping.currentUser.requests().fetch({
-      success: function(){
-      
-      }
-    });
+    this.requests.fetch();
+
     var requestsIndex = new SofaHopping.Views.RequestsIndex({
-      collection: SofaHopping.currentUser.requests()
+      collection: this.requests
     });
 
     this._swapView(requestsIndex);
@@ -79,7 +77,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
     if (!this._requireSignedIn(callback)) {  return ; }
 
-    var request = SofaHopping.currentUser.requests().getOrFetch(id);
+    var request = this.requests.getOrFetch(id);
     var requestsShow = new SofaHopping.Views.RequestsShow({
       model: request
     });

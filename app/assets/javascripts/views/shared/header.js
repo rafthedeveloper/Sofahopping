@@ -2,42 +2,43 @@ SofaHopping.Views.Header = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(SofaHopping.currentUser, "signIn signOut", this.render);
-    this.listenTo(SofaHopping.currentUser.requests(), "sync", this.render)
 
     this.render();
-
   },
 
   events: {
     "click #sign-out-link": "signOut",
     "submit #search": "redirectToSearch",
     "click #dash-link": "goToDash",
-    "click #profile-link": "goToProfile"
+    "click #profile-link": "goToProfile",
+    "click #requests-link": "goToRequests"
   },
 
   template: JST['shared/header'],
 
   render: function(){
-
     var html = this.template({ currentUser: SofaHopping.currentUser });
     this.$el.html(html);
 
     return this;
   },
 
-  goToDash: function(event){
 
-    Backbone.history.navigate("#", { trigger: true })
+  goToDash: function(event){
+    Backbone.history.navigate("#dashboard", { trigger: true });
+  },
+
+  goToRequests: function(event){
+    Backbone.history.navigate("#requests", { trigger: true });
   },
 
   goToProfile: function(){
-
-    Backbone.history.navigate("people/"+ SofaHopping.currentUser.id, { trigger: true })
+    Backbone.history.navigate("#people/"+ SofaHopping.currentUser.id, { trigger: true });
   },
 
   redirectToSearch: function(event){
     event.preventDefault();
-    Backbone.history.navigate("members/search", { trigger: true })
+    Backbone.history.navigate("#members/search", { trigger: true })
   },
 
   signOut: function(event){
@@ -48,5 +49,4 @@ SofaHopping.Views.Header = Backbone.View.extend({
       }
     });
   }
-
 });

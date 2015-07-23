@@ -50,6 +50,7 @@ class Friendship < ActiveRecord::Base
     details["lname"] = requester.lname
     details["id"] = requester.id
     details["location"] = requester.location
+    details["avatar_url"] = ActionController::Base.helpers.asset_path(requester.avatar.url(:original))
 
     details
   end

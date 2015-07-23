@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.serializeJSON
-//= require jquery.timeago.js
+//= require jquery.timeago
+//= require dropzone
 //= require underscore
 //= require backbone
 //= require sofa_hopping

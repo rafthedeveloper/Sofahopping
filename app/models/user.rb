@@ -2,23 +2,31 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  fname           :string           not null
-#  lname           :string           not null
-#  gender          :string           not null
-#  birthday        :date             not null
-#  location        :string           not null
-#  hosting_status  :string           not null
-#  created_at      :datetime
-#  updated_at      :datetime
-#  provider        :string
-#  uid             :string
+#  id                  :integer          not null, primary key
+#  username            :string           not null
+#  password_digest     :string           not null
+#  session_token       :string           not null
+#  fname               :string           not null
+#  lname               :string           not null
+#  gender              :string           not null
+#  birthday            :date             not null
+#  location            :string           not null
+#  hosting_status      :string           not null
+#  created_at          :datetime
+#  updated_at          :datetime
+#  provider            :string
+#  uid                 :string
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
+  include PgSearch
+
+
+
   has_attached_file :avatar, default_url: "default.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
@@ -27,6 +35,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 1, allow_nil: true }
 
   attr_reader :password
+
+
 
   after_initialize :ensure_session_token, :generate_hosting_status
 
@@ -147,7 +157,7 @@ class User < ActiveRecord::Base
       details["id"] = friend.id
       details["fname"] = added_friend.fname
       details["lname"] = added_friend.lname
-
+      details["avatar_url"] = ActionController::Base.helpers.asset_path(added_friend.avatar.url(:original))
       details["location"] = added_friend.location
       all_friends_details.push(details);
     end
@@ -206,7 +216,7 @@ class User < ActiveRecord::Base
       details["id"] = friend.id
       details["fname"] = pending_friend.fname
       details["lname"] = pending_friend.lname
-
+              details["avatar_url"] = ActionController::Base.helpers.asset_path(pending_friend.avatar.url(:original))
       details["location"] = pending_friend.location
 
       pending_friends_details.push(details);

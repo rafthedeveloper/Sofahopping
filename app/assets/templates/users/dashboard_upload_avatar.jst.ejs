@@ -1,23 +1,32 @@
-<section class="modal-container" id="signup_modal">
+<section class="modal-container" id="user-avatar-modal">
 
-<form class="content-form modal signin" id="avatar-upload">
+
+
+<form class="dropzone content-form modal signin" id="avatar-upload">
 <small id="close_avatar_modal" class="close_modal">X</small>
 <header> <h3>Upload Avatar</h3> </header>
 
-  <label>
-    Image
     <input type="file" name="user[avatar]" id="avatar-image">
-  </label>
+
 
   <br>
 
-  <img src="" id="preview-post-image" width="50">
+  <figure class="avatar-preview">
+    <img src="" id="preview-post-image" width="50">
+  </figure>
 
   <br>
 
   <section class="group button-list">
-    <button class="submit">Save</button>
+    <button class="submit">Upload</button>
     <button id="close-avatar-form" class="cancel">Cancel</button>
   </section>
 </form>
 </section>
+
+<style>
+.avatar-preview{
+  width:250px;
+  margin:0 auto;
+}
+</style>

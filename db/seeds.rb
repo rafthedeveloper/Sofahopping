@@ -8,7 +8,7 @@ u1 = User.create!(
      birthday: "1984-12-30",
      location: "Cleveland, Ohio",
      hosting_status: "yes",
-     avatar: File.open(Rails.root.join("app/assets/images/default.png"))
+     avatar: File.open(Rails.root.join("app/assets/images/lebron-james.jpg"))
 )
 
 u2 = User.create!(
@@ -19,7 +19,8 @@ u2 = User.create!(
     gender: "Male",
     birthday: "1988-09-29",
     location: "Oklahoma City, Oklahoma",
-    hosting_status: "yes"
+    hosting_status: "yes",
+    avatar: File.open(Rails.root.join("app/assets/images/kevin-durant.jpg"))
 )
 
 u3 = User.create!(
@@ -30,7 +31,8 @@ u3 = User.create!(
     gender: "Male",
     birthday: "1988-03-14",
     location: "San Francisco, California",
-    hosting_status: "yes"
+    hosting_status: "yes",
+    avatar: File.open(Rails.root.join("app/assets/images/stephen-curry.jpg"))
 )
 
 u4 = User.create!(
@@ -41,7 +43,8 @@ u4 = User.create!(
   gender: "Male",
   birthday: "1984-05-29",
   location: "New York, New York",
-  hosting_status: "yes"
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/carmelo-anthony.jpg"))
 )
 
 u5 = User.create!(
@@ -111,7 +114,8 @@ f9 = Friendship.create!(
 
 t1 = Trip.create!(
      user_id: u1.id,
-     location: "Iceland",
+     from: u1.location,
+     to: "Iceland",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
      arrival_date: "15/07/2015",
      departure_date: "18/07/2015",
@@ -120,7 +124,8 @@ t1 = Trip.create!(
 
 t2 = Trip.create!(
      user_id: u1.id,
-     location: "Japan",
+     from: u1.location,
+     to: "Japan",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
      arrival_date: "15/07/2015",
      departure_date: "18/07/2015",
@@ -129,7 +134,8 @@ t2 = Trip.create!(
 
 t3 = Trip.create!(
      user_id: u1.id,
-     location: "Miami, Florida",
+     from: u1.location,
+     to: "Miami, Florida",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
      arrival_date: "15/07/2015",
      departure_date: "18/07/2015",

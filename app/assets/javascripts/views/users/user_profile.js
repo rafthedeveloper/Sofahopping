@@ -27,7 +27,7 @@ SofaHopping.Views.ProfileView = Backbone.CompositeView.extend({
 
 
   initialize: function(){
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync change", this.render)
     this.addMainView();
     this.addSideBarView();
   },
