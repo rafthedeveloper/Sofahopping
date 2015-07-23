@@ -25,12 +25,13 @@
 class User < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_by_location,
-                  :against => :location,
-                  :using => :trigram
-
-                  # {
-                  #   :tsearch => {:prefix => true}
-                  # }
+                  :against => [:location, :fname, :lname],
+                  :using => {
+                   :tsearch => {:prefix => true}, 
+                   :trigram => {
+                     :threshold => 0.2
+                   }
+                 }
 
 
   has_attached_file :avatar, default_url: "default.png"

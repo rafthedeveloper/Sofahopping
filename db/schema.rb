@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723134631) do
+ActiveRecord::Schema.define(version: 20150723160826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+  enable_extension "fuzzystrmatch"
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "requester_id",   null: false
