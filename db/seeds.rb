@@ -55,7 +55,68 @@ u5 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "Los Angeles, California",
-  hosting_status: "yes"
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/kobe-bryant.jpg"))
+)
+
+u6 = User.create!(
+  username: "RussellWestbrook",
+  password: "password",
+  fname: "Russell",
+  lname: "Westbrook",
+  gender: "Male",
+  birthday: "1978-08-23",
+  location: "Oklahoma City, Oklahoma",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/russell-westbrook.jpg"))
+)
+
+u7 = User.create!(
+  username: "ChrisPaul",
+  password: "password",
+  fname: "Chris",
+  lname: "Paul",
+  gender: "Male",
+  birthday: "1978-08-23",
+  location: "Los Angeles, California",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/chris-paul.jpg"))
+)
+
+u8 = User.create!(
+  username: "KevinGarnett",
+  password: "password",
+  fname: "Kevin",
+  lname: "Garnett",
+  gender: "Male",
+  birthday: "1978-08-23",
+  location: "Minneapolis, Minnesota",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/kevin-garnett.jpg"))
+)
+
+u9 = User.create!(
+  username: "TimDuncan",
+  password: "password",
+  fname: "Tim",
+  lname: "Duncan",
+  gender: "Male",
+  birthday: "1978-08-23",
+  location: "San Antonio, Texas",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/tim-duncan.jpg"))
+)
+
+u10 = User.create!(
+  username: "DerrickRose",
+  password: "password",
+  fname: "Derrick",
+  lname: "Rose",
+  gender: "Male",
+  birthday: "1978-08-23",
+  location: "Chicago, Illinois",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/derrick-rose.jpg"))
 )
 
 

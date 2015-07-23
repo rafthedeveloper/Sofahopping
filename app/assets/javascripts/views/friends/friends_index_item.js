@@ -1,4 +1,4 @@
-SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
+ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
   template: JST["friends/friends_index_item"],
   tagName: "li",
   class: "group",
