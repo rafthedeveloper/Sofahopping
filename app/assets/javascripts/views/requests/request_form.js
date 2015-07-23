@@ -46,7 +46,8 @@ SofaHopping.Views.RequestForm = Backbone.View.extend({
 
   createDatePicker: function(){
     $( ".datepicker" ).datepicker({
-      dateFormat: "dd/mm/yy"
+      minDate: 0,
+      dateFormat: "yy-mm-dd"
     });
   }
 

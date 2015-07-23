@@ -112,8 +112,6 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var callback = this.userProfile.bind(this, id);
     if (!this._requireSignedIn(callback)) { return; }
 
-    SofaHopping.currentUser.fetch();
-
     var visitedUser = SofaHopping.users.getOrFetch(id, { data: { view: "profile"} });
 
     var userProfileView = new SofaHopping.Views.ProfileView({

@@ -28,6 +28,7 @@ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
     this.model.set("pending_status", "accepted");
     this.model.save({}, {
       success: function(model, response){
+        SofaHopping.currentUser.friends().add(this.model);
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
         this.collection.remove(this.model)
@@ -37,11 +38,13 @@ SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
 
   destroyFriendship: function(event){
     event.preventDefault();
+
     this.model.destroy({
       success: function(model, response){
+        SofaHopping.currentUser.pendingFriends().remove(this.model);
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
-      }
+      }.bind(this)
     });
 
   }

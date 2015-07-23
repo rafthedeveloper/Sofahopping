@@ -17,13 +17,13 @@
 <% } %>
 
 
-  <% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
-    <button class="submit" id="add_friend">Add friend</button>
-  <% } else if(SofaHopping.currentUser.is_added_friend(parseInt(user.id))){ %>
-    <button class="delete" id="remove_friend">Unfriend</button>
-  <% } else {%>
-    <button disabled class="pending">Friend Request Pending...</button>
-  <% } %>
+<% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
+   <button class="submit" id="add_friend">Add friend</button>
+ <% } else if(SofaHopping.currentUser.is_added_friend(parseInt(user.id))){ %>
+   <button class="delete" id="remove_friend">Unfriend</button>
+ <% } else {%>
+   <button disabled class="pending">Friend Request Pending...</button>
+ <% } %>
 <% } %>
 </form>
 </section>

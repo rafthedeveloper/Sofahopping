@@ -38,6 +38,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
   redirectToSearch: function(event){
     event.preventDefault();
     var query = $(event.currentTarget).find(".query").val().toLowerCase();
+    $(".query").val('');
 
     var query = query || "none";
     Backbone.history.navigate("#members/search/" + query , { trigger: true })
