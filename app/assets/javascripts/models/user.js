@@ -78,7 +78,7 @@ SofaHopping.Models.User = Backbone.Model.extend({
 
 
     if (this.id === other_user) { result = true }
-
+    debugger
     this.friends().each(function(friend){
 
       if (friend.get('requester_id') === other_user || friend.get('requestee_id') === other_user){

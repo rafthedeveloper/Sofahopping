@@ -58,6 +58,7 @@ u5 = User.create!(
   hosting_status: "yes"
 )
 
+
 f1 = Friendship.create!(
      friend_requestee: u1,
      friend_requester: u2,

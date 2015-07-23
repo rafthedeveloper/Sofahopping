@@ -34,7 +34,15 @@ class User < ActiveRecord::Base
                  }
 
 
-  has_attached_file :avatar, default_url: "default.png"
+  has_attached_file :avatar, default_url: "default.png",
+    :styles => {
+      :thumb => "75x75",
+      :original => "250x250"
+    },
+    :convert_options => {
+        :thumb => "-quality 75 -strip"
+    }
+
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :username, :password_digest, :session_token, :fname,
@@ -164,7 +172,7 @@ class User < ActiveRecord::Base
       details["id"] = friend.id
       details["fname"] = added_friend.fname
       details["lname"] = added_friend.lname
-      details["avatar_url"] = ActionController::Base.helpers.asset_path(added_friend.avatar.url(:original))
+      details["avatar_url"] = ActionController::Base.helpers.asset_path(added_friend.avatar.url(:thumb))
       details["location"] = added_friend.location
       all_friends_details.push(details);
     end
@@ -223,7 +231,7 @@ class User < ActiveRecord::Base
       details["id"] = friend.id
       details["fname"] = pending_friend.fname
       details["lname"] = pending_friend.lname
-              details["avatar_url"] = ActionController::Base.helpers.asset_path(pending_friend.avatar.url(:original))
+              details["avatar_url"] = ActionController::Base.helpers.asset_path(pending_friend.avatar.url(:thumb))
       details["location"] = pending_friend.location
 
       pending_friends_details.push(details);

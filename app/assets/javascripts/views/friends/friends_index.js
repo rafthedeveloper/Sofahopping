@@ -3,6 +3,7 @@ SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
   id: "friends",
 
   addFriendView: function(friend){
+
     var friendView = new SofaHopping.Views.FriendsIndexItem({
       model: friend, visitedUser: this.model, collection: this.collection, listType: this.listType
     });
@@ -11,6 +12,7 @@ SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
   },
 
   removeFriendView: function(friend){
+
     this.removeModelSubview('.friends-list', friend);
     if (this.collection.length === 0) { this.$(".friends-list").addClass("none") }
 
