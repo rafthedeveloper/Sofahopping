@@ -1,6 +1,7 @@
 class Api::TripsController < ApplicationController
   def create
     @trip = current_user.trips.new(trip_params)
+    @trip.from = current_user.location
 
     if @trip.save
       render json: @trip
@@ -27,6 +28,6 @@ class Api::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:location, :description, :arrival_date, :departure_date, :num_guests);
+    params.require(:trip).permit(:description, :arrival_date, :departure_date, :num_guests, :to);
   end
 end

@@ -5,6 +5,7 @@ SofaHopping.Views.AvatarForm = Backbone.View.extend({
     "click #close-avatar-form": "destroyForm",
     "click #close_avatar_modal": "destroyForm",
     "submit #avatar-upload": "uploadAvatar",
+    "change #avatar-image": "fileInputChange"
   },
 
   render: function(){
@@ -35,4 +36,27 @@ SofaHopping.Views.AvatarForm = Backbone.View.extend({
       }
     });
   },
+
+  fileInputChange: function(event){
+
+    console.log(event.currentTarget.files[0]);
+
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      that._updatePreview(reader.result);
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      that._updatePreview("");
+    }
+  },
+
+  _updatePreview: function(src){
+    this.$el.find("#preview-post-image").attr("src", src);
+  }
 })

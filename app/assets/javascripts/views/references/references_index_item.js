@@ -12,7 +12,6 @@ SofaHopping.Views.ReferenceIndexItem = Backbone.View.extend({
   },
 
   render: function(){
-
     this.model.get('referencer_id')
     SofaHopping.currentUser.id
 
@@ -27,7 +26,8 @@ SofaHopping.Views.ReferenceIndexItem = Backbone.View.extend({
 
     this.model.destroy({
       success: function(model, response){
-
+        var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully deleted reference." });
+        success.render();
       },
 
       error: function(model, response){

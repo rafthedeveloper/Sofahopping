@@ -35,7 +35,8 @@ SofaHopping.Views.RequestForm = Backbone.View.extend({
 
     tripRequest.save({}, {
       success: function(){
-        SofaHopping.currentUser.requests().add(tripRequest);
+        var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully sent request." });
+        success.render();
         this.destroyRequestForm();
       }.bind(this)
     })

@@ -16,7 +16,7 @@
 
  .header-nav .nav-list li{
    float:left;
-
+   margin-left:20px;
  }
 
  /** DROP DOWN NAVIGATION STYLING **/
@@ -28,12 +28,14 @@
    position:relative;
    margin:0;
 
+
  }
 
 
 
  .dropdown-nav:hover .dropdown-nav-list{
    display:block;
+
  }
 
  .dropdown-nav-list{
@@ -42,6 +44,8 @@
    position:absolute;
    margin-top:0px;
    right:0;
+   margin-right:150px;
+
  }
 
  .dropdown-nav-list li{
@@ -53,14 +57,16 @@
    color:#fff;
  }
 
+ .dropdown-nav-list li i{
+   margin-right:10px;
+ }
+
 
  .dropdown-nav-list li:hover{
    background: #1c5981;
  }
 
-.hello i{
-  margin-left:5px;
-}
+
 
 .header-prof-img{
   width:40px;
@@ -71,4 +77,10 @@
 
 .header-prof-img img{
   border-radius:50%;
+}
+.user-notifications{
+  position:relative;
+  color: #1c5981;
+  line-height:60px;
+  margin-right:20px;
 }

@@ -1,7 +1,10 @@
 class Api::UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:trips, :requested_friendships,
+                          :requested_by_others, :received_requests, :received_references)
+                          .where(id: params[:id]).first
+                          
     if @user && params[:view] == "dashboard" && current_user
       render :dashboard
     elsif @user && params[:view] == "profile" && current_user
@@ -15,7 +18,7 @@ class Api::UsersController < ApplicationController
      @users = User.where(hosting_status: params[:status])
      render :index
     elsif params[:trips]
-      @travelers = Trip.find_all_travelers
+      @trips = Trip.includes(:traveler).all
       render :travelers
     else
       @users = User.all

@@ -6,4 +6,5 @@ json.array! @users do |user|
   json.id user.id
   json.num_refs user.num_refs
   json.updated_at user.updated_at
+  json.avatar_url asset_path(user.avatar.url(:original))
 end

@@ -10,8 +10,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
 
   },
 
-
   addReferencesView: function(){
+
     var referencesView = new SofaHopping.Views.ReferencesIndex({
       model: this.model, collection: this.model.references()
     });
@@ -26,8 +26,7 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   },
 
   initialize: function(){
-
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.currentUser, "sync", this.render);
     this.listenTo(SofaHopping.currentUser.pendingFriends(), "add remove", this.render);
     this.listenTo(SofaHopping.currentUser.friends(), "add remove", this.render);
@@ -36,6 +35,7 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   },
 
   render: function(){
+
     var renderedContent = this.template({ user: this.model });
     this.$el.html(renderedContent);
     this.attachSubviews();
@@ -50,6 +50,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
 
     newFriend.save({}, {
       success: function(){
+        var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully sent friend request." });
+        success.render();
         SofaHopping.currentUser.pendingFriends().add(newFriend);
       }.bind(this)
     })
@@ -60,6 +62,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
     var added_friend = SofaHopping.currentUser.find_added_friend(this.model.id)
     added_friend.destroy({
       success: function(){
+        var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully removed friend." });
+        success.render();
         this.model.friends().remove(added_friend);
         SofaHopping.currentUser.friends().remove(added_friend);
       }.bind(this)

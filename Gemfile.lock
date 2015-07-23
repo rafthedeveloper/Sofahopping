@@ -153,6 +153,10 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.2)
+    pg_search (0.6.4)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -244,6 +248,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip (~> 4.3)
   pg
+  pg_search
   pry-rails
   rails (= 4.2.0)
   rails_12factor

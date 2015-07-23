@@ -18,20 +18,17 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   },
 
   initialize: function(){
+    this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.collection, "sync", this.render)
-    this.listenTo(this.collection, "add", this.addReferenceView);
     this.listenTo(this.collection, "remove", this.removeReferenceView);
-    this.collection.each(this.addReferenceView.bind(this));
   },
 
   render: function(){
-
     var renderedContent = this.template({
       visitedUser: this.model, currentUser: SofaHopping.currentUser
     });
     this.$el.html(renderedContent);
-    this.attachSubviews();
-    
+    this.collection.each(this.addReferenceView.bind(this));
     return this;
   },
 

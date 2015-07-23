@@ -11,18 +11,15 @@
 
 .request-user-details{
 float:left;
-margin-left:10px;
+margin-left:20px;
 font-size:16px;
 line-height:1.5em;
 }
 
-.request-user-details{
-
-}
 
 .request-user-details small.timeago{
-font-size:12px;
-color:#bdc3c7;
+  font-size:12px;
+  color:#bdc3c7;
 }
 
 .requests{
@@ -39,27 +36,94 @@ color:#bdc3c7;
 
 
 .requests-list {
-width:750px;
-margin:0 auto;
-padding-bottom:60px;
+  width:750px;
+  margin:0 auto;
+  padding-bottom:60px;
 }
 
 .requests-list li a{
-width:100%;
-
+  width:100%;
 }
 
 .requests-list li{
-background:#fff;
-border-bottom: 1px solid #eee;
-padding:10px;
-
+  background:#fff;
+  border-bottom: 1px solid #eee;
+  padding:10px;
 }
 
 .requests-list li:hover{
-background: #dce2e3;
+  background: #dce2e3;
 }
 
 .requests-details{
   padding:10px;
+}
+
+.request-details{
+  width:750px;
+  margin:0 auto;
+  background:#fff;
+
+  margin-bottom:60px;
+
+}
+
+
+.request-container{
+  margin-left:20px;
+}
+
+.request-description{
+  border-top:1px solid #eee;
+  margin-top:20px;
+  margin-left:20px;
+}
+
+.requests-updates-list li{
+  width:100%;
+  display:block;
+  margin-top:40px;
+
+}
+
+.requests-updates-list li figure{
+  width:75px;
+  height:75px;
+  float:left;
+
+}
+
+.requests-updates-list li p{
+  margin-top:10px;
+  margin-left:10px;
+  float:left;
+
+}
+
+.requests-updates-list li figure img{
+  border-radius: 37px;
+}
+
+.request-details .content-form{
+  margin-top:20px;
+  margin-left:115px;
+}
+
+.request-details header{
+  background: #ecf0f1;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.request-details header h3{
+  font-size:24px;
+
+}
+
+.requests-list.none:before{
+  content:"Nothing in your inbox.";
+  padding:20px 20px;
+  background:#fff;
+  display:block;
+
 }
