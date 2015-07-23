@@ -55,7 +55,6 @@ u5 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "Los Angeles, California",
-<<<<<<< HEAD
   hosting_status: "yes",
   avatar: File.open(Rails.root.join("app/assets/images/kobe-bryant.jpg"))
 )
@@ -118,9 +117,7 @@ u10 = User.create!(
   location: "Chicago, Illinois",
   hosting_status: "yes",
   avatar: File.open(Rails.root.join("app/assets/images/derrick-rose.jpg"))
-=======
   hosting_status: "yes"
->>>>>>> 7414fe076c560ad0b6c3a503aefc60049bf8a8fe
 )
 
 
