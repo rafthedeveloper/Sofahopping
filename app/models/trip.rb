@@ -13,6 +13,16 @@
 #
 
 class Trip < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_location,
+                  :against => [:to],
+                  :using => {
+                   :tsearch => {:prefix => true}, 
+                   :trigram => {
+                     :threshold => 0.2
+                   }
+                 }
+
   validates :traveler, :description, :arrival_date, :departure_date, :num_guests,
             :from, :to, presence: true
 
