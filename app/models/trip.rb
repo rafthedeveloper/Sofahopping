@@ -2,11 +2,14 @@
 #
 # Table name: trips
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer          not null
-#  description :text             not null
-#  from        :string
-#  to          :string
+#  id             :integer          not null, primary key
+#  user_id        :integer          not null
+#  description    :text             not null
+#  from           :string
+#  to             :string
+#  arrival_date   :date
+#  departure_date :date
+#  num_guests     :integer
 #
 
 class Trip < ActiveRecord::Base

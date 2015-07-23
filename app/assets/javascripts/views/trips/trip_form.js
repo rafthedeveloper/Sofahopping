@@ -18,14 +18,22 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
     this.$el.html(renderedContent);
     $("body").append(this.$el);
     this.createDatePicker();
-    
+    this.addAutocomplete();
     return this;
+  },
+
+  addAutocomplete: function(){
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+        { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    });
   },
 
 
   createDatePicker: function(){
     $( ".datepicker" ).datepicker({
-      dateFormat: "dd/mm/yy"
+      dateFormat: "yy-mm-dd"
     });
   },
 
@@ -70,8 +78,9 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
       success: function(trip, response){
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
-        SofaHopping.currentUser.trips().add(this.model, { merge: true });
-        Backbone.history.navigate("dashboard", { trigger: true })
+        this.currentUser.trips().add(this.model, { merge: true });
+        this.currentUser.trigger("sync");
+        console.log(this.currentUser);
         this.destroyForm();
       }.bind(this)
     });

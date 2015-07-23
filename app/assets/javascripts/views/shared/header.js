@@ -2,7 +2,6 @@ SofaHopping.Views.Header = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(SofaHopping.currentUser, "signIn signOut", this.render);
-
     this.render();
   },
 

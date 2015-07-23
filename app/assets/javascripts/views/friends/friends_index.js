@@ -30,6 +30,7 @@ SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
 
     var renderedContent = this.template({ listType: this.listType });
     this.$el.html(renderedContent);
+
     this.attachSubviews();
 
     return this;
