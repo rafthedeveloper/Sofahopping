@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.includes(:trips, :requested_friendships,
                           :requested_by_others, :received_requests, :received_references)
                           .where(id: params[:id]).first
-                          
+
     if @user && params[:view] == "dashboard" && current_user
       render :dashboard
     elsif @user && params[:view] == "profile" && current_user

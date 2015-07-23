@@ -23,12 +23,27 @@
 
  .dropdown-nav{
    cursor:pointer;
-
    text-align:right;
    position:relative;
    margin:0;
 
 
+ }
+
+ .dropdown-nav-list:after{
+   content: "";
+   display:block;
+   position:absolute;
+   top:0;
+   margin-top:-10px;
+   left:0;
+   margin-left:165px;
+   width: 0;
+   height: 0;
+   border-left: 10px solid transparent;
+ 	border-right: 10px solid transparent;
+
+ 	border-bottom: 10px solid #2980b9;
  }
 
 
@@ -78,9 +93,25 @@
 .header-prof-img img{
   border-radius:50%;
 }
-.user-notifications{
-  position:relative;
-  color: #1c5981;
-  line-height:60px;
-  margin-right:20px;
+
+
+.nav-list .header-prof-img{
+  float:left;
+}
+.nav-list .header-prof-img img{
+  width:50px;
+  height:50px;
+}
+
+.dropdown-nav-list{
+  float:right;
+
+}
+
+.query{
+  width:200px;
+}
+
+.hello{
+  color:#2980b9;
 }

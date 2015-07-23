@@ -24,7 +24,13 @@
 
 class User < ActiveRecord::Base
   include PgSearch
+  pg_search_scope :search_by_location,
+                  :against => :location,
+                  :using => :trigram
 
+                  # {
+                  #   :tsearch => {:prefix => true}
+                  # }
 
 
   has_attached_file :avatar, default_url: "default.png"
@@ -32,7 +38,7 @@ class User < ActiveRecord::Base
 
   validates :username, :password_digest, :session_token, :fname,
             :lname, :gender, :birthday, :location, presence: true
-  validates :password, length: { minimum: 1, allow_nil: true }
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
