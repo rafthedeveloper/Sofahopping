@@ -127,8 +127,8 @@ t2 = Trip.create!(
      from: u1.location,
      to: "Japan",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-     arrival_date: "15/07/2015",
-     departure_date: "18/07/2015",
+     arrival_date: "19/07/2015",
+     departure_date: "21/07/2015",
      num_guests: 1
 )
 
@@ -137,8 +137,8 @@ t3 = Trip.create!(
      from: u1.location,
      to: "Miami, Florida",
      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-     arrival_date: "15/07/2015",
-     departure_date: "18/07/2015",
+     arrival_date: "22/07/2015",
+     departure_date: "23/07/2015",
      num_guests: 1
 )
 

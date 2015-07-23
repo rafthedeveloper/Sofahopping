@@ -3,6 +3,6 @@ SofaHopping.Collections.References = Backbone.Collection.extend({
   model: SofaHopping.Models.Reference,
 
   comparator: function(reference){
-   return -reference.get('id');
+    return -(new Date(reference.get('created_at')).getTime());
   },
 });

@@ -3,6 +3,6 @@ SofaHopping.Collections.Trips = Backbone.Collection.extend({
   model: SofaHopping.Models.Trip,
 
   comparator: function(trip){
-    return -trip.get('id');
+    return (new Date(trip.get('arrival_date')).getTime());
   }
 });

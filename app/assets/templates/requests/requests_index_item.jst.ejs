@@ -1,5 +1,3 @@
-
-
 <a href="<%= "#requests/"+ request.id %>">
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
@@ -15,10 +13,12 @@
 				(<%= request.escape('location') %>)
 			</h3>
 			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+			<small><strong>Status: </strong><%= request.get("status") %></small>
 			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
 
 		</section>
 </section>
+
 	<% } else { %>
 		<section class="group">
 				<figure class="user-thumb">
@@ -30,6 +30,8 @@
 				<strong><%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %></strong>
 			(<%= request.escape('location') %>)</h3>
 			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
+
+			<small><strong>Status: </strong><%= request.get("status") %></small>
 			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
 			</section>
 	</section>
@@ -37,10 +39,4 @@
 	<% } %>
 
 <% } %>
-
-
-
 </a>
-<style>
-
-</style>
