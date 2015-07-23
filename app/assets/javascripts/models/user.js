@@ -35,7 +35,7 @@ SofaHopping.Models.User = Backbone.Model.extend({
       this._requests = new SofaHopping.Collections.Requests([], { user: this });
     }
 
-    return this._requests
+    return this._requests;
   },
 
   references: function(){
@@ -43,7 +43,7 @@ SofaHopping.Models.User = Backbone.Model.extend({
       this._references = new SofaHopping.Collections.References([], { user: this });
     }
 
-    return this._references
+    return this._references;
   },
 
   friends: function(){
@@ -51,7 +51,7 @@ SofaHopping.Models.User = Backbone.Model.extend({
       this._friends = new SofaHopping.Collections.Friends([], { user: this });
     }
 
-    return this._friends
+    return this._friends;
   },
 
   pendingFriends: function(){
@@ -77,7 +77,7 @@ SofaHopping.Models.User = Backbone.Model.extend({
     var result = false;
 
 
-    if (this.id === other_user) { result = true };
+    if (this.id === other_user) { result = true }
 
     this.friends().each(function(friend){
 

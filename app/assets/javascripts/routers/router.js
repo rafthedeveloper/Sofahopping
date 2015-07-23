@@ -41,7 +41,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       model: newUser
     });
     this._swapView(formView, this.$rootHero);
-    initialize();
+
   },
 
   signIn: function(callback){

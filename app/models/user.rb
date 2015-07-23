@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
   pg_search_scope :search_by_location,
                   :against => [:location, :fname, :lname],
                   :using => {
-                   :tsearch => {:prefix => true}, 
+                   :tsearch => {:prefix => true},
                    :trigram => {
-                     :threshold => 0.2
+                     :threshold => 0.1
                    }
                  }
 
