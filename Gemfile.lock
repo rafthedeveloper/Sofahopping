@@ -153,7 +153,7 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.2)
-    pg_search (0.6.4)
+    pg_search (1.0.4)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel

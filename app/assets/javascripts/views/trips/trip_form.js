@@ -33,6 +33,7 @@ SofaHopping.Views.TripForm = Backbone.View.extend({
 
   createDatePicker: function(){
     $( ".datepicker" ).datepicker({
+      minDate: 0,
       dateFormat: "yy-mm-dd"
     });
   },
