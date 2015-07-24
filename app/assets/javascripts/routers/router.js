@@ -99,7 +99,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var callback = this.userDashboard.bind(this);
 
     if (!this._requireSignedIn(callback)) { return; }
-
+    SofaHopping.currentUser.fetch();
     var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id, { data: { view: "dashboard" }});
     var dashboardView = new SofaHopping.Views.DashboardView({ model: user });
 
