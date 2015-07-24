@@ -15,15 +15,15 @@ class Api::UsersController < ApplicationController
 
   def index
     if params[:status]
-     @users = User.where(hosting_status: params[:status])
-     @users = User.search_by_location(params[:query]) if params[:query] != "none"
+     @users = User.includes(:received_references).where(hosting_status: params[:status])
+     @users = @users.search_by_location(params[:query]) if params[:query] != "none"
      render :index
     elsif params[:trips]
       @trips = Trip.includes(:traveler).all
       @trips = @trips.search_by_location(params[:query]) if params[:query] != "none"
       render :travelers
     else
-      @users = User.all
+      @users = User.includes(:received_references).all
       @users = @users.search_by_location(params[:query]) if params[:query] != "none"
       render :index
     end

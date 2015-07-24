@@ -12,6 +12,7 @@
 .request-user-details{
 float:left;
 margin-left:20px;
+
 font-size:16px;
 line-height:1.5em;
 }
@@ -107,6 +108,10 @@ line-height:1.5em;
 .request-details .content-form{
   margin-top:20px;
   margin-left:115px;
+}
+
+.request-container{
+  padding-right:20px;
 }
 
 .request-details header{
