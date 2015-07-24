@@ -2,9 +2,10 @@
 <% if (request.escape("requester_type") === "guest") { %>
 	<% if (parseInt(request.escape('requester_id')) === SofaHopping.currentUser.id) { %>
 		<header>
-			<h3>Your request to: 
+			<h3>Your request to:
 				<%= request.get("requestee_details").fname %> <%= request.get("requestee_details").lname %>
-				(<%= request.get("status") %>)
+				(<%= request.get("status") %>)<br>
+		<small class="back-to-index">Back to Index</small>
 			</h3>
 		</header>
 		<section class="request-container group">
@@ -20,9 +21,12 @@
 					<strong>From</strong>: <%= request.escape('location') %><br>
 				</h3>
 				<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
-				<strong>Status: </strong><%= request.escape('status') %><br>
 				<strong>Travelers: </strong><%= request.escape('num_guests') %><br>
 			</section>
+
+		<section class="request-status">
+			<small class="<%= request.get("status") %>"><strong> <%= request.get("status") %></strong></small>
+		</section>
 	</section>
 
 	<% if (request.escape("status") === "pending") { %>
@@ -82,7 +86,8 @@
 		<header>
 			<h3>
 				<%= request.get("requester_details").fname %> <%= request.get("requester_details").lname %>'s
-				request to be hosted by you (<%= request.get("status") %>)
+				request to be hosted by you (<%= request.get("status") %>)<br>
+<small class="back-to-index">Back to Index</small>
 			</h3>
 		</header>
 
@@ -99,9 +104,12 @@
 					<strong>Traveling to: </strong><%= request.escape('location') %><br>
 				</h3>
 				<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
-				<strong>Status: </strong><%= request.escape('status') %><br>
 				<strong>Travelers: </strong><%= request.escape('num_guests') %><br>
 			</section>
+
+<section class="request-status">
+	<small class="<%= request.get("status") %>"><strong> <%= request.get("status") %></strong></small>
+</section>
 	</section>
 
 

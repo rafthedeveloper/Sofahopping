@@ -127,3 +127,38 @@ line-height:1.5em;
   display:block;
 
 }
+
+.request-status{
+  float:right;
+}
+
+.request-status small{
+text-transform: uppercase;
+}
+
+.request-status small.pending{
+color: #2980b9;
+}
+
+.request-status small.rejected{
+color: #c0392b;
+}
+
+.request-status small.accepted{
+color: #27ae60;
+}
+
+.request-status small.cancelled{
+color: #7f8c8d;
+}
+
+.back-to-index{
+  cursor:pointer;
+  color:#2980b9;
+  font-size:16px;
+  margin-top:10px;
+}
+
+.back-to-index:hover{
+  text-decoration:underline;
+}

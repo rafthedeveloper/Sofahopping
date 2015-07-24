@@ -13,10 +13,13 @@
 				(<%= request.escape('location') %>)
 			</h3>
 			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
-			<small><strong>Status: </strong><%= request.get("status") %></small>
+
 			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
 
 		</section>
+	<section class="request-status">
+<small class="<%= request.get("status") %>"><strong> <%= request.get("status") %></strong></small>
+</section>
 </section>
 
 	<% } else { %>
@@ -31,9 +34,13 @@
 			(<%= request.escape('location') %>)</h3>
 			<small><strong>Dates: </strong><%= request.get("arrival_date") %> to <%= request.get("departure_date") %></small>
 
-			<small><strong>Status: </strong><%= request.get("status") %></small>
+
 			<small class="timeago updatedat" title="<%= request.get("updated_at") %>"></small>
-			</section>
+</section>
+<section class="request-status">
+<small class="<%= request.get("status") %>"><strong> <%= request.get("status") %></strong></small>
+</section>
+
 	</section>
 
 	<% } %>

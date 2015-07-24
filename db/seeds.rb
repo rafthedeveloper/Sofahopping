@@ -1,3 +1,14 @@
+u0 = User.create!(
+  username: "deanhu",
+  password: "password",
+  fname: "Dean",
+  lname: "Hu",
+  gender: "Male",
+  birthday: "1984-12-30",
+  location: "New York City",
+  hosting_status: "yes",
+  avatar: File.open(Rails.root.join("app/assets/images/dean-hu.jpg"))
+)
 
 u1 = User.create!(
      username: "LebronJames",
@@ -79,7 +90,7 @@ u7 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "Los Angeles, California",
-  hosting_status: "yes",
+  hosting_status: "no",
   avatar: File.open(Rails.root.join("app/assets/images/chris-paul.jpg"))
 )
 
@@ -91,7 +102,7 @@ u8 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "Minneapolis, Minnesota",
-  hosting_status: "yes",
+  hosting_status: "no",
   avatar: File.open(Rails.root.join("app/assets/images/kevin-garnett.jpg"))
 )
 
@@ -103,7 +114,7 @@ u9 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "San Antonio, Texas",
-  hosting_status: "yes",
+  hosting_status: "maybe",
   avatar: File.open(Rails.root.join("app/assets/images/tim-duncan.jpg"))
 )
 
@@ -115,7 +126,7 @@ u10 = User.create!(
   gender: "Male",
   birthday: "1978-08-23",
   location: "Chicago, Illinois",
-  hosting_status: "yes",
+  hosting_status: "maybe",
   avatar: File.open(Rails.root.join("app/assets/images/derrick-rose.jpg"))
 )
 
@@ -145,34 +156,41 @@ f4 = Friendship.create!(
   )
 
 f5 = Friendship.create!(
-     friend_requestee: u2,
-     friend_requester: u3,
-     pending_status: "accepted"
+     friend_requestee: u1,
+     friend_requester: u6,
+     pending_status: "pending"
   )
 
 f6 = Friendship.create!(
-     friend_requestee: u2,
-     friend_requester: u4,
-     pending_status: "accepted"
+     friend_requestee: u1,
+     friend_requester: u7,
+     pending_status: "pending"
   )
 
 f7 = Friendship.create!(
-     friend_requestee: u3,
-     friend_requester: u4,
-     pending_status: "accepted"
+     friend_requestee: u1,
+     friend_requester: u8,
+     pending_status: "pending"
   )
 
 f8 = Friendship.create!(
-     friend_requestee: u3,
-     friend_requester: u5,
+     friend_requestee: u1,
+     friend_requester: u9,
      pending_status: "accepted"
   )
 
 f9 = Friendship.create!(
-     friend_requestee: u4,
-     friend_requester: u5,
-     pending_status: "accepted"
+   friend_requestee: u1,
+   friend_requester: u10,
+   pending_status: "accepted"
   )
+
+f9 = Friendship.create!(
+   friend_requestee: u1,
+   friend_requester: u0,
+   pending_status: "pending"
+  )
+
 
 t1 = Trip.create!(
      user_id: u1.id,
@@ -198,9 +216,109 @@ t3 = Trip.create!(
      user_id: u1.id,
      from: u1.location,
      to: "Miami, Florida",
-     description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
+     description: "Hey, I might be going back out to Miami if it doesn't work out for me here in Cleveland. I'm looking for someone who's cool to hang out with and is willing to host me while I play some basketball.",
      arrival_date: "22/07/2015",
      departure_date: "23/07/2015",
+     num_guests: 1
+)
+
+t4 = Trip.create!(
+     user_id: u1.id,
+     from: u1.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t5 = Trip.create!(
+     user_id: u2.id,
+     from: u2.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t6 = Trip.create!(
+     user_id: u3.id,
+     from: u3.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t7 = Trip.create!(
+     user_id: u4.id,
+     from: u4.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t8 = Trip.create!(
+     user_id: u5.id,
+     from: u5.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t9 = Trip.create!(
+     user_id: u6.id,
+     from: u6.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t10 = Trip.create!(
+     user_id: u7.id,
+     from: u7.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t11 = Trip.create!(
+     user_id: u8.id,
+     from: u8.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t12 = Trip.create!(
+     user_id: u9.id,
+     from: u9.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
+     num_guests: 1
+)
+
+t13 = Trip.create!(
+     user_id: u10.id,
+     from: u10.location,
+     to: "Manhattan, New York",
+     description: "Hey, I'm heading to New York on Monday, can anyone host me?",
+     arrival_date: "26/07/2015",
+     departure_date: "29/07/2015",
      num_guests: 1
 )
 
@@ -292,182 +410,92 @@ r11 = Reference.create!(
      experience: "neutral"
 )
 
+req5 = Request.create!(
+  requester_id: u5.id,
+  requestee_id: u1.id,
+  location: u1.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u1.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest",
+  status: "accepted"
+)
+
+req6 = Request.create!(
+  requester_id: u6.id,
+  requestee_id: u1.id,
+  location: u1.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u1.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest",
+  status: "rejected"
+)
+
+req1 = Request.create!(
+  requester_id: u2.id,
+  requestee_id: u1.id,
+  location: u1.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u1.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest"
+)
+
+req2 = Request.create!(
+  requester_id: u3.id,
+  requestee_id: u1.id,
+  location: u1.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u1.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest"
+)
+
+req3 = Request.create!(
+  requester_id: u4.id,
+  requestee_id: u1.id,
+  location: u1.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u1.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest"
+)
+
+req4 = Request.create!(
+  requester_id: u1.id,
+  requestee_id: u0.id,
+  location: u0.location,
+  message: "Hey I'd appreciate it if you would host me when I visit " + u0.location.to_s + " thanks!",
+  arrival_date: "10/09/2015",
+  departure_date: "15/09/2015",
+  num_guests: 1,
+  requester_type: "guest"
+)
 
 
 
 
 
-# u1 = User.create!(
-#      username: "rafael",
-#      password: "password",
-#      fname: "Rafael",
-#      lname: "Maldonado",
-#      gender: "Male",
-#      birthday: "1989-06-01",
-#      location: "Brooklyn, New York",
-#      hosting_status: "maybe"
-# )
-#
-# u2 = User.create!(
-#      username: "ivy",
-#      password: "password",
-#      fname: "Ivy",
-#      lname: "Liu",
-#      gender: "Female",
-#      birthday: "1989-09-21",
-#      location: "Taipei, Taiwan",
-#      hosting_status: "maybe"
-# )
-#
-# u3 = User.create!(
-#      username: "tammy",
-#      password: "password",
-#      fname: "Tammy",
-#      lname: "Lum",
-#      gender: "Female",
-#      birthday: "1989-07-18",
-#      location: "Brooklyn, New York",
-#      hosting_status: "no"
-# )
-#
-# u4 = User.create!(
-#      username: "zach",
-#      password: "password",
-#      fname: "Zach",
-#      lname: "Arden",
-#      gender: "Male",
-#      birthday: "1988-03-29",
-#      location: "Taipei, Taiwan",
-#      hosting_status: "yes"
-# )
-#
-# u5 = User.create!(
-#      username: "joel",
-#      password: "password",
-#      fname: "Joel",
-#      lname: "Burgos",
-#      gender: "Male",
-#      birthday: "1988-03-29",
-#      location: "Taipei, Taiwan",
-#      hosting_status: "yes"
-# )
-#
-#
-# u6 = User.create!(
-#      username: "wanda",
-#      password: "password",
-#      fname: "Wanda",
-#      lname: "Sanchez",
-#      gender: "Female",
-#      birthday: "1988-03-29",
-#      location: "NYC",
-#      hosting_status: "yes"
-# )
-#
-# u7 = User.create!(
-#      username: "emma",
-#      password: "password",
-#      fname: "Emma",
-#      lname: "Watson",
-#      gender: "Female",
-#      birthday: "1988-03-29",
-#      location: "NYC",
-#      hosting_status: "yes"
-# )
-#
-#
-# t1 = Trip.create!(
-#      user_id: u1.id,
-#      location: "Iceland",
-#      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-#      arrival_date: "15/07/2015",
-#      departure_date: "18/07/2015",
-#      num_guests: 1
-# )
-#
-# t2 = Trip.create!(
-#      user_id: u2.id,
-#      location: "Japan",
-#      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-#      arrival_date: "15/07/2015",
-#      departure_date: "18/07/2015",
-#      num_guests: 2
-# )
-#
-# t3 = Trip.create!(
-#      user_id: u3.id,
-#      location: "Spain",
-#      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-#      arrival_date: "15/07/2015",
-#      departure_date: "18/07/2015",
-#      num_guests: 1
-# )
-#
-# t4 = Trip.create!(
-#      user_id: u4.id,
-#      location: "Montreal",
-#      description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
-#      arrival_date: "15/07/2015",
-#      departure_date: "18/07/2015",
-#      num_guests: 3
-# )
-#
 
-#
-# r3 = Reference.create!(
-#      referencer_id: u2.id,
-#      referencee_id: u1.id,
-#      relationship: "guest",
-#      description: "What an awesome company to have, I would love to hang out with them again! Definitely a positive experience!",
-#      experience: "negative"
-# )
-#
-# r4 = Reference.create!(
-#      referencer_id: u3.id,
-#      referencee_id: u1.id,
-#      relationship: "host",
-#      description: "What an awesome company to have, I would love to hang out with them again! Definitely a positive experience!",
-#      experience: "positive"
-# )
-#
-# f1 = Friendship.create!(
-#      friend_requestee: u1,
-#      friend_requester: u2,
-#      pending_status: "accepted"
+
+# i = 0;
+# while (i < 500) do
+#   hosting_statuses = ["yes", "maybe", "no"]
+#   User.create!(
+#     username: "user" + i.to_s,
+#     password: "password",
+#     fname: Faker::Name.first_name,
+#     lname: Faker::Name.last_name,
+#     gender: "other",
+#     birthday: "29/10/1969",
+#     location: Faker::Address.state,
+#     hosting_status: hosting_statuses.sample
 #   )
-#
-# f2 = Friendship.create!(
-#      friend_requestee: u1,
-#      friend_requester: u3,
-#      pending_status: "accepted"
-#   )
-#
-# f3 = Friendship.create!(
-#      friend_requestee: u1,
-#      friend_requester: u4,
-#      pending_status: "pending"
-#   )
-#
-# f4 = Friendship.create!(
-#      friend_requestee: u3,
-#      friend_requester: u4,
-#      pending_status: "accepted"
-#   )
-#
-# f5 = Friendship.create!(
-#      friend_requestee: u4,
-#      friend_requester: u2,
-#      pending_status: "accepted"
-#   )
-#
-# f6 = Friendship.create!(
-#    friend_requestee: u1,
-#    friend_requester: u5,
-#    pending_status: "pending"
-# )
-#
-# f7 = Friendship.create!(
-#      friend_requestee: u1,
-#      friend_requester: u6,
-#      pending_status: "pending"
-#   )
+#   i+=1
+# end
