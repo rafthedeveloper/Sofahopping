@@ -31,6 +31,7 @@
     this.model.save({}, {
       success: function(model, response){
         SofaHopping.currentUser.friends().add(this.model);
+        SofaHopping.currentUser.pendingFriends().remove(this.model);
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
         this.collection.remove(this.model);
