@@ -25,6 +25,7 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
     var attrs = $(event.currentTarget).serializeJSON().reference;
     var reference = new SofaHopping.Models.Reference({});
     var author_details = {};
+
     author_details["fname"] = SofaHopping.currentUser.get('fname');
     author_details["lname"] = SofaHopping.currentUser.get('lname');
     author_details["id"] = SofaHopping.currentUser.id;
@@ -39,6 +40,7 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
       success: function(){
         var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully added reference." });
         success.render();
+
         this.model.references().add(reference, { merge: true });
         this.remove();
       }.bind(this),

@@ -480,12 +480,12 @@ req4 = Request.create!(
 
 
 
-
-
-
-
+# 
+#
+#
+#
 # i = 0;
-# while (i < 500) do
+# while (i < 100) do
 #   hosting_statuses = ["yes", "maybe", "no"]
 #   User.create!(
 #     username: "user" + i.to_s,
