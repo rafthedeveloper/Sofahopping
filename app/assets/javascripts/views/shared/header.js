@@ -40,7 +40,7 @@ SofaHopping.Views.Header = Backbone.View.extend({
     var query = $(event.currentTarget).find(".query").val().toLowerCase();
     $(".query").val('');
 
-    var query = query || "none";
+    query = query || "none";
     Backbone.history.navigate("#members/search/" + query , { trigger: true })
   },
 

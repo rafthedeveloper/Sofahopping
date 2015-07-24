@@ -20,7 +20,7 @@ SofaHopping.Views.AvatarForm = Backbone.View.extend({
     this.remove();
   },
 
-  uploadAvatar(event){
+  uploadAvatar: function(event){
     event.preventDefault();
 
     var file = this.$("#avatar-image")[0].files[0];

@@ -3,7 +3,7 @@
 
   template: JST["friends/friends_index_item"],
   tagName: "li",
-  class: "group",
+  className: "group",
 
   events: {
     "click #delete_friend": "destroyFriendship",
@@ -13,7 +13,7 @@
 
   initialize: function(options){
     this.visitedUser = options.visitedUser;
-    this.listType = options.listType
+    this.listType = options.listType;
   },
 
   render: function(){
@@ -33,9 +33,9 @@
         SofaHopping.currentUser.friends().add(this.model);
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
-        this.collection.remove(this.model)
+        this.collection.remove(this.model);
       }.bind(this)
-    })
+    });
   },
 
   destroyFriendship: function(event){

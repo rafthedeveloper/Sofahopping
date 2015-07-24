@@ -17,7 +17,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
-    this.$rootHero = options.$rootHero
+    this.$rootHero = options.$rootHero;
     this.requests = new SofaHopping.Collections.Requests({});
   },
 
@@ -31,8 +31,6 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   },
 
   new: function(){
-
-
     if (!this._requireSignedOut()) {
       return; }
 
