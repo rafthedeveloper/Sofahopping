@@ -44,7 +44,6 @@
 
     this.model.destroy({
       success: function(model, response){
-        SofaHopping.currentUser.pendingFriends().remove(this.model);
         var success = new SofaHopping.Views.SuccessMessage({ message: response.message });
         success.render();
       }.bind(this)

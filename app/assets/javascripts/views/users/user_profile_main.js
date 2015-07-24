@@ -28,8 +28,8 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   initialize: function(){
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.currentUser, "sync", this.render);
-    this.listenTo(SofaHopping.currentUser.pendingFriends(), "add remove", this.render);
-    this.listenTo(SofaHopping.currentUser.friends(), "add remove", this.render);
+    this.listenTo(SofaHopping.currentUser.pendingFriends(), "sync add remove", this.render);
+    this.listenTo(SofaHopping.currentUser.friends(), "sync add remove", this.render);
     this.addReferencesView(this.model);
     this.addFriendshipsView(this.model);
   },
