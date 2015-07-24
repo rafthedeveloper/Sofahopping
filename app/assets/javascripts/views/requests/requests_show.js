@@ -6,7 +6,8 @@ SofaHopping.Views.RequestsShow = Backbone.View.extend({
 	events:{
 		"click #cancel-request": "handleRequest",
 		"click #reject-request": "handleRequest",
-		"click #accept-request": "handleRequest"
+		"click #accept-request": "handleRequest",
+		"click .back-to-index": "backToIndex"
 	},
 
 	initialize: function(){
@@ -18,6 +19,10 @@ SofaHopping.Views.RequestsShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		$("small.timeago").timeago();
 		return this;
+	},
+
+	backToIndex:function(){
+		Backbone.history.navigate("#requests", { trigger: true });
 	},
 
 	handleRequest: function(event){
