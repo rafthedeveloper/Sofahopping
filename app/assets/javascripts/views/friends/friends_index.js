@@ -21,10 +21,9 @@ SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
   initialize: function(options){
 
     this.listType = options.listType;
-<<<<<<< HEAD
+
     this.listenTo(SofaHopping.currentUser.friends(), "remove", this.render)
-=======
->>>>>>> 7414fe076c560ad0b6c3a503aefc60049bf8a8fe
+
     this.listenTo(this.collection, "sync", this.render)
     this.listenTo(this.collection, "add", this.addFriendView);
     this.listenTo(this.collection, "remove", this.removeFriendView);

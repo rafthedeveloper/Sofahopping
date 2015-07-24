@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
  SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
-=======
-SofaHopping.Views.FriendsIndexItem = Backbone.View.extend({
->>>>>>> 7414fe076c560ad0b6c3a503aefc60049bf8a8fe
+
   template: JST["friends/friends_index_item"],
   tagName: "li",
   class: "group",
