@@ -1,7 +1,7 @@
 SofaHopping.Views.RequestsIndex = Backbone.CompositeView.extend({
 	template: JST["requests/requests_index"],
 
-	addRequestView(request){
+	addRequestView: function(request){
 		var requestView = new SofaHopping.Views.RequestsIndexItem({ model: request });
 		this.addSubview('.requests-list', requestView);
 		this.$(".requests-list").removeClass("none");
@@ -9,7 +9,7 @@ SofaHopping.Views.RequestsIndex = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		this.listenTo(this.collection, "sync", this.render);
-		
+
 	},
 
 	render: function(){
