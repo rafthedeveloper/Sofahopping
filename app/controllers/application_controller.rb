@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     self.session[:session_token] = nil
   end
 
+  def destroy_guest!
+    current_user.destroy!
+    self.session[:session_token] = nil
+  end
+
 end

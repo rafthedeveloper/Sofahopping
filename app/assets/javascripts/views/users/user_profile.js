@@ -15,7 +15,7 @@ SofaHopping.Views.ProfileView = Backbone.CompositeView.extend({
   },
 
   addMainView: function(user){
-    this.mainView = new SofaHopping.Views.ProfileMainView({ model: this.model });
+    this.mainView = new SofaHopping.Views.ProfileMainView({ model: this.model, currentUser: this.currentUser });
     this.addSubview('.profile-main-container', this.mainView);
   },
 
@@ -26,8 +26,9 @@ SofaHopping.Views.ProfileView = Backbone.CompositeView.extend({
 
 
 
-  initialize: function(){
+  initialize: function(options){
     this.listenTo(this.model, "sync change", this.render)
+    this.currentUser = options.currentUser;
     this.addMainView();
     this.addSideBarView();
   },

@@ -1,32 +1,45 @@
-<section class="user-profile-info profile-main-content group">
+<section class="user-main-content group">
+  <header class="group">
 <h3>
   <% if (user.get('hosting_status') === "yes") { %> <span class="accepting">ACCEPTING GUESTS</span> <% } %>
   <% if (user.get('hosting_status') === "maybe") { %><span class="maybe">MAYBE ACCEPTING GUESTS</span> <% } %>
   <% if (user.get('hosting_status') === "no") { %> <span class="no">NOT ACCEPTING GUESTS</span> <% } %>
+<small class="last-login timeago" title="<%= user.escape('updated_at') %>"></small>
 </h3>
+<form class="mini-form group">
+  <% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
+    <% if (user.get('hosting_status') === "yes" || user.get('hosting_status') === "maybe") { %>
+      <button id="make_request">Request Host</button>
+    <% } %>
 
+    <% if (!(_.isEmpty(currentUser.friends().where({friend_id: user.id})))) { %>
+      <button class="delete" id="remove_friend">Unfriend</button>
 
-<section class="profile-actions">
-    <form class="mini-form group">
-<% if (SofaHopping.currentUser.id !== parseInt(user.id)) { %>
+    <% } else if (!(_.isEmpty(currentUser.pendingFriends().where({friend_id: user.id})))) { %>
+      <button disabled class="pending">Friend Request Pending...</button>
 
-<% if (user.get('hosting_status') === "yes" || user.get('hosting_status') === "maybe") { %>
-
-    <button id="make_request">Request Host</button>
-
-<% } %>
-
-<% if (SofaHopping.currentUser.is_connected_with(parseInt(user.id)) === false) { %>
-   <button class="submit" id="add_friend">Add friend</button>
- <% } else if(SofaHopping.currentUser.is_added_friend(parseInt(user.id))){ %>
-   <button class="delete" id="remove_friend">Unfriend</button>
- <% } else {%>
-   <button disabled class="pending">Friend Request Pending...</button>
- <% } %>
-<% } %>
+    <% } else { %>
+      <button class="submit" id="add_friend">Add friend</button>
+    <% } %>
+  <% } else { %>
+    <button id="edit_profile">Edit My Profile</button>
+  <% } %>
 </form>
-</section>
+</header>
+
+
+
+
 </section>
 
-<section class="user-profile-references-container profile-main-content group"></section>
-<section class="user-profile-friends-container profile-main-content group"></section>
+<!-- <section class="user-profle-overview user-main-content">
+    <h2>Overview</h2>
+    <ul class="overview-list">
+      <li>Member since: <%= new Date(user.escape('created_at')).toDateString() %> </li>
+      <li>Date of birth: <%= user.escape('birthday') %></li>
+      <li>Gender: <%= user.escape('gender') %></li>
+      <li>References: <%= user.references().length %> </li>
+      <li>Friends: <%= user.friends().length %></li>
+      <li></li>
+</section> -->
+<section class="user-profile-main"></section>

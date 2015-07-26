@@ -18,7 +18,7 @@
 
   render: function(){
 
-    var renderedContent = this.template({ friend: this.model, visitedUser: this.visitedUser, listType: this.listType });
+    var renderedContent = this.template({ friend: this.model, listType: this.listType });
     this.$el.html(renderedContent);
 
     return this;

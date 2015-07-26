@@ -1,15 +1,3 @@
-u0 = User.create!(
-  username: "deanhu",
-  password: "password",
-  fname: "Dean",
-  lname: "Hu",
-  gender: "Male",
-  birthday: "1984-12-30",
-  location: "New York City",
-  hosting_status: "yes",
-  avatar: File.open(Rails.root.join("app/assets/images/dean-hu.jpg"))
-)
-
 u1 = User.create!(
      username: "LebronJames",
      password: "password",
@@ -131,6 +119,8 @@ u10 = User.create!(
 )
 
 
+
+
 f1 = Friendship.create!(
      friend_requestee: u1,
      friend_requester: u2,
@@ -185,11 +175,7 @@ f9 = Friendship.create!(
    pending_status: "accepted"
   )
 
-f9 = Friendship.create!(
-   friend_requestee: u1,
-   friend_requester: u0,
-   pending_status: "pending"
-  )
+
 
 
 t1 = Trip.create!(
@@ -467,25 +453,14 @@ req3 = Request.create!(
   requester_type: "guest"
 )
 
-req4 = Request.create!(
-  requester_id: u1.id,
-  requestee_id: u0.id,
-  location: u0.location,
-  message: "Hey I'd appreciate it if you would host me when I visit " + u0.location.to_s + " thanks!",
-  arrival_date: "10/09/2015",
-  departure_date: "15/09/2015",
-  num_guests: 1,
-  requester_type: "guest"
-)
 
 
 
-# 
-#
-#
+
+
 #
 # i = 0;
-# while (i < 100) do
+# while (i < 500) do
 #   hosting_statuses = ["yes", "maybe", "no"]
 #   User.create!(
 #     username: "user" + i.to_s,

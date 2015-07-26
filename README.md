@@ -7,21 +7,19 @@
 ## Minimum Viable Product
 SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 
-
 - [x] Create accounts
 - [x] Create sessions (log in)
 - [x] Search for all members
 - [x] Search for all hosts
 - [x] Create trips
 - [x] Search for all travelers
-- [ ] Add friends
+- [x] Add friends
 - [x] Create references
-- [ ] Create events
-- [ ] Search for events
-- [ ] Create a comment on an event
-- [ ] Create a request
-- [ ] Comment on a request
-- [ ] Approve/Deny a request
+- [x] Create a comment on an event
+- [x] Create a request
+- [x] Comment on a request
+- [x] Approve/Deny a request
+- [x] Upload avatars
 
 ## Design Docs
 * [View Wireframes][views]
@@ -76,8 +74,7 @@ show the user the events that they are attending and organizing.
 
 
 ### Bonus Features (TBD)
-- [ ] Detailed User Profiles
-- [ ] User avatars, group cover photos
+
 - [ ] Create Groups and Discussions
 - [ ] Pagination/infinite scroll
 - [ ] Nicer confirmation windows
@@ -92,5 +89,3 @@ show the user the events that they are attending and organizing.
 ### TO DO
 * geocoder api for location based searching
 * rails enums for DB
-* update trip.find_all_travelers to use user objects and send that up through json
-  tack on extra trip details onto the user object.

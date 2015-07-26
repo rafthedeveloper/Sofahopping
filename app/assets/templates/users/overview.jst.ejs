@@ -1,0 +1,24 @@
+<h2>Overview</h2>
+<ul class="overview-list group">
+  <li>Name: <%= user.escape('fname') %> <%= user.escape('lname') %></li>
+  <li>Member since: <%= new Date(user.escape('created_at')).toDateString() %> </li>
+  <li>Location: <%= user.escape('location') %></li>
+  <li>References: <%= user.references().length %> </li>
+  <li>Date of birth: <%= user.escape('birthday') %></li>
+
+  <li>Friends: <%= user.friends().length %></li>
+  <li>Gender: <%= user.escape('gender') %></li>
+
+
+
+  </ul>
+
+  <style>
+  .overview-list{
+margin-top:20px;
+}
+    .overview-list li{
+      width:50%;
+      float: left;
+  }
+  </style>

@@ -16,17 +16,17 @@ class Api::RequestsController < ApplicationController
   end
 
   def index
-    current_user
+    @requests = Request.includes(:requester, :requestee)
+                       .where("requestee_id = ? OR requester_id = ?", current_user.id, current_user.id)
     render :index
   end
 
   def show
-    @request = Request.find(params[:id])
-    if @request.requester_id == current_user.id || @request.requestee_id == current_user.id
+    @request = Request.includes(:requester, :requestee)
+                      .includes(messages: :author)
+                      .where("id = ?", params[:id]).first
       render :show
-    else
-      render json: {}
-    end
+
   end
 
   def update

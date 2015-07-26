@@ -11,29 +11,58 @@
 
 }
 
-.profile-main-content, .dash-main-content{
-  margin-bottom:40px;
-  background: #fff;
-  border: 1px solid #d5d5d5;
 
-}
 
- .profile-main-content h3, .dash-main-content h2{
-  
+.user-main-content{
+  background:#fff;
   padding:20px;
-  font-size: 18px;
+  margin-bottom:40px;
 }
 
-.profile-main-content h3 {
-  border:none;
+.user-main-content header h3{
   float:left;
 
 }
 
-.profile-actions{
-  float:right;
-  margin-right:10px;
+.user-main-content header h3, .user-main-content h2{
+  font-size:20px;
+  font-weight:400;
+  color:#2980b9;
 }
+
+.user-main-content .mini-form{
+  float:right;
+  padding:0;
+  margin:0;
+}
+
+.user-main-content .mini-form button:last-child{
+  margin-right:0;
+}
+/*.user-main-content h2, .user-main-content h3{
+  font-size: 18px;
+}
+
+
+.user-main-content .mini-form button:last-child{
+  margin-right:0;
+}
+
+.user-content header{
+  float:left;
+}
+
+
+.user-content .user-content-actions{
+  float:right;
+
+}
+
+.user-content .user-content-actions .mini-form{
+  padding:0;
+  float:right;
+}*/
+
 
 .profile header{
   position:absolute;

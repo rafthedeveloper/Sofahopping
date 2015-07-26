@@ -21,8 +21,9 @@ SofaHopping.Views.RootView = Backbone.View.extend({
 
   guestLogin: function(event){
     event.preventDefault();
-    SofaHopping.currentUser.signIn({ username: "LebronJames", password: "password" })
-    Backbone.history.navigate("dashboard", { trigger: true });
+    window.location = '/guest_login';
+    // SofaHopping.currentUser.signIn({ username: "LebronJames", password: "password" })
+    // Backbone.history.navigate("dashboard", { trigger: true });
   },
 
 

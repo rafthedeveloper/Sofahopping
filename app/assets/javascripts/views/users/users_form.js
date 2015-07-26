@@ -6,6 +6,7 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
     this.$rootHero = options.$rootHero
 
 
+
   },
 
   events: {
@@ -29,6 +30,15 @@ SofaHopping.Views.UsersForm = Backbone.View.extend({
       dateFormat: "dd/mm/yy"
     });
   },
+
+  addAutocomplete: function(){
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+        { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    });
+  },
+
 
   destroySignUpForm: function(){
     this.remove();

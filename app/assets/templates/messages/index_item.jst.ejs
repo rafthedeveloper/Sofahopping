@@ -1,0 +1,11 @@
+<figure>
+  <img src="<%= message.escape('author_avatar_url') %>" width="75">
+</figure>
+
+<p>
+<strong>
+<%= message.escape('author_fname') %>:
+</strong>
+<%= message.escape('content') %>
+<small class="timeago" title="<%= message.escape('created_at') %>"></small>
+   </p>

@@ -59,40 +59,53 @@ class User < ActiveRecord::Base
     class_name: "Trip",
     foreign_key: :user_id,
     primary_key: :id,
-    inverse_of: :traveler
+    inverse_of: :traveler,
+    dependent: :destroy
 
   has_many :written_references,
     class_name: "Reference",
     foreign_key: :referencer_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :received_references,
     class_name: "Reference",
     foreign_key: :referencee_id,
     primary_key: :id,
-    inverse_of: :referencee
+    inverse_of: :referencee,
+    dependent: :destroy
 
   has_many :requested_friendships,
     class_name: "Friendship",
     foreign_key: :requester_id,
     primary_key: :id,
-    inverse_of: :friend_requester
+    inverse_of: :friend_requester,
+    dependent: :destroy
 
-  has_many :requested_by_others,
+  has_many :friend_requests_received,
     class_name: "Friendship",
     foreign_key: :requestee_id,
     primary_key: :id,
-    inverse_of: :friend_requestee
+    inverse_of: :friend_requestee,
+    dependent: :destroy
 
   has_many :created_requests,
     class_name: "Request",
     foreign_key: :requester_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :received_requests,
     class_name: "Request",
     foreign_key: :requestee_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
+
+  has_many :written_messages,
+     class_name: "Message",
+     foreign_key: :author_id,
+     primary_key: :id,
+     dependent: :destroy
 
 
 
@@ -105,6 +118,21 @@ class User < ActiveRecord::Base
 
   def num_trips
     return trips.length
+  end
+
+  def self.create_guest_account
+    user = User.create!(
+        username: "guest" + SecureRandom.urlsafe_base64(16),
+        password: SecureRandom.urlsafe_base64(16),
+        fname: Faker::Name.first_name,
+        lname: Faker::Name.last_name,
+        location: Faker::Address.city,
+        birthday: "29/10/1969",
+        gender: "other",
+        is_guest: true
+    )
+    user.generate_guest_seed_data
+    user
   end
 
   def self.find_or_create_by_auth_hash(auth_hash)
@@ -145,106 +173,78 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def num_refs
-    self.received_references.length
-  end
+  def generate_guest_seed_data
+    users = User.all
 
-  def all_requests
-    self.received_requests + self.created_requests
-  end
+    t1 = Trip.create!(
+         user_id: self.id,
+         from: self.location,
+         to: "Iceland",
+         description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
+         arrival_date: "15/09/2016",
+         departure_date: "25/09/2016",
+         num_guests: 1
+    )
 
-  def accepted_friends
-    all_friends = []
-    all_friends_details = []
-    requested_friends = self.requested_friendships.where("pending_status = ?", "accepted")
-    requested_by_others = self.requested_by_others.where("pending_status = ?", "accepted")
+    t2 = Trip.create!(
+         user_id: self.id,
+         from: self.location,
+         to: "London",
+         description: "Hey, I'm looking for a place to stay for a few days while I'm traveling! Hopefully someone on here can accomodate me.",
+         arrival_date: "23/10/2016",
+         departure_date: "28/10/2016",
+         num_guests: 1
+    )
 
-    all_friends.concat(requested_friends).concat(requested_by_others)
-    all_friends.each do |friend|
-      if (friend.friend_requester.id == self.id)
-        added_friend = friend.friend_requestee
-      else
-        added_friend = friend.friend_requester
-      end
+    i = 0
+    while (i < 5)
+      Friendship.create!(
+         friend_requestee: self,
+         friend_requester: users[i],
+         pending_status: "pending"
+        ) unless self == users[i]
+        i += 1
 
-      details = {}
-      details["requester_id"] = friend.requester_id
-      details["requestee_id"] = friend.requestee_id
-      details["id"] = friend.id
-      details["fname"] = added_friend.fname
-      details["lname"] = added_friend.lname
-      details["avatar_url"] = ActionController::Base.helpers.asset_path(added_friend.avatar.url(:thumb))
-      details["location"] = added_friend.location
-      all_friends_details.push(details);
+     r = Request.create!(
+        requester_id: users[i].id,
+        requestee_id: self.id,
+        location: self.location,
+        message: "Hey I'd appreciate it if you would host me when I visit #{self.location} thanks!",
+        arrival_date: "10/09/2015",
+        departure_date: "15/09/2015",
+        num_guests: 1,
+        requester_type: "guest"
+      ) unless self.id == users[i].id
+
+      Message.create!(
+        request_id: r.id,
+        author_id: self.id,
+        content: "I'll have to see what I'm doing during that time, give me a few days to get back to you!"
+      )
     end
 
-    all_friends_details
-  end
+    i = 6
+    while (i < 9)
+      Friendship.create!(
+         friend_requestee: self,
+         friend_requester: users[i],
+         pending_status: "accepted"
+        ) unless self == users[i]
+        i += 1
 
-  def pending_friends
-    pending_friends = []
-    pending_friends_details = [];
-    requested_friends = self.requested_friendships.where("pending_status = ?" , "pending")
-    requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
-
-    pending_friends.concat(requested_friends).concat(requested_by_others)
-
-    pending_friends.each do |friend|
-      if (friend.friend_requester.id == self.id)
-        pending_friend = friend.friend_requestee
-      else
-        pending_friend = friend.friend_requester
-      end
-
-      details = {}
-      details["requester_id"] = friend.requester_id
-      details["requestee_id"] = friend.requestee_id
-      details["id"] = friend.id
-      details["fname"] = pending_friend.fname
-      details["lname"] = pending_friend.lname
-
-      details["location"] = pending_friend.location
-
-      pending_friends_details.push(details);
+      Reference.create!(
+           referencer_id: users[i].id,
+           referencee_id: self.id,
+           relationship: "guest",
+           description: "What an amazing host! Had a great time at #{self.location}. Glad we made this connection, hopefully I can return the favor in the future.",
+           experience: "positive"
+      ) unless self.id == users[i].id
     end
 
-    pending_friends_details
-
-  end
-
-  def pending_requested_friends
-    pending_friends = []
-    pending_friends_details = [];
-    requested_by_others = self.requested_by_others.where("pending_status = ?", "pending")
-
-    pending_friends.concat(requested_by_others)
-
-    pending_friends.each do |friend|
-      if (friend.friend_requester.id == self.id)
-        pending_friend = friend.friend_requestee
-      else
-        pending_friend = friend.friend_requester
-      end
-
-      details = {}
-      details["requester_id"] = friend.requester_id
-      details["requestee_id"] = friend.requestee_id
-      details["id"] = friend.id
-      details["fname"] = pending_friend.fname
-      details["lname"] = pending_friend.lname
-              details["avatar_url"] = ActionController::Base.helpers.asset_path(pending_friend.avatar.url(:thumb))
-      details["location"] = pending_friend.location
-
-      pending_friends_details.push(details);
-    end
-
-    pending_friends_details
-  end
 
 
 
-  def remove_friend
-    all_friends = self.friends
+
   end
 
   private
@@ -255,4 +255,6 @@ class User < ActiveRecord::Base
   def generate_hosting_status
     self.hosting_status ||= "maybe"
   end
+
+
 end

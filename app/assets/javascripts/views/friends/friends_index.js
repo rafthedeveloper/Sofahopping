@@ -1,6 +1,8 @@
 SofaHopping.Views.FriendsIndex = Backbone.CompositeView.extend({
   template: JST["friends/friends_index"],
   id: "friends",
+  className: "user-main-content group",
+  tagName: "section",
 
   addFriendView: function(friend){
 

@@ -18,9 +18,9 @@ line-height:1.5em;
 }
 
 
-.request-user-details small.timeago{
+small.timeago{
   font-size:12px;
-  color:#bdc3c7;
+  color:#95a5a6;
 }
 
 .requests{
@@ -75,9 +75,10 @@ line-height:1.5em;
 }
 
 .request-description{
-  border-top:1px solid #eee;
+
   margin-top:20px;
   margin-left:20px;
+  padding-bottom:20px;
 }
 
 .requests-updates-list li{

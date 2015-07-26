@@ -2,7 +2,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "root",
-    "dashboard": "userDashboard",
+    "dashboard": "dashboard",
     "users/new": "new",
     "session/new": "signIn",
     "people/:id": "userProfile",
@@ -18,7 +18,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.$rootHero = options.$rootHero;
-    this.requests = new SofaHopping.Collections.Requests({});
+    this.users = options.users;
+    this.currentUser = options.currentUser;
+
+    this.requests = new SofaHopping.Collections.Requests();
   },
 
   root: function(){
@@ -39,6 +42,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
       model: newUser
     });
     this._swapView(formView, this.$rootHero);
+    formView.addAutocomplete();
 
   },
 
@@ -94,13 +98,11 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     }
   },
 
-  userDashboard: function(){
-
-    var callback = this.userDashboard.bind(this);
-
+  dashboard: function(){
+    var callback = this.dashboard.bind(this);
     if (!this._requireSignedIn(callback)) { return; }
-    SofaHopping.currentUser.fetch();
-    var user = SofaHopping.users.getOrFetch(SofaHopping.currentUser.id, { data: { view: "dashboard" }});
+
+    var user = this.users.getOrFetch(this.currentUser.id, { data: { view: "dashboard"} });
     var dashboardView = new SofaHopping.Views.DashboardView({ model: user });
 
     this._swapView(dashboardView);
@@ -110,12 +112,14 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     var callback = this.userProfile.bind(this, id);
     if (!this._requireSignedIn(callback)) { return; }
 
-    var visitedUser = SofaHopping.users.getOrFetch(id, { data: { view: "profile"} });
+    var user = this.users.getOrFetch(this.currentUser.id, { data: { view: "currentUser"} });
+    var visitedUser = this.users.getOrFetch(id, { data: { view: "profile"} });
 
     var userProfileView = new SofaHopping.Views.ProfileView({
-      model: visitedUser });
+      model: visitedUser, currentUser: user });
 
     this._swapView(userProfileView);
+    $("small.timeago").timeago();
   },
 
   findHosts: function(query){
@@ -142,7 +146,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     allMembers.fetch({ data: { query: query }});
 
     var membersView = new SofaHopping.Views.MembersView({
-      collection: allMembers, searchType: "all" })
+      collection: allMembers, searchType: "all", query: query })
     this._swapView(membersView);
 
   },

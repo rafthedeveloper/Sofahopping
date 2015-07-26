@@ -1,12 +1,14 @@
 .references-list.none:before{
    content: "No references have been found.";
-   padding:20px 0px;
+
    display:block;
  }
 
- .references-list, .friends-list{
-  padding: 0px 20px;
-}
+ .references-list{
+   margin-top:20px;
+ }
+
+
 
 .references-list li{
     padding:10px 10px;

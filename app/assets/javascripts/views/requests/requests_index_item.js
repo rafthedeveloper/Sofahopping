@@ -11,7 +11,7 @@ SofaHopping.Views.RequestsIndexItem = Backbone.View.extend({
 
 		var renderedContent = this.template({ request: this.model });
 		this.$el.html(renderedContent);
-		$("small.timeago").timeago();
+
 		return this;
 	}
 });

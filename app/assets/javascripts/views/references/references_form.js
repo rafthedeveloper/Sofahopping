@@ -7,6 +7,10 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
     "submit #create_reference_form": "createReference"
   },
 
+  initialize: function(options){
+    this.currentUser = options.currentUser;
+  },
+
   render: function(){
     var renderedContent = this.template({ visitedUser: this.model });
     this.$el.html(renderedContent);
@@ -26,11 +30,11 @@ SofaHopping.Views.ReferenceForm = Backbone.View.extend({
     var reference = new SofaHopping.Models.Reference({});
     var author_details = {};
 
-    author_details["fname"] = SofaHopping.currentUser.get('fname');
-    author_details["lname"] = SofaHopping.currentUser.get('lname');
-    author_details["id"] = SofaHopping.currentUser.id;
-    author_details["location"] = SofaHopping.currentUser.get('location');
-    author_details["avatar_url"] = SofaHopping.currentUser.get('avatar_url');
+    author_details["fname"] = this.currentUser.get('fname');
+    author_details["lname"] = this.currentUser.get('lname');
+    author_details["id"] = this.currentUser.id;
+    author_details["location"] = this.currentUser.get('location');
+    author_details["avatar_url"] = this.currentUser.get('avatar_url');
     reference.set(attrs);
     reference.set("author_details", author_details)
     reference.set("referencee_id", this.model.id);

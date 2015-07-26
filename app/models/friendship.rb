@@ -6,6 +6,8 @@
 #  requester_id   :integer          not null
 #  requestee_id   :integer          not null
 #  pending_status :string           not null
+#  updated_at     :datetime
+#  created_at     :datetime
 #
 
 class Friendship < ActiveRecord::Base
@@ -24,9 +26,7 @@ class Friendship < ActiveRecord::Base
     class_name: "User",
     foreign_key: :requestee_id,
     primary_key: :id,
-    inverse_of: :requested_by_others
-
-
+    inverse_of: :friend_requests_received
 
 
   def self.find_friendship(id1, id2)
@@ -42,20 +42,6 @@ class Friendship < ActiveRecord::Base
       errors.add(:requester_id, "cannot be friends with yourself.")
     end
   end
-
-  def friend_details
-    details = {}
-    requester = self.friend_requester
-    details["fname"] = requester.fname
-    details["lname"] = requester.lname
-    details["id"] = requester.id
-    details["location"] = requester.location
-    details["avatar_url"] = ActionController::Base.helpers.asset_path(requester.avatar.url(:original))
-
-    details
-  end
-
-
 
   def ensure_pending_status
     self.pending_status ||= "pending"

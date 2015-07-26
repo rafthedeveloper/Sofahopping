@@ -15,8 +15,8 @@
 </section>
 <article class="reference-description">
 
-  <small class="<%= reference.escape('experience') %>">
-    <%= reference.escape('relationship') %> - <strong><%= reference.escape('experience') %></strong>
+  <small class="relationship <%= reference.escape('experience') %>">
+    <strong><%= reference.escape('relationship') %> - <%= reference.escape('experience') %></strong>
   </small>
   <p>
     <%= reference.escape('description') %>
@@ -29,6 +29,11 @@
 </form>
 <% } %>
 
+<style>
+.relationship{
+  font-variant:small-caps;
+}
+</style>
 
 
 <style>

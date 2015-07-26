@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723160826) do
+ActiveRecord::Schema.define(version: 20150726200003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150723160826) do
   end
 
   add_index "friendships", ["requester_id", "requestee_id"], name: "index_friendships_on_requester_id_and_requestee_id", unique: true, using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "author_id",  null: false
+    t.integer  "request_id", null: false
+    t.text     "content",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["author_id"], name: "index_messages_on_author_id", using: :btree
+  add_index "messages", ["request_id"], name: "index_messages_on_request_id", using: :btree
 
   create_table "references", force: :cascade do |t|
     t.integer  "referencer_id", null: false
@@ -71,15 +82,15 @@ ActiveRecord::Schema.define(version: 20150723160826) do
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",            null: false
-    t.string   "password_digest",     null: false
-    t.string   "session_token",       null: false
-    t.string   "fname",               null: false
-    t.string   "lname",               null: false
-    t.string   "gender",              null: false
-    t.date     "birthday",            null: false
-    t.string   "location",            null: false
-    t.string   "hosting_status",      null: false
+    t.string   "username",                            null: false
+    t.string   "password_digest",                     null: false
+    t.string   "session_token",                       null: false
+    t.string   "fname",                               null: false
+    t.string   "lname",                               null: false
+    t.string   "gender",                              null: false
+    t.date     "birthday",                            null: false
+    t.string   "location",                            null: false
+    t.string   "hosting_status",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
@@ -88,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150723160826) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_guest",            default: false
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

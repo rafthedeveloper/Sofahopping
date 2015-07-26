@@ -16,7 +16,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = current_user.requested_by_others.find(params[:id])
+    @friendship = current_user.friend_requests_received.find(params[:id])
 
     if @friendship.update(update_friend_params)
       render json: { message: "Successfully accepted friend request." }

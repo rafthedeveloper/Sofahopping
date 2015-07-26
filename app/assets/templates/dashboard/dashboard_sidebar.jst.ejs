@@ -15,11 +15,9 @@
 
     <form class="content-form"  id="hosting_status_form">
     <select  name="user[hosting_status]">
-
       <option value="yes" <% if (user.get('hosting_status') === "yes") { %> selected <% } %>>Accepting Guests</option>
       <option value="maybe" <% if (user.get('hosting_status') === "maybe") { %> selected <% } %>>Maybe Accepting Guests</option>
       <option value="no" <% if (user.get('hosting_status') === "no") { %> selected <% } %>>Not Accepting Guests</option>
-
     </select>
 <button class="submit">Update Hosting Status</button>
   </form>

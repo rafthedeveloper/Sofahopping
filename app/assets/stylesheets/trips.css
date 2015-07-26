@@ -1,5 +1,5 @@
 .trips-list{
-   padding:20px 20px 0px 20px;
+   margin-top:20px;
  }
 
  .trips-list li{
@@ -26,14 +26,14 @@
 
  .friends-list.none:before{
    content:"No friends have been found.";
-   padding:20px 0px;
+   color:#bdc3c7;
    display:block;
  }
 
  .trips-list.none:before{
    content:"No trips have been found.";
-   padding-bottom:20px;
    display:block;
+   color:#bdc3c7;
  }
  .trips strong{
  display:block;

@@ -1,5 +1,7 @@
 SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   template: JST["references/references_index"],
+  className: "user-main-content group",
+  tagName: "section",
 
 
   events: {
@@ -17,10 +19,11 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
     if (this.collection.length === 0) { this.$(".references-list").addClass("none") }
   },
 
-  initialize: function(){
+  initialize: function(options){
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.collection, "sync", this.render)
     this.listenTo(this.collection, "remove", this.removeReferenceView);
+    this.currentUser = options.currentUser
   },
 
   render: function(){
@@ -35,7 +38,7 @@ SofaHopping.Views.ReferencesIndex = Backbone.CompositeView.extend({
   createReferenceForm: function(event){
     event.preventDefault();
     var referenceForm = new SofaHopping.Views.ReferenceForm({
-      model: this.model
+      model: this.model, currentUser: this.currentUser
     });
     referenceForm.render();
   }

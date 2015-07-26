@@ -32,29 +32,10 @@ class Request < ActiveRecord::Base
   foreign_key: :requestee_id,
   primary_key: :id
 
-  def requester_details
-    requester = self.requester
-
-    requester_details = {}
-    requester_details["fname"] = requester.fname
-    requester_details["lname"] = requester.lname
-    requester_details["id"] = requester.id
-    requester_details["avatar_url"] = ActionController::Base.helpers.asset_path(requester.avatar.url(:original))
-
-    requester_details
-  end
-
-  def requestee_details
-    requestee = self.requestee
-
-    requestee_details = {}
-    requestee_details["fname"] = requestee.fname
-    requestee_details["lname"] = requestee.lname
-    requestee_details["id"] = requestee.id
-    requestee_details["avatar_url"] = ActionController::Base.helpers.asset_path(requestee.avatar.url(:original))
-
-    requestee_details
-  end
+  has_many :messages,
+   class_name: "Message",
+   foreign_key: :request_id,
+   primary_key: :id
 
   def ensure_status
     self.status ||= "pending"

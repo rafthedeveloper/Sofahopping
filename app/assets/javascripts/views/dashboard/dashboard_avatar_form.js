@@ -1,11 +1,15 @@
 SofaHopping.Views.AvatarForm = Backbone.View.extend({
-  template: JST["users/dashboard_upload_avatar"],
+  template: JST["dashboard/dashboard_avatar_form"],
 
   events: {
     "click #close-avatar-form": "destroyForm",
     "click #close_avatar_modal": "destroyForm",
     "submit #avatar-upload": "uploadAvatar",
     "change #avatar-image": "fileInputChange"
+  },
+
+  initialize: function(){
+    this.render();
   },
 
   render: function(){
@@ -31,7 +35,8 @@ SofaHopping.Views.AvatarForm = Backbone.View.extend({
     var that = this;
     this.model.saveFormData(formData, {
       success: function(){
-        Backbone.history.navigate("", { trigger: true });
+        SofaHopping.currentUser.fetch({});
+        that.model.fetch({ data: { view: "dashboard"}});
         that.destroyForm();
       }
     });
@@ -39,7 +44,6 @@ SofaHopping.Views.AvatarForm = Backbone.View.extend({
 
   fileInputChange: function(event){
 
-    console.log(event.currentTarget.files[0]);
 
     var that = this;
     var file = event.currentTarget.files[0];

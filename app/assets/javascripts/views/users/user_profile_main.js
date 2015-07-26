@@ -11,34 +11,43 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   },
 
   addReferencesView: function(){
-
     var referencesView = new SofaHopping.Views.ReferencesIndex({
-      model: this.model, collection: this.model.references()
+      model: this.model, collection: this.model.references(), currentUser: this.currentUser
     });
-    this.addSubview(".user-profile-references-container", referencesView);
+    this.addSubview(".user-profile-main", referencesView);
   },
 
   addFriendshipsView: function(){
     var friendshipsView = new SofaHopping.Views.FriendsIndex({
       model: this.model, collection: this.model.friends()
     });
-    this.addSubview(".user-profile-friends-container", friendshipsView);
+    this.addSubview(".user-profile-main", friendshipsView);
   },
 
-  initialize: function(){
-    this.listenTo(this.model, "sync change", this.render);
-    this.listenTo(SofaHopping.currentUser, "sync", this.render);
-    this.listenTo(SofaHopping.currentUser.pendingFriends(), "sync add remove", this.render);
-    this.listenTo(SofaHopping.currentUser.friends(), "sync add remove", this.render);
-    this.addReferencesView(this.model);
-    this.addFriendshipsView(this.model);
+  addOverviewView: function(){
+    var overviewView = new SofaHopping.Views.Overview({
+      model: this.model
+    });
+    this.addSubview(".user-profile-main", overviewView);
+  },
+
+  initialize: function(options){
+    this.currentUser = options.currentUser;
+    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.currentUser, "sync", this.render);
+    this.listenTo(this.currentUser.pendingFriends(), "add", this.render);
+    this.listenTo(this.model.friends(), "remove", this.render);
+    this.addOverviewView();
+    this.addReferencesView();
+    this.addFriendshipsView();
   },
 
   render: function(){
-
-    var renderedContent = this.template({ user: this.model });
+    var renderedContent = this.template({ user: this.model, currentUser: this.currentUser });
     this.$el.html(renderedContent);
+    $("small.timeago").timeago();
     this.attachSubviews();
+
 
     return this;
   },
@@ -46,26 +55,29 @@ SofaHopping.Views.ProfileMainView = Backbone.CompositeView.extend({
   createFriend: function(event){
     event.preventDefault();
     var newFriend = new SofaHopping.Models.Friend({});
+    newFriend.set("friend_id", this.model.id);
     newFriend.set("requestee_id", this.model.id);
 
     newFriend.save({}, {
       success: function(){
         var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully sent friend request." });
         success.render();
-        SofaHopping.currentUser.pendingFriends().add(newFriend);
+        this.currentUser.pendingFriends().add(newFriend);
       }.bind(this)
     })
   },
 
   removeFriend: function(event){
     event.preventDefault();
-    var added_friend = SofaHopping.currentUser.find_added_friend(this.model.id)
+
+    var added_friend = this.currentUser.friends().findWhere({ friend_id: this.model.id });
     added_friend.destroy({
       success: function(){
         var success = new SofaHopping.Views.SuccessMessage({ message: "Successfully removed friend." });
         success.render();
-        this.model.friends().remove(added_friend);
-        SofaHopping.currentUser.friends().remove(added_friend);
+        this.currentUser.friends().remove(added_friend);
+        this.model.friends().remove(added_friend.id);
+
       }.bind(this)
     });
   },

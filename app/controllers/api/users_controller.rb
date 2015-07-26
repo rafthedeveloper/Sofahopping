@@ -1,14 +1,27 @@
 class Api::UsersController < ApplicationController
 
   def show
-    @user = User.includes(:trips, :requested_friendships,
-                          :requested_by_others, :received_requests, :received_references)
-                          .where(id: params[:id]).first
-
-    if @user && params[:view] == "dashboard" && current_user
+    if params[:view] == "dashboard"
+      @user = User.includes(:trips, friend_requests_received: :friend_requester)
+                  .where(id: current_user.id).first
       render :dashboard
-    elsif @user && params[:view] == "profile" && current_user
+
+    elsif params[:view] == "profile"
+      @user = User.includes(:received_references, :requested_friendships)
+                  .includes(friend_requests_received: :friend_requester)
+                  .includes(friend_requests_received: :friend_requestee)
+                  .includes(requested_friendships: :friend_requester)
+                  .includes(requested_friendships: :friend_requestee)
+                  .where(id: params[:id]).first
       render :profile
+
+    else
+      @user = User.includes(friend_requests_received: :friend_requester)
+                  .includes(friend_requests_received: :friend_requestee)
+                  .includes(requested_friendships: :friend_requester)
+                  .includes(requested_friendships: :friend_requestee)
+                  .where(id: params[:id]).first
+      render :show
     end
 
   end
@@ -19,12 +32,19 @@ class Api::UsersController < ApplicationController
      @users = @users.search_by_location(params[:query]) if params[:query] != "none"
      render :index
     elsif params[:trips]
-      @trips = Trip.includes(:traveler).all
+      @trips = Trip.includes(:traveler).where("user_id != ?", current_user.id)
       @trips = @trips.search_by_location(params[:query]) if params[:query] != "none"
       render :travelers
     else
-      @users = User.includes(:received_references).all
-      @users = @users.search_by_location(params[:query]) if params[:query] != "none"
+      if params[:query] == "none"
+        @users = User.includes(:received_references).all
+                     .page(params[:page]).per(20)
+      else
+        @users = User.includes(:received_references)
+                     .search_by_location(params[:query])
+                     .page(params[:page]).per(20)
+
+      end
       render :index
     end
   end
@@ -51,6 +71,12 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def guest_login
+    user = User.create_guest_account
+    sign_in!(user)
+    redirect_to "#"
   end
 
 

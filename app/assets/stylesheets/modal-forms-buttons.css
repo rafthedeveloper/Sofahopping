@@ -78,13 +78,33 @@
   max-width:280px;
 }
 
+.request-form{
+  width:100%;
+  padding-right:20px;
+  margin-top:10px;
+}
+.request-form textarea{
+  display:block;
+  width:100%;
+  margin:0 auto;
+  border-radius:5px;
+  max-width:100%;
+  padding:10px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  margin-bottom:10px;
+
+  height:150px;
+}
+
 .content-form label{
   margin-left:20px;
   display:block;
   margin-bottom:5px;
 }
 
-.content-form button, .mini-form button{
+.content-form button, .mini-form button, .request-form button{
   display:block;
   background: #3498db;
   line-height:35px;
@@ -108,13 +128,13 @@ float:left;
 }
 
 
-.content-form button:active, .mini-form button:active{
+.content-form button:active, .mini-form button:active, .request-form button:active{
   border:none;
   position:relative;
   margin-top:1px;
   background: #2980b9;
 }
-.content-form button:hover, .mini-form button:hover{
+.content-form button:hover, .mini-form button:hover, .request-form button:hover{
   background: #2980b9;
 }
 

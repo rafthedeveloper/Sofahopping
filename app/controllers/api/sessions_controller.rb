@@ -28,7 +28,11 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out!
+    if (current_user.is_guest == true)
+      destroy_guest!
+    else
+      sign_out!
+    end
     render json: {}
   end
 

@@ -17,7 +17,7 @@
 //= require jquery.timeago
 //= require underscore
 //= require backbone
-//= require sofa_hopping
+//= require sofahopping
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

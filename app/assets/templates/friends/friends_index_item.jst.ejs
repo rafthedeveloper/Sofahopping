@@ -3,11 +3,7 @@
 </figure>
 
 <section class="friend-details">
-  <% if (listType === "pending") { %>
-    <a href="<%= "#people/" + friend.escape('requester_id') %>"><%= friend.escape('fname') %> <%= friend.escape('lname') %></a>
-  <% } else { %>
-  <a href="<%= "#people/" + visitedUser.get_friend_id(friend.id) %>"><%= friend.escape('fname') %> <%= friend.escape('lname') %></a>
-  <% } %>
+  <a href="<%= "#people/" + friend.escape('friend_id') %>"><%= friend.escape('fname') %> <%= friend.escape('lname') %></a>
   <small><%= friend.escape('location') %></small>
 </section>
 

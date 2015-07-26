@@ -1,7 +1,7 @@
 SofaHopping.Views.ReferenceIndexItem = Backbone.View.extend({
   template: JST["references/references_index_item"],
   tagName: "li",
-  className: "reference-list-item",
+  className: "reference-list-item group",
 
   events: {
     "click #delete_reference": "destroyReference"
