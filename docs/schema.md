@@ -66,28 +66,3 @@ author_id      | integer   | not null, foreign key (references users)
 body           | text      | not null
 type           | string    | not null
 type_id        | integer   | not null, foreign key (references request, reference or event)
-
-## events
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-name           | string    | not null
-location       | string    | not null
-start_time     | datetime  | not null
-end_time       | datetime  | not null
-attendee_limit | integer   | not null
-description    | text      | not null
-
-## attendees
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-attendee_id    | integer   | not null, foreign key (references users)
-event_id       | integer   | not null, foreign key (references events)
-
-## organizers
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-organizer_id   | integer   | not null, foreign key (references users)
-event_id       | integer   | not null, foreign key (references events)

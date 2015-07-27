@@ -1,8 +1,8 @@
 # SofaHopping
 
-[Heroku link][heroku]
+[Project Link][project]
 
-[heroku]: http://sofahopping.herokuapp.com/
+[project]: http://www.sofahopping.com
 
 ## Minimum Viable Product
 SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
@@ -25,8 +25,8 @@ SofaHopping is a clone of Couchsurfing built on Rails and Backbone. Users can:
 * [View Wireframes][views]
 * [DB schema][schema]
 
-[views]: ./docs/views.md
-[schema]: ./docs/schema.md
+[views]: docs/views.md
+[schema]: docs/schema.md
 
 ## Implementation Timeline
 
@@ -64,14 +64,6 @@ sending hosts a request to be hosted by them and also posting messages
 on said requests. A user can also approve, deny or cancel a request.
 
 [Details][phase-four]
-
-### Phase 5: Events and Comments (~2 days)
-In this phase, I will be focusing on creating events, editing them and removing
-them. I will also be focusing on adding comments to these events. I will also
-show the user the events that they are attending and organizing.
-
-[Details][phase-five]
-
 
 ### Bonus Features (TBD)
 
