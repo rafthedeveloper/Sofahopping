@@ -3,6 +3,10 @@
 This document is meant to guide you through my project as you navigate to
 different pages.
 
+[Project Link][project]
+
+[project]: http://www.sofahopping.com
+
 
 ## Homepage
 
