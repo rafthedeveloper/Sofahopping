@@ -262,6 +262,3 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   uglifier (>= 1.3.0)
-
-BUNDLED WITH
-   1.10.5
