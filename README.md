@@ -62,7 +62,7 @@ try it out. After completing the form, it will submit a request to the user for 
 You can check out the details by visiting your "inbox" on the dropdown menu
 and clicking on that request.
 
-####### Technical
+###### Technical
 - Every request that is made is done through a model or collection
 on the Backbone.js side, which sends an AJAX request to the rails controller.
 
