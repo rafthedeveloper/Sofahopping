@@ -128,10 +128,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     var hosts = new SofaHopping.Collections.Users();
-    hosts.fetch({ data: { status: "yes", query: query }});
+    hosts.fetch({ data: { searchType: "hosts", query: query }});
 
     var membersView = new SofaHopping.Views.MembersView({
-      collection: hosts, searchType: "hosts" })
+      collection: hosts, searchType: "hosts", query: query })
     this._swapView(membersView);
 
 
@@ -143,7 +143,7 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     var allMembers = new SofaHopping.Collections.Users();
-    allMembers.fetch({ data: { query: query }});
+    allMembers.fetch({ data: { query: query, searchType: "all" }});
 
     var membersView = new SofaHopping.Views.MembersView({
       collection: allMembers, searchType: "all", query: query })
@@ -157,10 +157,10 @@ SofaHopping.Routers.Router = Backbone.Router.extend({
     if (!this._requireSignedIn(callback)) { return; }
 
     var allTravelers = new SofaHopping.Collections.Users();
-    allTravelers.fetch({ data: { trips : true, query: query }});
+    allTravelers.fetch({ data: { searchType: "travelers", query: query }});
 
     var travelersView = new SofaHopping.Views.MembersView({
-      collection: allTravelers, searchType: "travelers" })
+      collection: allTravelers, searchType: "travelers", query: query })
     this._swapView(travelersView);
   },
 

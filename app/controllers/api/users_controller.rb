@@ -23,30 +23,18 @@ class Api::UsersController < ApplicationController
                   .where(id: params[:id]).first
       render :show
     end
-
   end
 
   def index
-    if params[:status]
-     @users = User.includes(:received_references).where(hosting_status: params[:status])
-     @users = @users.search_by_location(params[:query]) if params[:query] != "none"
-     render :index
-    elsif params[:trips]
-      @trips = Trip.includes(:traveler).where("user_id != ?", current_user.id)
-      @trips = @trips.search_by_location(params[:query]) if params[:query] != "none"
-      render :travelers
-    else
-      if params[:query] == "none"
-        @users = User.includes(:received_references).all
-                     .page(params[:page]).per(20)
-      
-      else
-        @users = User.includes(:received_references)
-                     .search_by_location(params[:query])
-                     .page(params[:page]).per(20)
-
-      end
+    if params[:searchType] == "hosts"
+      @users = User.find_hosts(params[:query], params[:page])
       render :index
+    elsif params[:searchType] == "all"
+      @users = User.find_all(params[:query], params[:page])
+      render :index
+    elsif params[:searchType] == "travelers"
+      @trips = Trip.find_travelers(params[:query], params[:page], current_user.id)
+      render :travelers
     end
   end
 
@@ -80,10 +68,8 @@ class Api::UsersController < ApplicationController
     redirect_to "#"
   end
 
-
   protected
-  def user_params
-    params.require(:user).permit(:avatar, :username, :password, :fname, :lname, :gender, :birthday, :location, :hosting_status)
-  end
-
+    def user_params
+      params.require(:user).permit(:avatar, :username, :password, :fname, :lname, :gender, :birthday, :location, :hosting_status)
+    end
 end

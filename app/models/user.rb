@@ -173,6 +173,35 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def self.find_hosts(query, page_num)
+    if query == "none"
+      users = User.includes(:received_references)
+                   .where(hosting_status: "yes")
+                   .page(page_num).per(20)
+    else
+      users = User.includes(:received_references)
+                   .where(hosting_status: params[:status])
+                   .search_by_location(params[:query])
+                   .page(page_num).per(20)
+
+    end
+
+    users
+  end
+
+  def self.find_all(query, page_num)
+    if query == "none"
+      users = User.includes(:received_references).all
+                   .page(page_num).per(20)
+    else
+      users = User.includes(:received_references)
+                   .search_by_location(query)
+                   .page(page_num).per(20)
+    end
+    
+    users
+  end
+
   def generate_guest_seed_data
     users = User.all
 

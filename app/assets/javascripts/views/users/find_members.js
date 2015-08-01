@@ -11,8 +11,12 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
     this.searchType = options.searchType;
     this.bindScroll();
     this.query = options.query
+    this.searchType = options.searchType;
     this.resultsLength = 0;
     this.limitReached = false;
+
+
+
   },
 
   render: function(){
@@ -46,7 +50,8 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
 	},
 
   nextPageInfiniteScroll: function () {
-    if (this.limitReached === true ) { return ; }
+
+    if (this.limitReached == true ) { return ; }
 
 		if (this.requestingNextPage) return;
 
@@ -54,6 +59,7 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
 		this.collection.fetch({
 			remove: false,
 			data: {
+        searchType: this.searchType,
 				query: this.query,
 				page: this.collection.pageNum + 1
 			},
