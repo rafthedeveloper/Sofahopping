@@ -39,6 +39,7 @@ class Api::UsersController < ApplicationController
       if params[:query] == "none"
         @users = User.includes(:received_references).all
                      .page(params[:page]).per(20)
+      
       else
         @users = User.includes(:received_references)
                      .search_by_location(params[:query])

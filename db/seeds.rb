@@ -458,19 +458,19 @@ req3 = Request.create!(
 
 
 
-#
-# i = 0;
-# while (i < 500) do
-#   hosting_statuses = ["yes", "maybe", "no"]
-#   User.create!(
-#     username: "user" + i.to_s,
-#     password: "password",
-#     fname: Faker::Name.first_name,
-#     lname: Faker::Name.last_name,
-#     gender: "other",
-#     birthday: "29/10/1969",
-#     location: Faker::Address.state,
-#     hosting_status: hosting_statuses.sample
-#   )
-#   i+=1
-# end
+
+i = 0;
+while (i < 500) do
+  hosting_statuses = ["yes", "maybe", "no"]
+  User.create!(
+    username: "user" + i.to_s,
+    password: "password",
+    fname: Faker::Name.first_name,
+    lname: Faker::Name.last_name,
+    gender: "other",
+    birthday: "29/10/1969",
+    location: Faker::Address.state,
+    hosting_status: hosting_statuses.sample
+  )
+  i+=1
+end

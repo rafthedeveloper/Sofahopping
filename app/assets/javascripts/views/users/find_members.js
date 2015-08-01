@@ -9,8 +9,10 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
     this.listenTo(this.collection, "sync", this.render);
     this.collection.pageNum = 1;
     this.searchType = options.searchType;
-    // this.bindScroll();
-    // this.query = options.query
+    this.bindScroll();
+    this.query = options.query
+    this.resultsLength = 0;
+    this.limitReached = false;
   },
 
   render: function(){
@@ -28,38 +30,45 @@ SofaHopping.Views.MembersView = Backbone.View.extend({
     var newTrip = new SofaHopping.Models.Trip({});
     var tripForm = new SofaHopping.Views.TripForm({ model: newTrip, currentUser: SofaHopping.currentUser });
     tripForm.render();
-  }
+  },
 
-  // bindScroll: function () {
-	// 	$(window).on("scroll", this.handleScroll.bind(this));
-	// },
-  //
-	// handleScroll: function (event) {
-	// 	var $doc = $(document);
-	// 	var scrolledDist = $doc.height() - window.innerHeight - $doc.scrollTop();
-  //
-	// 	if (scrolledDist < 300) {
-	// 		this.nextPageInfiniteScroll();
-	// 	}
-	// },
-  //
-  // nextPageInfiniteScroll: function () {
-  //
-	// 	if (this.requestingNextPage) return;
-  //
-	// 	this.requestingNextPage = true;
-	// 	this.collection.fetch({
-	// 		remove: false,
-	// 		data: {
-	// 			query: this.query,
-	// 			page: this.collection.pageNum + 1
-	// 		},
-	// 		success: function (response) {
-  //
-	// 			this.requestingNextPage = false;
-	// 			this.collection.pageNum++;
-	// 		}.bind(this)
-	// 	});
-	// }
+  bindScroll: function () {
+		$(window).on("scroll", this.handleScroll.bind(this));
+	},
+
+	handleScroll: function (event) {
+		var $doc = $(document);
+		var scrolledDist = $doc.height() - window.innerHeight - $doc.scrollTop();
+
+		if (scrolledDist < 300) {
+			this.nextPageInfiniteScroll();
+		}
+	},
+
+  nextPageInfiniteScroll: function () {
+    if (this.limitReached === true ) { return ; }
+
+		if (this.requestingNextPage) return;
+
+		this.requestingNextPage = true;
+		this.collection.fetch({
+			remove: false,
+			data: {
+				query: this.query,
+				page: this.collection.pageNum + 1
+			},
+			success: function (response) {
+
+				this.requestingNextPage = false;
+				this.collection.pageNum++;
+        if (this.resultsLength < response.models.length){
+          this.resultsLength = response.models.length
+        }
+        else{
+          this.limitReached = true;
+        }
+			}.bind(this)
+		});
+	}
 
 })
