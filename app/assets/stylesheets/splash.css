@@ -18,7 +18,7 @@
 
  .hero{
 
-   background: url("http://i.imgur.com/36KIVJg.jpg");
+   background: url("https://s3.amazonaws.com/sofahopping/assets/hero.jpg");
    height:400px;
    background-size:cover;
  }

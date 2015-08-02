@@ -31,7 +31,7 @@ small.timeago{
   padding:20px;
   width:750px;
   margin:0 auto;
-  background: #ecf0f1;
+  background: #bcc0c0;
   font-size:18px;
 }
 
@@ -116,7 +116,7 @@ small.timeago{
 }
 
 .request-details header{
-  background: #ecf0f1;
+  background: #bcc0c0;
   padding:20px;
   margin-bottom:20px;
 }

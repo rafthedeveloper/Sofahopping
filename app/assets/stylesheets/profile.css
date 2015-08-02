@@ -39,29 +39,6 @@
 .user-main-content .mini-form button:last-child{
   margin-right:0;
 }
-/*.user-main-content h2, .user-main-content h3{
-  font-size: 18px;
-}
-
-
-.user-main-content .mini-form button:last-child{
-  margin-right:0;
-}
-
-.user-content header{
-  float:left;
-}
-
-
-.user-content .user-content-actions{
-  float:right;
-
-}
-
-.user-content .user-content-actions .mini-form{
-  padding:0;
-  float:right;
-}*/
 
 
 .profile header{
@@ -88,14 +65,14 @@
 .profile{
 position:relative;
 color:#fff;
+width:250px;
+height:250px;
+
 }
 .profile img{
-  width:250px;
-  height:250px;
-  background-color:#FFF;
+
+
   background-size:contain;
-
-
 }
 
 .profile h2{
