@@ -180,8 +180,8 @@ class User < ActiveRecord::Base
                    .page(page_num).per(20)
     else
       users = User.includes(:received_references)
-                   .where(hosting_status: params[:status])
-                   .search_by_location(params[:query])
+                   .where(hosting_status: "yes")
+                   .search_by_location(query)
                    .page(page_num).per(20)
 
     end
@@ -198,7 +198,7 @@ class User < ActiveRecord::Base
                    .search_by_location(query)
                    .page(page_num).per(20)
     end
-    
+
     users
   end
 
